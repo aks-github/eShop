@@ -1,0 +1,871 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Local Etail</title>
+		
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		<script src="/static/js/modernizr.custom.js"></script>
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+		<!-- 
+		<script src="/static/css/jquery-1.9.1.js"></script>
+		<script src="/static/css/jquery-ui.js"></script>
+		 -->
+		
+		<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+			
+		</style>
+	</head>
+	<body>
+	<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/grid.js"></script>
+		
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="#"> <img src="/static/images/eShoplogo.png" /></a>
+					</div>
+					</div>
+					<div class="gem-admin-bar">
+					<strong style="float: right;">Welcome &nbsp;</strong><br>
+					<strong style="float: right;"><font color='green'>{{cusinfo.StoreName}}</font></strong>
+						<ul>
+								<li class="gem-login">
+									<a href="/logout" title="Logout">Logout</a>
+								</li>
+								<li class="gem-signup">
+									<a href="/passwordchange" width="132px">Change Password</a>
+								</li>
+								<li class="gem-signup">
+									<!-- <a href="#" id="btnShowSimple">Add Product</a> -->
+									<a href="/addproduct">Add Product</a>
+								</li>
+								<li class="gem-signup">
+									<a href="/viewprofile">view profile</a>
+								</li>
+								<li class="gem-signup">
+									<a href="/editprofile">Edit profile</a>
+								</li>
+								<li class="gem-signup">
+									<a href="/customerhome">Home</a>
+								</li>
+						</ul>
+					</div>
+					<br>
+		</header>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	
+	
+	
+	{% if home%}
+		<script type="text/javascript">
+
+		function DelImg(elem, new_id) {
+			var r = confirm("Are you sure to Delete this product permanently?");
+			if (r == true) {
+				//jQuery('#loadImg').show();
+				$.get("/deleteproduct/?productid=" + new_id + "", function(data) {
+					//alert(data);
+					location.reload();
+				});
+				
+			}
+		}
+		
+	</script>
+	
+	
+		<div id="home">
+			{% if message %}
+				<div id="message" align="center">{{message}}</div>
+			{% endif %}
+			<div id="homepage" align="center">
+			<p>&nbsp;</p>
+				<img id="coverimagetag" src="{% if bannerpic %}/media/{{bannerpic}}{% else %}/media/banner.jpg{% endif %}" style="height: 200px; width: 900px"  />
+				<hr size="5">
+				<p>&nbsp;</p>
+				{% if products %}
+						<ul id="og-grid" class="og-grid">
+							{% for item in products.object_list %}
+							<li>
+								<a href="#" data-largesrc="/media/{{item.ProductImage}}" data-description="<font color='black' size='3px'><strong><font color='red'>Description</font> - {{item.ProductDescription}} <br/></br> <font color='red'>Price</font> - {{item.ProductPrice}} <br/> </br><font color='red'>Delivery Options</font> - {% for deliveryoption in item.has_deliveryoptions.all %} {{deliveryoption.DeliveryTypeName}} {%if forloop.last%} {%else%},{%endif%}</br> {% endfor %} </br><font color='red'>Quantity</font> - {{item.Quantity}}</strong>"> <img src="/media/{{item.ProductImage}}" style="height: 192px;width: 230px;"/> </a>&nbsp;
+								<div align="justify">
+								<a href="#deleteproduct" onclick="DelImg(this,'{{item.ProductId}}');" class="ButtonLink"><strong>Delete</strong></a>
+								<a href="/editproduct?productid={{item.ProductId}}" class="ButtonLink"><strong>Edit</strong></a>
+								</div>
+							</li>
+							{% endfor %}	
+						</ul>
+						
+						<div class="pagination">
+							<span class="step-links">
+								{% if products.has_previous %}
+									<a href="?page={{ products.previous_page_number }}" class="ButtonLink"><strong>previous</strong></a>
+								{% endif %}
+								
+								<span class="current">
+									<strong>Page {{ products.number }} of {{ products.paginator.num_pages }}</strong>
+								</span>
+									
+								{% if products.has_next %}
+									   <a href="?page={{ products.next_page_number }}" class="ButtonLink"><strong>Next</strong></a>
+								{% endif %}
+							</span>
+						</div>
+						
+						
+						
+					{% else %}
+					<div>
+						<strong>No Product Added</strong>
+						<p>&nbsp;</p>
+					</div>
+					{% endif %}
+			</div>
+		</div>
+	{% endif %}
+	
+	
+	
+	
+	
+	
+	
+	
+<!-- ################################################################################################################# -->	
+	
+	
+{% if editprofile %}
+	<script type="text/javascript">
+	
+	function validateEditCustomer(ref){
+		
+		var filter=/^\d+$/;
+		var salesrepid = /^[0-9a-zA-Z]+$/;
+		var letters=/^[0-9a-zA-Z ]+$/;
+		var storename = /^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+		var address=/^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+		var emailfilter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			
+			if((/^\s/.test(ref.storename.value[0])) || ref.storename.value.length < 3 || ref.storename.value.length > 64 || !(ref.storename.value.match(storename))){
+				alert("Store name should be between 3 to 64 Alphanumeric Characters  without spaces at beginning");
+				return false;
+			}
+			
+			if((/^\s/.test(ref.streetaddress.value[0])) || ref.streetaddress.value.length < 3 || ref.streetaddress.value.length > 500 || !(ref.streetaddress.value.match(address))){
+				alert("Please provide a complete Street address. It should be greater than 3 and less than 500 Alphanumeric Characters  without spaces at beginning");
+				return false;
+			} 
+			
+			
+			if((/^\s/.test(ref.city.value[0])) || ref.city.value.length < 3 || (ref.city.value.length > 32) || !(ref.city.value.match(letters))){
+				alert("Please provide a valid city name between 3 to 32 Alphanumeric Characters  without spaces at beginning");
+				return false;
+			}
+			
+			if(ref.postalcode.value.length!=6 || !filter.test(ref.postalcode.value)){
+				alert("Please provide a valid 6 digit Postal code");
+				return false;
+			}
+			
+			/* if(ref.country.value==""){
+				alert("Choose Country");
+				return false;
+			}
+			
+			if(ref.state.value==""){
+				alert("Choose state");
+				return false;
+			} */
+			
+
+			if(ref.phonenumber.value.length <8 || ref.phonenumber.value.length > 16 || !filter.test(ref.phonenumber.value)){
+				alert("Please provide a valid phone number between 8 to 16");
+				return false;
+			}
+			
+			
+			
+			 if((/^\s/.test(ref.emailAddress.value[0])) || ref.emailAddress.value=="" || !emailfilter.test(ref.emailAddress.value) || ref.emailAddress.value < 3 || ref.emailAddress.value > 60){
+				 alert("Please enter valid Email address.");
+				 return false;
+			 }
+			 
+		 
+
+			 if((/^\s/.test(ref.website.value[0])) || ref.website.value.length<=4 ){
+					var rgx =/^(\s*(http\:\/\/)?([a-z\d\-]{1,63}\.)*[a-z\d\-]{1,255}\.[a-z]{2,6}\s*){6,32}$/;
+				  	if(!rgx.test(ref.website.value)){
+				  		alert("Please provide a valid website name. eg. www.eShop.com");
+						return false;		
+				  	}
+				}
+			 
+			 
+			 if(ref.hoursofoperation.value!=""){
+				 
+				 if(/^\s/.test(ref.hoursofoperation.value[0])){
+					 	alert("Hours of operation cannot start with space.")
+						return false;
+					}
+				 	
+				 	var x = parseFloat(ref.hoursofoperation.value);
+				    if (isNaN(x) || x > 24 || x < 1 ) {
+				    	alert("Please provide a valid hoursof operation. It should be between 1 to 24");
+				    	return false;    
+				    }	
+				}
+				
+			return true;
+
+	}
+
+	
+	</script>
+		
+		<div id="editprofile" align="center">
+			<h3> Edit Profile </h3>
+			
+			{% if message %}
+				<div id="message" align="center">{{message}}</div>
+			{% endif %}
+			
+			<form method="post" id="updateprofile" action="/updateprofile" enctype="multipart/form-data" onsubmit="return validateEditCustomer(this);">
+				<table cellspacing="10px" style="padding: 14px; margin: 1" >
+					<tr>
+					<td><strong>Store Name</strong></td><td><input type="text" id="storename" name="storename" value="{{cusinfo.StoreName}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>Street Address</strong></td><td><textarea id="streetaddress" name="streetaddress"  class="inputtext">{{cusinfo.StreetAddress}}</textarea></td>
+					</tr>
+					<tr>
+					<td><strong>City</strong></td><td><input type="text" id="city" name="city" value="{{cusinfo.City}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>Postal Code</strong></td><td><input type="text" id="postalcode" name="postalcode" value="{{cusinfo.PostalCode}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>Country</strong></td><td><input type="text" id="country" disabled="disabled" name="country" value="{{cusinfo.Country}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>State</strong></td><td><input type="text" id="state" name="state" disabled="disabled" value="{{cusinfo.State}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>Phone Number</strong></td><td><input type="text" id="phonenumber" name="phonenumber" value="{{cusinfo.MainPhoneNumber}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>Email Address</strong></td><td><input type="text" id="emailAddress" name="emailAddress" value="{{cusinfo.EmailAddress}}" class="inputtext" disabled="disabled"></td>
+					</tr>
+					
+					<tr>
+					<td><strong>Website</strong></td><td><input type="text" id="website" name="website" value="{{cusinfo.Website}}" class="inputtext"></td>
+					</tr>
+					<tr>
+					<td><strong>Hours Of Operation</strong></td><td><input type="text" id="hoursofoperation" name="hoursofoperation" value="{{cusinfo.HoursOfOperation}}" class="inputtext" ></td>
+					</tr>
+					
+					<tr>
+					<td><strong>Store Logo</strong></td>
+					<td><input type="file" name="storelogo" id="storelogo" class="inputtext" ></td>
+					</tr>
+					
+					<tr>
+					<td><strong>Banner Image</strong></td>
+					<td><input type="file" name="bannerimage" id="bannerimage" class="inputtext" ></input></td>
+					</tr>
+					
+					<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="Save" class="ButtonLink">
+					<a href="/customerhome" class="ButtonLink">Cancel</a></td>
+					</tr>
+					
+				</table>
+			</form>
+			
+		</div>
+	{% endif %}
+
+
+	
+<!-- ################################################################################################################# -->
+
+
+
+
+	
+	{% if viewprofile%}
+		
+	<div id="viewprofile" align="center" style="margin: -1">
+		<h3>View Profile</h3>
+		
+		{% if message %}
+			<div id="message" align="center">{{message}}</div>
+		{% endif %}
+		
+			<table cellspacing="7px" style="padding: 14px;" >
+				<tr>
+				<td><strong>Store Name</strong></td><td><input type="text" id="storename" name="storename" value="{{cusinfo.StoreName}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>Store Category</strong></td>
+				<td class="inputtext">
+					{% for i,j in dic.items %}
+					<b>{{i}} :</b> <br>
+					{% for a in j%}
+					{{a}} 
+					{% endfor %}
+					<br> 
+					{% endfor %}
+				</td>
+				</tr>
+				<tr>
+				<td><strong>Street Address</strong></td><td><textarea id="streetaddress" name="streetaddress"   class="inputtext" readonly="readonly">{{cusinfo.StoreName}}</textarea></td>
+				</tr>
+				<tr>
+				<td><strong>City</strong></td><td><input type="text" id="city" name="city" value="{{cusinfo.City}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>Postal Code</strong></td><td><input type="text" id="postalcode" name="postalcode" value="{{cusinfo.PostalCode}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>Country</strong></td><td><input type="text" id="country" name="country" value="{{cusinfo.Country}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>State</strong></td><td><input type="text" id="state" name="state" value="{{cusinfo.State}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>PhoneNumber</strong></td><td><input type="text" id="phonenumber" name="phonenumber" value="{{cusinfo.MainPhoneNumber}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>EmailAddress</strong></td><td><input type="text" id="emailAddress" name="emailAddress" value="{{cusinfo.EmailAddress}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>Website</strong></td><td><input type="text" id="website" name="website" value="{{cusinfo.Website}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>Hours Of Operation</strong></td><td><input type="text" id="hoursofoperation" name="hoursofoperation" value="{{cusinfo.HoursOfOperation}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>Number of products uploaded</strong></td><td><input type="text" value="{{cusinfo.ProductsUploaded}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td><strong>service pack subscribed</strong></td><td><input type="text" value="{{servicepacks.ServicePackName}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				 <tr>
+				<td><strong>services</strong></td><td class="inputtext">
+				{% for service in services %}
+					{{service.ServiceName}} {% if forloop.last %} {% else%} , {% endif %}
+				{%endfor%}
+					</td>
+				</tr> 
+				
+				<tr><td>&nbsp;</td></tr>
+				
+				<tr>
+					<td>&nbsp;</td>
+					<td><a href="/customerhome" class="ButtonLink">Cancel</a></td>
+				</tr>
+			</table>
+	</div>
+	{% endif %}
+	
+	
+	
+<!-- ################################################################################################################# -->
+	
+	
+	
+	{% if addproduct%}
+	
+	<script type="text/javascript">
+			/*
+			$(function(){
+			  $("select#productcategory").change(function(){
+			    $.getJSON("/subcategorieslist",{category: $(this).val(), ajax: 'true'}, function(j){
+			    	var options = '';
+			    	if(j!=""){
+				    	for (var i = 0; i < j.length; i++) {
+				    		options += '<option value="' + j[i]+'">' + j[i]+ '</option>';
+				      	}
+				    	$("select#subcategory").removeAttr('disabled');
+				    	$("select#subcategory").html(options);
+			    	}
+			    	else{
+			    		//options += '<option value="Others">Others</option>';
+			    		//$("select#subcategory").remove();
+			    		$("select#subcategory").html(options);
+			    		$("select#subcategory").attr("disabled", "disabled");
+			    	}
+			    })
+			  })
+			})
+			*/
+			
+			
+			function getCheckBox(){
+				var checkobj=[];
+				$("input:checkbox").each(function(){
+				    var $this = $(this);
+
+				    if($this.is(":checked")){
+				    	checkobj.push($this.attr("id"));
+				    }
+				});	
+				return checkobj;
+			};
+		
+			
+			function CheckAmount(amount){
+				if(/^\s/.test(amount[0])){
+					alert('Amount field cannot start with space');
+					return false;
+				}
+				
+				var filter=/^\d+(?:\.\d{0,2})$/;
+				
+				if(!filter.test(amount)){
+					alert('Amount should be in a Decimal format. e.g. 99.99');
+					return false;
+				}
+				
+			    var x = parseFloat(amount);
+			    if (isNaN(x)) {
+			    	alert('Not a proper format');
+			    	return false;    
+			    }
+			    return true;
+			}
+			
+			
+			
+			function validateUploadproduct(ref){
+				//var checkobj=getCheckBox();
+				var filter=/^\d+$/;
+				var letters=/^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+				//var rate=/^\d+\.\d{0,2}$/;
+				//var address=/^[a-zA-Z0-9 .,_&$@!\/#()-+\\']$/;
+			
+					if((/^\s/.test(ref.description.value[0])) || ref.description.value.length < 3 || ref.description.value.length > 500 || !(ref.description.value.match(letters))){
+						alert("Description should be between 3 to 500 Alphanumeric Characters");
+						return false;
+					}
+					
+					
+					if(!CheckAmount(ref.amount.value)){
+						//alert("Invalid amount");
+						return false;
+					}
+					
+					if(!filter.test(ref.quantity.value)){
+						alert("Quantity should be a number");
+						return false;
+					}
+					
+					
+					if((/^\s/.test(ref.productcategory.value[0])) || ref.productcategory.value.length < 3 || ref.productcategory.value.length > 64 || !(ref.productcategory.value.match(letters))){
+						alert("ProductCategory should be between 3 to 64 Alphanumeric Characters");
+						return false;
+					}
+					
+					if (getCheckBox().length<1){
+						alert("Please select alteast one delivery option");
+						return false;
+					}
+					
+					
+					var r = confirm("Are you sure to add product?");
+					if (r == false) {
+						return false;
+					}
+
+				return true;
+			}
+			
+		</script>
+		
+
+
+		<style>
+		#preview-dialog {
+ 	 	border: 1px solid rgb(0, 128, 0);
+		width: 500px;
+		margin-left: 435px;
+		margin-bottom: 50px;
+		margin-top: 50px;
+		background-color: rgb(246, 247, 162);
+		}
+		</style>
+		
+		
+		
+		<div id="preview-dialog" style="display:none;" align="center">
+			<h2>Product Preview</h2>
+		
+			<table  cellspacing="5" style="padding: 14px;">
+					<tbody>
+						<tr>
+							<td><label for="description"> <strong>Description : </strong></td>
+							<td id="description_preview" >
+							 
+							
+							</td>
+						</tr>
+						<tr>
+							<td><label for="amount"><strong>Amount :&nbsp;</strong></label></td>
+							<td id="amount_preview"></td>
+						</tr>
+						<tr>
+							<td><label for="quantity"><strong>Quantity :&nbsp;</strong></label></td>
+							<td id="quantity_preview"></td>
+						</tr>
+						<tr>
+							<td><label for="productcategory"> <strong>Product Category :&nbsp;</strong></label></td>
+							<td id="productcategory_preview"></td>
+						</tr>
+						<tr>
+							<td><label for="productimage"> <strong>Product Pic :&nbsp;</strong></label></td>
+							<td>
+							
+							 <img src="/" alt="test" class="img-thumbnail" width="128" height="128" />
+							
+							</td>
+						</tr>
+						<tr>
+							<td><label for="checkbox1"> <strong>DeliveryOption :&nbsp;</strong></label></td>
+							<td>
+							<div id='deliveryoption_preview'></div>
+							 </td>
+						<tr></tr>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+							<input type ="button" onclick="toggle();" value = "Close" class="ButtonLink"></button>
+							
+							
+							</td>
+						</tr>
+					</tbody>
+			</table>
+						
+</div>
+
+
+		
+
+	<div id="addproduct" align="center">
+			<h3>Add Product</h3>
+			{% if message %}
+			<div id="message" align="center">{{message}}</div>
+			{% endif %}
+				
+			<form id="uploadproduct" method="post" enctype="multipart/form-data" action="/uploadproduct" onsubmit="return validateUploadproduct(this);">
+				<table  cellspacing="5" style="padding: 14px;">
+					<tbody>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><strong>Description</strong></td>
+							<td>
+							<textarea class="inputtext" name="description" id="description" rows="3" cols="17" required="required"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><strong>Amount</strong></td>
+							<td><input type="text" id="amount" name="amount" class="inputtext" required="required"></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><strong>Quantity</strong></td>
+							<td><input type="text" id="quantity" name="quantity" class="inputtext" required="required" ></td>
+						</tr>
+						
+						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td><strong>Product Category</strong></td>
+							<td><input type="text" id="productcategory" name="productcategory" class="inputtext" required="required"></td>
+						</tr>
+						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td><strong>Product Pic</strong></td>
+							<td>
+							<input type="file" value="image" id='productimage' name="productimage" class="inputtext" required="required" onchange='Test.UpdatePreview(this)' />
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><strong>DeliveryOption</strong></td>
+							<td>
+							<div id='deliveryoption' class="inputtext">
+								{% for deliveryoption in deliveryoptions%}
+								<input type="checkbox" id="{{deliveryoption.DeliveryTypeName}}" name="{{deliveryoption.DeliveryTypeName}}" >&nbsp;<strong>{{deliveryoption.DeliveryTypeName}}</strong><br>
+								{% endfor %}
+							</div>
+							</td>
+						</tr>
+						<tr>
+						<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+							<input  type="button" value="Preview" id="uploadproduct-add" class="ButtonLink">
+							<input  type="submit" value=" Add Product "  class="ButtonLink">
+							<a href="/customerhome" class="ButtonLink">Cancel</a>
+							
+							</td>
+						</tr>
+					</tbody>
+			</table>	
+		</form>
+		</div>
+		
+		<script>
+		$("#uploadproduct-add").click(function(){
+			
+			$("#description_preview").html($("#description").val());
+			$("#amount_preview").html($("#amount").val());
+			$("#quantity_preview").html($("#quantity").val());
+			$("#productcategory_preview").html($("#productcategory").val());
+			var selected = new Array();
+			$('#deliveryoption input:checked').each(function() {
+				selected.push($(this).attr('name'));	    
+			    
+			});
+			
+			var newHTML = new Array();
+			for (var i = 0; i < selected.length; i++) {
+			    newHTML.push('<span>' + selected[i] + '</span><br/>');
+			}
+			$("#deliveryoption_preview").html(newHTML.join(""));
+				$("#preview-dialog").show();
+			$("#addproduct").hide();
+				return false;
+			});
+			$(function() {
+				Test = {
+					UpdatePreview : function(obj) {
+						// if IE < 10 doesn't support FileReader
+						if (!window.FileReader) {
+							// don't know how to proceed to assign src to image tag
+						} else {
+							var reader = new FileReader();
+							var target = null;
+		
+							reader.onload = function(e) {
+								target = e.target || e.srcElement;
+								$(".img-thumbnail").prop("src", target.result);
+							};
+							reader.readAsDataURL(obj.files[0]);
+						}
+					}
+				};
+			});
+			
+			function toggle() {
+				var el = document.getElementById("preview-dialog");  
+				    el.style.display = 'none';
+				    $("#addproduct").show();
+				}
+			
+			 function submitDetailsForm()
+			    {
+			       $("#uploadproduct").submit();
+			    }
+			
+		</script>
+		
+	{% endif %}
+	
+	
+	
+	
+		
+		
+	
+<!-- ############################################################################################################### -->	
+
+
+{% if editproduct %}	
+	<script type="text/javascript">
+	
+	function CheckAmount(amount){
+		if(/^\s/.test(amount[0])){
+			alert('Amount field cannot start with space');
+			return false;
+		}
+		
+		var filter=/^\d+(?:\.\d{0,2})$/;
+		
+		if(!filter.test(amount)){
+			alert('Amount should be in a Decimal format. e.g. 99.99');
+			return false;
+		}
+		
+	    var x = parseFloat(amount);
+	    if (isNaN(x)) {
+	    	alert('Not a proper format');
+	    	return false;    
+	    }
+	    return true;
+	}
+	
+	
+	
+	function validateEditproduct(ref){
+		var filter=/^\d+$/;
+		var letters=/^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+		var rate=/^\d+\.\d{0,2}$/;
+	
+			if((/^\s/.test(ref.productdescription.value[0])) || ref.productdescription.value.length < 3 || ref.productdescription.value.length > 500 || !(ref.productdescription.value.match(letters))){
+				alert("Description should be between 3 to 500 Alphanumeric Characters");
+				return false;
+			}
+			
+			if(!CheckAmount(ref.amount.value)){
+				return false;
+			}
+			
+			if(!filter.test(ref.quantity.value)){
+				alert("Quantity should be a number");
+				return false;
+			}
+			
+			if((/^\s/.test(ref.productcategory.value[0])) ||ref.productcategory.value.length < 3 || ref.productcategory.value.length > 64 || !(ref.productcategory.value.match(letters))){
+				alert("ProductCategory should be between 3 to 64 Alphanumeric Characters");
+				return false;
+			}
+
+		return true;
+	}
+	
+		
+	</script>
+	
+	<div id="editproduct" align="center" >
+	<h2>Edit Product</h2>
+	
+	{% if message %}
+			<div id="message" align="center">{{message}}</div>
+	{% endif %}
+	
+	<form action="/updateproduct" method="post" enctype="multipart/form-data" onsubmit="return validateEditproduct(this);">
+			<table>
+				<tr>
+				<td></td><td><input type="hidden" name="productid" value="{{productinfo.ProductId}}"> </td>
+				</tr>
+				<tr>
+				<td><strong>Product Description</strong></td>
+				<td><input type="text" id="productdescription" name="productdescription" value="{{productinfo.ProductDescription}}" class="inputtext" required="required"></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				</tr>
+				<tr>
+				<td><strong>Product Image</strong></td>
+				<td><input type="file" value="image" id='productimage' name="productimage" class="inputtext" /></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				</tr>
+				<tr>
+				<td><strong>Amount</strong></td>
+				<td><input type="text" id="amount" name="amount" value="{{productinfo.ProductPrice}}" class="inputtext" required="required"></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>Quantity</strong></td>
+				<td><input type="text" id="quantity" name="quantity" class="inputtext" required="required" value="{{productinfo.Quantity}}"></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>Product Category</strong></td>
+				<td><input type="text" id="productcategory" name="productcategory" value="{{productinfo.ProductType}}" class="inputtext" required="required"></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="Save" class="ButtonLink">
+					<a href="/customerhome" class="ButtonLink">Cancel</a></td>
+				</tr>
+				
+				</table>
+				</form>
+	
+	</div>
+{% endif %}
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+	<footer>
+		<div class="Footer">
+			<div class="btm-links">
+				<!-- <a href="#">Link 1</a> | <a href="#">Link 2</a> | <a href="#">Link
+					3</a> | <a href="#">Link 4</a> -->
+			</div>
+			<div id="copyright">Copyright @ eShop.com. All rights
+				reserved.</div>
+			<div id="powered">
+				Powered by <a href="http://www.eShop.com">eShop </a>
+			</div>
+		</div>
+	</footer>
+
+
+
+		<script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/grid.js"></script>
+		
+		<script>
+			$(function() {
+				Grid.init();
+			});
+
+		</script>
+</body>	
+</html>

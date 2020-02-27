@@ -1,0 +1,498 @@
+/*
+* Based on Skeleton by Dave Gamache (www.getskeleton.com)
+*/
+
+
+/* Table of Contents */
+
+/* 
+
+    Base 960 Grid
+    Tablet (Portrait)
+    Mobile (Portrait)
+    Mobile (Landscape)
+    Clearing 
+	
+*/
+
+
+
+/* Base 960 Grid */
+#header-content { width: 1070px; }
+
+.container { width: 1070px; }
+
+#slideshow_big .container { width: 1070px; }
+
+
+
+
+/* Portfolio */
+#portfolio .one_fourth	{	overflow: hidden; margin-left: 0; width: 251px; height: 225px; float:left; position:relative; margin-bottom: 20px; padding-bottom: 0; }
+#portfolio .one_third	{	overflow: hidden; margin-left: 0; width: 342px; height: 291px; float:left; position:relative; margin-bottom: 20px; padding-bottom: 0; }
+#portfolio .one_half	{	overflow: hidden; margin-left: 0; width: 524px; height: 424px; float:left; position:relative; margin-bottom: 20px; padding-bottom: 0; }
+
+
+
+/* Tablet (Portrait) */
+
+/* Note: Design for a width of 768px, Gutter: 30px, column: 34px */
+
+@media only screen and (min-width: 768px) and (max-width: 1069px) {
+
+	#header-content { width: 766px; }
+
+	.container { width: 766px; }
+
+	#slideshow_big .container { width: 766px; }
+
+	.main_menu { width: 746px; margin-top: 0;}
+
+
+	.logo { margin: 0; }
+
+	#layerslider { display: none; }
+
+
+
+
+	/* Portfolio */
+	#portfolio .one_fourth	{	overflow: hidden; margin-left: 0; width: 180px; height: 173px; float:left; position:relative; margin-bottom: 15px; padding-bottom: 0; }
+	#portfolio .one_third	{	overflow: hidden; margin-left: 0; width: 244px; height: 220px; float:left; position:relative; margin-bottom: 15px; padding-bottom: 0; }
+	#portfolio .one_half	{	overflow: hidden; margin-left: 0; width: 375px; height: 315px; float:left; position:relative; margin-bottom: 15px; padding-bottom: 0; }
+
+
+	#search_field_block { width: 65px; }
+
+
+	.contactform textarea { max-width: 544px; }
+	#contact-form #subject { max-width: 544px; }
+	#contact-form #humanTest { max-width: 544px; }
+
+
+
+	.full-boxed-pricing ul { width: 148px; }
+	.sep-boxed-pricing ul li { width: 225.2px; }
+
+
+
+	.author-bio { width: 407px; }
+	.about-author { width: 567px; }
+	.comment_here { width: 567px; }
+	.comment-form-comment textarea { width: 544px; }
+	.input-textarea, #author, #email, #url { margin-right: 325px; }
+
+
+
+	/* shop */
+	div.product { width: 567px; }
+	div.product #tabs { width: 566px; }
+
+
+	div.product div.summary, div.product div.summary, #content div.product div.summary { float: left; 	width: 567px; }
+	div.product div.images, div.product div.images, #content div.product div.images { width: 567px; }
+	div.product div.images img, div.product div.images img, #content div.product div.images img { width: 567px; height: auto; }
+	div.product div.images div.thumbnails a img, div.product div.images div.thumbnails a img, #content div.product div.images div.thumbnails a img { width: 174px; height: auto; }
+	div.product #tabs ul.tabs { width: 566px; }
+	div.product .woocommerce_tabs ul.tabs { width: 567px; }
+	div#reviews #comments { width: 535px; }
+	
+	div.jigoshop_error, div.jigoshop_message { 	width: 379px; }
+
+	#template-blog div.jigoshop_error, #template-blog div.jigoshop_message { width: 380px; }
+	#reviews #comments ol.commentlist li .comment-text { width: 415px; float: right; }
+	.commentlist .comment { width: 535px; }
+	.comment_container { width: 444px; }
+	#shop .products ul, #shop ul.products {	width: 100%; }
+	.products ul, ul.products {	width: 100%; }
+
+	#main-wrapper .products ul, #main-wrapper ul.products {	width: 100%; }
+	#template-contact div.jigoshop_error, #template-contact div.jigoshop_message { width: 766px; }
+
+	.shop_table .product-thumbnail { display: none; }
+	#review_form { width: 480px; }
+
+}
+
+
+/*  Mobile (Portrait) */
+
+/* Note: Design for a width of 320px */
+
+@media only screen and (max-width: 767px) {
+
+	#header-content { width: 318px; }
+
+	.container { width: 318px; }
+
+	#slideshow_big .container { width: 318px; }
+
+	.main_menu { width: 298px; margin-top: 0; }
+
+	.logo { margin: 0; }
+
+	.breadcrumb-page { display: none; }
+
+	#layerslider { display: none; }
+
+
+
+	#content .full,	
+    #content .one_fifth,			
+	#content .one_fourth,		
+	#content .one_third,			
+	#content .two_fifth,			
+	#content .one_half,			
+	#content .three_fifth,		
+	#content .two_third,			
+	#content .three_fourth,		
+	#content .four_fifth { width: 318px; margin-left: 0; margin-bottom: 20px; }
+
+	#page-title .full { margin-bottom: 0; }
+
+
+	#header {	min-height: 44px;   }
+
+
+
+	/* Portfolio */
+	#portfolio .one_fourth	{	overflow: hidden; margin-left: 0; width: 318px; height: 273px; float:left; position:relative; margin-bottom: 30px; padding-bottom: 0; }
+	#portfolio .one_third	{	overflow: hidden; margin-left: 0; width: 318px; height: 273px; float:left; position:relative; margin-bottom: 30px; padding-bottom: 0; }
+	#portfolio .one_half	{	overflow: hidden; margin-left: 0; width: 318px; height: 273px; float:left; position:relative; margin-bottom: 30px; padding-bottom: 0; }
+
+
+	#search_field_block { width: 150px; }
+
+
+	.contactform textarea { max-width: 296px; }
+	#contact-form #email { max-width: 258px; }
+	#contact-form #contactName { max-width: 258px; }
+	#contact-form #subject { max-width: 296px; }
+	#contact-form #humanTest { max-width: 296px; }
+
+
+
+	.full-boxed-pricing ul { width: 299px; }
+	.full-boxed-pricing .column { border-right: 1px solid #E5E4E3; margin-bottom: 20px; }
+
+
+	.sep-boxed-pricing ul li { width: 299px; }
+	.sep-boxed-pricing .column { margin-bottom: 20px; }
+
+
+	.author-bio { width: 139px; }
+	.about-author { width: 318px; }
+	.comment_here { width: 318px; }
+	.comment-form-comment textarea { width: 293px; }
+	.input-textarea, #author, #email, #url { width: 293px; margin-right: 0; }
+
+
+	/* shop */
+	div.product { width: 318px; }
+	div.product #tabs { width: 317px; }
+
+
+	div.product div.summary, div.product div.summary, #content div.product div.summary { float: left; 	width: 318px; }
+	div.product div.images, div.product div.images, #content div.product div.images { width: 318px; }
+	div.product div.images img, div.product div.images img, #content div.product div.images img { width: 318px; height: auto; }
+	div.product div.images div.thumbnails a img, div.product div.images div.thumbnails a img, #content div.product div.images div.thumbnails a img { width: 114px; height: auto; }
+	div.product #tabs ul.tabs { width: 317px; }
+	div.product .woocommerce_tabs ul.tabs { width: 318px; }
+	div#reviews #comments { width: 285px; }
+	
+	div.jigoshop_error, div.jigoshop_message { 	width: 379px; }
+
+	#template-blog div.jigoshop_error, #template-blog div.jigoshop_message { width: 380px; }
+	#reviews #comments ol.commentlist li .comment-text { width: 215px; float: right; }
+	.commentlist .comment { width: 285px; }
+	.comment_container { width: 285px; }
+	#shop .products ul, #shop ul.products {	width:100%; }
+	.products ul, ul.products {	width: 100%; }
+
+	#main-wrapper .products ul, #main-wrapper ul.products {	width: 100%; }
+	#template-contact div.jigoshop_error, #template-contact div.jigoshop_message { width: 318px; }
+
+	.shop_table .product-thumbnail { display: none; }
+	#review_form { width: 318px; }
+
+	.products li { width: 100%; margin-left: 0; }
+
+
+	#body-content .partners div.one_fifth {
+		border-left: solid 1px #D9D9D9; 
+
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+		box-sizing: border-box; 
+
+		margin-bottom: 0; 
+	}
+
+
+
+	#shop .products li {
+		width: 100%;
+		margin-left: 0;
+	}
+
+
+
+	#price-table .pack { width: 100%; }
+
+
+}
+
+
+/* Mobile (Landscape) */
+
+/* Note: Design for a width of 480px */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+	#header-content { width: 478px; }
+
+	.container { width: 478px; }
+
+	#slideshow_big .container { width: 478px; }
+
+	.main_menu { width: 458px; margin-top: 0; }
+
+	.logo { margin: 0; }
+
+	.breadcrumb-page { display: none; }
+
+	#layerslider { display: none; }
+
+
+
+	#content .full,	
+    #content .one_fifth,			
+	#content .one_fourth,		
+	#content .one_third,			
+	#content .two_fifth,			
+	#content .one_half,			
+	#content .three_fifth,		
+	#content .two_third,			
+	#content .three_fourth,		
+	#content .four_fifth { width: 478px; margin-left: 0; margin-bottom: 20px; }
+
+	#page-title .full { margin-bottom: 0; }
+
+
+
+
+	/* Portfolio */
+	#portfolio .one_fourth	{	overflow: hidden; margin-left: 0; width: 478px; height: 390px; float:left; position:relative; margin-bottom: 30px; padding-bottom: 0; }
+	#portfolio .one_third	{	overflow: hidden; margin-left: 0; width: 478px; height: 390px; float:left; position:relative; margin-bottom: 30px; padding-bottom: 0; }
+	#portfolio .one_half	{	overflow: hidden; margin-left: 0; width: 478px; height: 390px; float:left; position:relative; margin-bottom: 30px; padding-bottom: 0; }
+
+
+	#search_field_block { width: 270px; }
+
+
+	.contactform textarea { max-width: 456px; }
+	#contact-form #email { max-width: 378px; }
+	#contact-form #contactName { max-width: 378px; }
+	#contact-form #subject { max-width: 456px; }
+	#contact-form #humanTest { max-width: 456px; }
+
+
+	.full-boxed-pricing ul { width: 458px; }
+	.full-boxed-pricing .column { border-right: 1px solid #E5E4E3; margin-bottom: 20px; }
+
+
+	.sep-boxed-pricing ul li { width: 458px; }
+	.sep-boxed-pricing .column { margin-bottom: 20px; }
+
+
+
+	.author-bio { width: 318px; }
+	.about-author { width: 478px; }
+	.comment_here { width: 478px; }
+	.comment-form-comment textarea { width: 452px; }
+	.input-textarea, #author, #email, #url { margin-right: 0; }
+
+
+
+	/* shop */
+	div.product { width: 478px; }
+	div.product #tabs { width: 477px; }
+
+
+	div.product div.summary, div.product div.summary, #content div.product div.summary { float: left; 	width: 478px; }
+	div.product div.images, div.product div.images, #content div.product div.images { width: 478px; }
+	div.product div.images img, div.product div.images img, #content div.product div.images img { width: 478px; height: auto; }
+	div.product div.images div.thumbnails a img, div.product div.images div.thumbnails a img, #content div.product div.images div.thumbnails a img { width: 147px; height: auto; }
+	div.product #tabs ul.tabs { width: 477px; }
+	div.product .woocommerce_tabs ul.tabs { width: 478px; }
+	div#reviews #comments { width: 445px; }
+	
+	div.jigoshop_error, div.jigoshop_message { 	width: 379px; }
+
+	#template-blog div.jigoshop_error, #template-blog div.jigoshop_message { width: 380px; }
+	#reviews #comments ol.commentlist li .comment-text { width: 370px; float: right; }
+	.commentlist .comment { width: 445px; }
+	.comment_container { width: 314px; }
+	#shop .products ul, #shop ul.products {	width: 100%; }
+	.products ul, ul.products {	width: 100%; }
+
+	#main-wrapper .products ul, #main-wrapper ul.products {	width: 100%; }
+	#template-contact div.jigoshop_error, #template-contact div.jigoshop_message { width: 377px; }
+
+	.shop_table .product-thumbnail { display: none; }
+	#review_form { width: 478px; }
+
+	.products li { width: 100%; margin-left: 0; }
+
+
+	#body-content .partners div.one_fifth {
+		border-left: solid 1px #D9D9D9; 
+
+		-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+		-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+		box-sizing: border-box; 
+
+		margin-bottom: 0; 
+	}
+
+
+	#shop .products li {
+		width: 100%;
+		margin-left: 0;
+	}
+
+
+
+	#price-table .pack { width: 100%; }
+
+}
+
+
+/* Clearing */
+
+/* Self Clearing Goodness */
+.container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0; 
+}
+.row:after,
+.clearfix:after {
+    clear: both; 
+}
+.row,
+.clearfix {
+    zoom: 1; 
+}
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+
+/* Columns for better content separation */
+
+.full       		{	overflow: hidden; margin-left: 0; width:100%; float:left;	position:relative; margin-bottom: 30px;   }
+.title-full       	{	overflow: hidden; margin-left: 0; width:100%; float:left;	position:relative; margin-bottom: 10px;   }
+.full-clear       	{	overflow: hidden; margin-left: 0; width:100%; float:left;	position:relative;                        }
+.one_fifth			{	overflow: hidden; margin-left: 3%; width:17.5%; float:left;	position:relative; margin-bottom: 30px;   }
+.one_fourth			{
+	overflow: hidden;
+	margin-left: 4%;
+	width:22%;
+	float:left;
+	position:relative;
+	margin-bottom: 30px;
+}
+.one_third			{	overflow: hidden; margin-left: 5%; width:30%; float:left;   position:relative; margin-bottom: 30px;   }
+.two_fifth			{	overflow: hidden; margin-left: 4%; width:38.5%; float:left;	position:relative; margin-bottom: 30px;   }
+.one_half			{
+	overflow: hidden;
+	margin-left: 4%;
+	width:38%;
+	float:left;
+	position:relative;
+	margin-bottom: 30px;
+}
+.three_fifth		{	overflow: hidden; margin-left: 4%; width:57%; float:left; 	position:relative; margin-bottom: 30px;   }
+.two_third			{	overflow: hidden; margin-left: 5%; width:65%; float:left;   position:relative; margin-bottom: 30px;   } 
+.three_fourth		{	overflow: hidden; margin-left: 4%; width:74%; float:left; 	position:relative; margin-bottom: 30px;   }
+.four_fifth			{	overflow: hidden; margin-left: 4%; width:79%; float:left; 	position:relative; margin-bottom: 30px;   }
+
+.first              {   margin-left: 0;   }
+
+.products li.first  {   margin-left: 0;   }
+
+#header-content .full,	
+#header-content .one_fifth,			
+#header-content .one_fourth,		
+#header-content .one_third,			
+#header-content .two_fifth,			
+#header-content .one_half,			
+#header-content .three_fifth,		
+#header-content .two_third,			
+#header-content .three_fourth,		
+#header-content .four_fifth, 
+#header-content p            {   margin-bottom: 0; margin-top: 10px;   }
+
+#header-content .one_half.top-info-content    {   margin-top: 7px;   }
+
+.msie7 .one_fourth		{ 	width:21.5%;  	}
+.msie7 div, .msie7 li	{	zoom:1; 		}
+
+
+div .alignleft  { float:left; display: block; }
+div .alignright { float:right; display: block; }
+div .aligncenter{ clear:both; display:block; }
+
+.partners div.one_fifth { 
+	width: 20%; 
+	margin-left: 0; 
+	border: solid 1px #D9D9D9; 
+	border-left: none;
+	border-top: none;
+	padding-top: 20px; 
+	padding-bottom: 10px; 
+	margin-bottom: 0; 
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;  
+}
+
+.partners div.first {
+	border-left: solid 1px #D9D9D9; 
+
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;  
+}
+
+.partners-container {
+	float: left;
+	width: 100%;
+	border-top: solid 1px #D9D9D9;  
+	background: #fff; 
+}
+
+.partners .partners_images { float: none; }
+
+.partners div { text-align: center; }
+
+.partners { margin-bottom: 50px; float: left; }

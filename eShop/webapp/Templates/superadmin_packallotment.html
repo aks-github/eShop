@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Pack Allotment </title>
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		<script src="/static/js/modernizr.custom.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+			<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+		
+/* MAIN NAVIGATION */
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(../images/nav-bar-bg.png);
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 554px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 120%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: left;
+        position: relative;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="#"> <img src="/static/images/eShoplogo.png" /></a>
+						</div>
+					</div>
+					
+					<p>&nbsp;</p>
+					<div align="right"><strong>Welcome Admin</strong></div><br>
+					<div id="logout" align="right">
+					<a href="/showchangepassword" class="ButtonLink">Change Password</a> &nbsp;&nbsp;
+					<a href="/logout" class="ButtonLink">Log out</a>
+					</div><br>
+					
+					<div class="nav-bar" id="topnav">
+						<nav class="nav-menu">
+							<ul id="main-nav">
+								<li ><a href="/listmarket/">Market</a></li> <!-- /createmarket -->
+								<li><a href="/salesref">Sales Representative</a></li>
+								<li><a href="/services">Services</a></li>
+								<li><a href="/servicepacks">Service Pack</a></li>
+								<li class="active"><a href="/showallotment">Pack Allotment</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+				
+				
+<div class="mainContent" >
+
+
+
+{% if marketobj %}
+		
+	<div id="allocateservicepack1" align="center">
+		<a href="/allotmentform" class="ButtonLink">Allocate Service Packs</a>	
+	</div>
+		
+		<p>&nbsp;</p>
+		
+		<div id="showmarketspacks" align="center">
+		<h3>Service packs allocated to market</h3>
+			<table width="70%">
+	            <tbody style="background-color: #e4e4e4; text-align: center;">
+	               <tr>
+		       			  <td width="20%" style="text-align: center;">
+		                  <strong>Market Name</strong>
+		                  </td>
+		                  
+		                  <td width="20%" style="text-align: center;">
+		                  <strong>Service Packs</strong>
+		                  </td>
+		                  
+		                  <!--
+		                  <td width="35%">
+		                  <strong>Action</strong>
+		                  </td> -->
+	               </tr>
+	                  {% for beanobj in marketobj  %}
+		                  <tr>
+			                  <td style="text-align: center;">
+			                  {{beanobj.MarketName}}
+			                  </td>
+			                  
+			                  <td style="text-align: center;">
+			                  {%  for j in beanobj.ServicePacks %}    
+				              {% if j.ServicePackName %}{{forloop.counter}})&nbsp;{{j.ServicePackName}} {%else%}  No service pack alloted  {%endif%}<br>
+			                  {% endfor %}
+			                  </td>
+			                  <!-- <td> Edit </td> -->
+		                  </tr>
+	                  {% endfor %}
+				</tbody>
+			</table>
+		</div>
+{% endif %}
+	
+	
+	
+	
+	
+{%if marketname %}
+		<div id="allocateservicepack" align="center">
+		<h3>Assign service packs to market</h3>
+			<form method="post" id="serachmarket" action="/listdetails" >
+				<table>
+						<tbody style="padding-left: 10px;">
+							<tr>
+								<td><strong>Market Name:&nbsp;</strong></td>
+								<td>
+								<select name="marketlist"  id="marketlist" class="inputtext" required="required">
+								<option selected="selected" disabled="disabled" class="inputtext">--select your market---</option>
+									{% for market in markets %}
+										<option value="{{market.MarketName}}">{{market.MarketName}}</option>
+									{%endfor%}
+								</select>
+								</td>
+								<td><input type="submit" id="serachbymarketname" name="serachbymarketname" class="ButtonLink"> </td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+				</table>
+				<hr>
+			</form>	
+		</div>
+		<script type="text/javascript">
+		
+		/* $( "#searchbymarket").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/searchmarket",request, response);
+			}
+			}); */
+		
+		</script>
+{%endif%}
+
+
+
+
+
+
+{%if marketdetails %}
+
+	<script type="text/javascript">
+	function getCheckBox(){
+		var checkobj=[];
+		$("input:checkbox").each(function(){
+		    var $this = $(this);
+
+		    if($this.is(":checked")){
+		    	checkobj.push($this.attr("id"));
+		    }
+		});	
+		return checkobj;
+	};
+	
+	
+function validateandsend(){
+	var checkobj=getCheckBox();
+	var marketid=document.getElementById("MarketId").value
+	
+	if (checkobj==""){
+		alert("Please select alteast one service pack");
+		return false;
+	}
+	
+	else
+	{
+		$.ajax({
+			url:"/updatepacktomarket",
+			type:'post',
+			data:"checkobj="+checkobj+"&marketid="+marketid,
+			success:function(data){ 
+				alert(data);
+				window.location.href="/showallotment";
+			}
+		});
+		return false;
+	}
+	
+}
+	</script>
+	
+	
+
+		<div id="details" align="center">
+			<form method="post" id="details" onsubmit="return validateandsend();" >  <!-- action="/updatepacktomarket" -->
+				<table cellspacing="4">
+						<tbody style="padding-left: 10px;">
+							<tr><td><strong>Market Name:</strong></td><td><input type="text" disabled="disabled" value="{{marketdetails.MarketName}}" id="MarketName" class="inputtext"></td></tr>
+							<tr><td></td><td><input type="hidden" disabled="disabled" value="{{marketdetails.MarketId}}" id="MarketId" class="inputtext"></td></tr>
+							<tr><td><p>&nbsp;</p></td></tr>
+							<tr>
+								{% for servicepack in marketservicepacks%}
+								<td><input type="checkbox" name="servicepack" id="{{servicepack.ServicePackId}}" class="inputtext" {% if servicepack.ServicePackName %} checked="checked"  {% endif %} > &nbsp; <strong>{{servicepack.ServicePackName}}</strong></td>
+								{% endfor %}
+							</tr>
+							<tr>	
+								{% for servicepack in additionalpacks%}
+								<td><input type="checkbox" name="servicepack" id="{{servicepack.ServicePackId}}"  class="inputtext"> &nbsp; <strong>{{servicepack.ServicePackName}}</strong></td>
+								{% endfor %}
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							
+							<tr><td></td><td><input type="submit" value="update" class="ButtonLink"></td></tr>
+						</tbody>
+				</table>
+				<hr>
+			</form>	
+		</div>
+{%endif%}
+</div><!-- End of main content -->		
+</div><!-- End of container -->		
+</body>	
+</html>
+
+			
+

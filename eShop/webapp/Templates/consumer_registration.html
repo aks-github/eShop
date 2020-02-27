@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Consumer Registration</title>
+		
+		{% if message %} <script type="text/javascript">alert("{{message}}"); window.location.href="/"</script> {% endif %}	
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		 
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+		<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+		
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(/static/images/bg.png;
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 900px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 100%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        float: left;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+			
+		</style>
+		
+		
+		
+<style type="text/css">
+
+.glossymenu{
+margin: 5px 0;
+padding: 0;
+width: 170px; /*width of menu*/
+border: 1px solid #9A9A9A;
+border-bottom-width: 0;
+}
+
+.glossymenu a.menuitem{
+background: black url(/static/images/glossyback.gif) repeat-x bottom left;
+font: bold 14px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+color: white;
+display: block;
+position: relative; /*To help in the anchoring of the ".statusicon" icon image*/
+width: auto;
+padding: 4px 0;
+padding-left: 10px;
+text-decoration: none;
+}
+
+
+.glossymenu a.menuitem:visited, .glossymenu .menuitem:active{
+color: white;
+}
+
+.glossymenu a.menuitem .statusicon{ /*CSS for icon image that gets dynamically added to headers*/
+position: absolute;
+top: 5px;
+right: 5px;
+border: none;
+}
+
+.glossymenu a.menuitem:hover{
+background-image: url(/static/images/glossyback2.gif);
+}
+
+.glossymenu div.submenu{ /*DIV that contains each sub menu*/
+background: white;
+}
+
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="/static/js/ddaccordion.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+ddaccordion.init({
+	headerclass: "submenuheader", //Shared CSS class name of headers group
+	contentclass: "submenu", //Shared CSS class name of contents group
+	revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+	mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+	collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
+	defaultexpanded: [], //index of content(s) open by default [index1, index2, etc] [] denotes no content
+	onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+	animatedefault: false, //Should contents open by default be animated into view?
+	persiststate: true, //persist state of opened contents within browser session?
+	toggleclass: ["", ""], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+	togglehtml: ["suffix", "<img src='/static/images/plus.gif' class='statusicon' />", "<img src='/static/images/minus.gif' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+	animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+	oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+		//do nothing
+	},
+	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+		//do nothing
+	}
+})
+
+
+</script>
+
+<script type="text/javascript">	
+var country_arr = new Array("India", "USA");
+
+var s_a = new Array();
+s_a[0]="";
+s_a[1]="Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chhattisgarh|Goa|Gujarat|Haryana|Himachal Pradesh|Jammu and Kashmir|Jharkhand|Karnataka|Kerala|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Odisha(Orissa)|Punjab|Rajasthan|Sikkim|Tamil Nadu|Tripura|Uttar Pradesh|Uttarakhand|West Bengal";
+s_a[2]="Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|ansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming";
+
+function print_country(country){
+    //given the id of the <select> tag as function argument, it inserts <option> tags
+    var option_str = document.getElementById(country);
+    option_str.length=0;
+    option_str.options[0] = new Option('Select Country','');
+    option_str.selectedIndex = 0;
+    for (var i=0; i<country_arr.length; i++) {
+    option_str.options[option_str.length] = new Option(country_arr[i],country_arr[i]);
+    }
+}
+
+function print_state(state, selectedIndex){
+    var option_str = document.getElementById(state);
+    option_str.length=0;    // Fixed by Julian Woods
+    option_str.options[0] = new Option('Select State','');
+    option_str.selectedIndex = 0;
+    var state_arr = s_a[selectedIndex].split("|");
+    for (var i=0; i<state_arr.length; i++) {
+    option_str.options[option_str.length] = new Option(state_arr[i],state_arr[i]);
+    }
+}
+</script>
+	</head>
+	<body>
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="/"> <img src="/static/images/eShoplogo.jpg"/></a>
+						</div>
+					</div>
+				</header>
+				
+		<p>&nbsp;</p>
+		
+<div class="mainContent">
+
+{% if regform %}
+
+<script type="text/javascript">
+
+function ValidateEmail(emailid)   
+{
+	var error="";
+	var filter=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+ 	if (!filter.test(emailid)){
+ 		error+="Invalid email id";
+ 		return error;  
+  	}
+  	return error; 
+}
+
+
+
+function validatePassword(text){
+	var error="";
+	if(text.length < 6){
+		error="Password should be greater than 6 alphanumeric characters";
+	}
+	if(text.length > 16){
+		error="Password should be less than 16 alphanumeric characters";
+	}
+	return error;
+} 
+
+
+function MobileNumber_Validator(mobilenumber){
+	if(mobilenumber!==""){
+		
+		if(mobilenumber==""){
+			alert("Please enter your mobile number");
+			document.profileform.mobilenumber.focus();
+			return false;
+		}
+		else if(isNaN(mobilenumber)){
+		alert("Please enter numeric values for mobile number");
+			document.profileform.mobilenumber.focus();
+			return false;
+		}
+		else if(mobilenumber.toString().length!=10){
+		alert("Mobile number must be 10 digits. No need to add 0 or +91");
+			document.profileform.mobilenumber.focus();
+			return false;
+		}
+		return true;
+	}
+	
+	else{
+		alert("Please fill the mobile number field");
+		return false;
+	}	
+}
+
+
+function pinCodeValidate(pincode){
+	if(pincode.value!=""){
+		if(isNaN(pincode)){
+			alert("Please enter numeric values for pincode");
+				return false;
+		}
+		
+		if(pincode.length!=6){
+			alert("Please enter 6 digit pincode");
+			return false;
+		}
+	}
+	return true;
+}
+
+
+
+function validateConsumerReg(){
+	
+	var emailid=document.consumerform.emailid.value;
+	if (ValidateEmail(emailid)!=""){
+		alert(ValidateEmail(emailid));
+		return false;
+	}
+	
+	var pwd=document.consumerform.pwd.value;
+	if (validatePassword(pwd)!=""){
+		alert(validatePassword(pwd));
+		return false;
+	}
+	
+	
+	var cpwd=document.consumerform.cpwd.value;
+	if (pwd!=cpwd){
+		alert("Password and Confirm password doesn't match");
+		return false;
+	}
+	
+	var mobilenumber=document.consumerform.mobilenumber.value;
+	if(!MobileNumber_Validator(mobilenumber)){
+		return false;
+	}
+	
+	
+	var letters=/^[0-9a-zA-Z ]+$/;
+	var name=/^[0-9a-zA-Z _.]+$/;
+	var address=/^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+	
+	var fullname=document.consumerform.fullname.value;
+	if((/^\s/.test(fullname[0])) || fullname.length < 3 || fullname.length > 64 || !(fullname.match(name))){
+		alert("Please provide a valid name. It should be greater than 3 and less than 64 Alphanumeric Characters  without spaces at beginning");
+		return false;
+	} 
+	
+	var streetaddr=document.consumerform.streetaddr.value;
+	if((/^\s/.test(streetaddr[0])) || streetaddr.length < 3 || streetaddr.length > 500 || !(streetaddr.match(address))){
+		alert("Please provide a complete Street address. It should be greater than 3 and less than 500 Alphanumeric Characters  without spaces at beginning");
+		return false;
+	} 
+	
+	
+	var city=document.consumerform.city.value;
+	if((/^\s/.test(city[0])) || city.length < 3 || (city.length > 32) || !(city.match(letters))){
+		alert("Please provide a valid city name between 3 to 32 Alphanumeric Characters  without spaces at beginning");
+		return false;
+	}
+	
+	var pincode=document.consumerform.postalcode.value;
+	if(!pinCodeValidate(pincode)){
+		return false;
+	}
+	
+	document.consumerform.action="/consumercredentials";
+	document.consumerform.submit();
+}
+
+
+
+</script>
+
+
+
+<div id="form1head" align="center">
+<h2>Create Account</h2>
+</div>
+
+<div id="consumer" align="center">
+	<form method="post" name="consumerform">
+		<table cellspacing="10">
+		<tr>
+		<td><strong>Email Address: </strong></td><td><input type="text" name="emailid" id="emailid" class="inputtext" required="required"></td>
+		<td><div id="username"></div></td>
+		</tr>
+		<tr>
+		<td><strong>Full Name: </strong></td><td><input type="text" name="fullname" id="fullname" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>Password: </strong></td><td><input type="password" name="pwd" id="pwd" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>Confirm Password: </strong></td><td><input type="password" name="cpwd" id="cpwd" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>Mobile Number: </strong></td><td><input type="text" name="mobilenumber" id="mobilenumber" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>StreetAddress:</strong> </td><td><textarea name="streetaddr" id="streetaddr" class="inputtext" required="required"></textarea></td>
+		</tr>
+		<tr>
+		<td><strong>City/Town: </strong></td><td><input type="text" name="city" id="city" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>PostalCode: </strong></td><td><input type="text" name="postalcode" id="postalcode" class="inputtext" required="required"></td>
+		</tr>
+		
+		<tr>
+		<td><strong>Country</strong></td>
+		<td><select onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select></td><br>
+		 </tr>
+		 <tr>
+		 <td><LABLE><strong>State:</strong></LABLE></td>
+		 <td><select name ="state" id ="state"></select></td>
+			<script language="javascript">print_country("country");</script>
+		 </tr>
+		<tr><td>&nbsp;</td></tr> 
+		<tr>
+		<td>&nbsp;</td>
+		<td>
+		<input type="button" id="submitbtn" value="Submit" class="ButtonLink" onclick="validateConsumerReg();"> &nbsp;&nbsp;
+		<input type="button" value="Cancel" onclick="goBack()" class="ButtonLink"> &nbsp;&nbsp;
+		
+		</td>
+		</tr>
+		</table>
+	</form>	
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+<script type="text/javascript">
+
+function goBack(){
+	window.location.href="/";
+	}
+</script>
+{% endif %}
+
+
+
+
+
+	
+</div><!-- End of main content -->		
+</div><!-- End of container -->		
+</body>	
+</html>
+
+			
+

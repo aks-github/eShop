@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+
+<style type="text/css">
+<!--
+body {
+	background-image: url(image/data/background.png);
+}
+.style1 {font-size: 14px}
+-->
+</style><head>
+<meta charset="UTF-8" />
+<title>product detail - {{market.MarketName}}</title>
+<base  />
+<meta name="description" content="About Shoping Street" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/client-page.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/boss_carousel.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/skeleton-client.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/responsive-client.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/javascript/bossthemes/fancybox/jquery.fancybox.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/default/stylesheet/cloud-zoom.1.0.3.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/javascript/jquery/colorbox/colorbox.css" media="screen" />
+
+
+
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/common.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/getwidthbrowser.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/bossthemes.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/notify.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.selectbox-0.2.js"></script>
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/tabs.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/colorbox/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/jquery.cycle.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/fancybox/jquery.fancybox.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.carouFredSel-6.2.0-packed.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".boss_select").selectbox();
+});
+function coming_soon() {
+	alert("Coming Soon")
+}
+</script>
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie8.css" />
+<![endif]-->
+
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie9.css" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie7.css" />
+<![endif]-->
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie6.css" />
+<script type="text/javascript" src="catalog/view/javascript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('#logo img');
+</script>
+<![endif]-->
+</head>
+<body class=home_page>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=513756015364457";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="frame_container">
+<div class="header-top"></div>
+
+<div id="container" class="container">
+<div id="header" class="twenty-four columns">	
+	<div class="header-middle">
+	<div id="logo" class="nine columns alpha"><a href="/{{market.MarketId}}"><img src="/media/{{market.MarketLogo}}"  height="72px" width="400px" title="{{market.MarketName}}"/></a></div>
+	<div id="boss-search" class="fourteen columns omega">
+<div class="choose-select">
+	<div class="input_cat">
+	    <select name="filter_category_id" class="boss_select" >
+	      <option value="Search by store" selected>Search by store</option>
+	      <option value="Search by product">Search by product</option>
+	    </select>
+	</div>
+	
+	<div class="bkg_input_search">
+		<input name="filter_name" type="text" value="" size="30" placeholder="Search entire stores & produts here..." />
+		<input title="Search" type="button" value="Search" id="boss-button-search" class="button-search" />
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+$(function () {
+	$("#boss_filter_search").selectbox();
+});
+</script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if(getWidthBrowser() < 959) {
+		$('#cart > .heading a').live('click', function() {
+			if($('#cart').hasClass('my-active')){
+				$('#cart').removeClass('active');
+				$('#cart').removeClass('my-active');
+			} else {
+				$('#cart').addClass('my-active');
+			}
+		});
+	}
+});
+--></script>	</div>
+{% for i in store %}
+	<div class="header-bottom">
+	
+	<div id="boss_menu_vertical" class="boss_menu_vertical client-logo" style="text-align:left; padding:2px 2px;"> <a href="/store/{{i.StoreId}}/"> <img src="/media/{{i.StoreLogo}}" height="125px" width="125px"/></a> 
+	<p style="padding:5px;"> <a href="/store/{{i.StoreId}}/"> <strong>{{i.StoreName}}</strong> </a> <br></p>
+	
+	 <!--  <div id="boss_menu_vertical" class="boss_menu_vertical client-logo" style="text-align:left; padding:2px 2px;"><p class="address"><a href="/store/{{i.StoreId}}/" > <img src="/media/{{i.StoreLogo}}" width="180" height="90" /> </a></p>
+     <p style="padding:5px;"> <a href="/store/{{i.StoreId}}/" > <strong> {{i.StoreName}}</strong> </a><br>
+     Shop Information</p> -->
+     
+        <p class="address">
+        <strong> Shop Address</strong><br>
+		{{i.StreetAddress}},<br>               
+		{{i.City}},<br>
+		{{i.PostalCode}},<br>
+		{{i.State}},<br>
+		{{i.Country}},<br>
+		<strong>Contact Number</strong><br>
+		{{i.MainPhoneNumber}}<br>
+        
+                
+        <p class="address">
+        <strong>Shop Timings</strong><br>
+		{{i.HoursOfOperation}},<br>   
+      
+        </p>
+ 
+        <div class="quick-select">
+		  <div class="sub-inside">	  
+		  </div>
+		</div>  
+	</div>		 
+		<div id="static-header-bottom">
+     <div class="fluid_container fourteen columns">
+     
+     <div class="slider-heading">{{i.StoreName}}</div>
+		<div class="camera_wrap camera_azure_skin" id="camera_wrap_0">
+                    <div data-src="/media/{{i.BannerImages}}" data-link="#"></div>
+                    <!-- <div data-src="/static/home&storefront/image/cache/data/lhs/product/banner.jpg" data-link="#"></div>  
+                    <div data-src="/static/home&storefront/image/cache/data/lhs/product/banner.jpg" data-link="#"></div>-->
+            </div><!-- #camera_wrap_1 -->
+            <div class='marquee-with-options'></div>
+        <!-- store description -->   <div class='marquee-with-options'></div>
+{% endfor %}
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/camera.css" media="screen" /><script type="text/javascript" src="catalog/view/javascript/bossthemes/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.easing.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/camera.min.js"></script>
+
+
+<!--news ticker-->
+
+	<script src="/static/home&storefront/js/jquery.pause.min.js"></script>
+
+		<script src="/static/home&storefront/js/jquery.marquee.js"></script>
+		<script>
+			$(function(){
+				var $mwo = $('.marquee-with-options');
+				$('.marquee').marquee();
+				$('.marquee-with-options').marquee({
+					//speed in milliseconds of the marquee
+					speed: 5000,
+					//gap in pixels between the tickers
+					gap: 50,
+					//gap in pixels between the tickers
+					delayBeforeStart: 0,
+					//'left' or 'right'
+					direction: 'left',
+					//true or false - should the marquee be duplicated to show an effect of continues flow
+					duplicated: true,
+					//on hover pause the marquee - using jQuery plugin https://github.com/tobia/Pause
+					pauseOnHover: true
+				});
+
+				//pause and resume links
+				$('.pause').click(function(e){
+					e.preventDefault();
+					$mwo.trigger('pause');
+				});
+				$('.resume').click(function(e){
+					e.preventDefault();
+					$mwo.trigger('resume');
+				});
+				//toggle
+				$('.toggle').hover(function(e){
+					$mwo.trigger('pause');
+				},function(){
+					$mwo.trigger('resume');
+				})
+				.click(function(e){
+					e.preventDefault();
+				})
+			});
+		</script>
+
+<!--/news ticker END-->
+
+
+<script type="text/javascript">
+	jQuery(function(){
+		jQuery('#camera_wrap_0').camera({
+			autoAdvance: false,
+		    mobileAutoAdvance: false,
+            //time: 3000,  
+			alignment: 'topLeft',
+			height: 'auto',
+			//loader: 'bar',
+			//pagination: false,
+			thumbnails: false
+		});
+	});
+</script>
+ 
+     
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_latest1').carouFredSel({
+		//auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_latest1',
+		next: '#next_latest1',
+		mousewheel: true,
+		swipe: {
+			//onMouse: true,
+			onTouch : true
+		},
+		items: {
+			//width: 200,
+			height: 224,
+			visible: {
+			min: 1,
+			max: 1
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+});
+</script>  </div>
+ 
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="notification"></div>
+<div class="twenty-four columns margin-top10">
+ 
+<div id="content">
+
+<div class="box five columns">
+  <div class="slider-heading"><span>Categories</span></div>
+  <div class="box-content">
+    <div class="boss-alphabet">
+     <ul class="box-category left-alight" style="overflow-y: auto; max-height:192px;">
+            <!-- fields for product category -->
+     {% if categories %}
+     <a href="/store/{{storeid}}/"><li>(All)</li></a>
+     {% for category in categories %}
+     	<a href="/store/{{storeid}}/{{ category.ProductType }}"><li>{{ category.ProductType }} ({{ category.count }}) </li></a>
+     {% endfor %}
+     {% endif %}
+     </ul>
+	</div>
+  </div>
+  
+</div>
+
+
+
+
+
+<div class="box boss_featured nineteen columns omega" style="margin-left:5px;">
+  
+<!--product 1-->
+   <div class="box-heading"><span>{{product.ProductTitle}}</span></div>
+ 
+  <div class="nineteen columns alpha omega product-info codespot-detail">
+       <div class="eight columns alpha left">
+			<div class="bosszoomtoolbox">
+				<div class="image">
+				    <div style="top:0px;z-index:9999;position:relative;" id="wrap"><a rel="" id="zoom1" class="cloud-zoom" title="" href="/media/{{product.ProductImage}}" style="position: relative; display: block;"><img id="image" alt="" title="" src="/media/{{product.ProductImage}}" style="display: block;"></a>
+				    <!--  <div style="background-image: url(&quot;/media/{{product.ProductImage}}&quot;); width: 354px; height: 354px; top: 0px; left: 0px; position: absolute; z-index: 9999; cursor: move;" class="mousetrap"></div>-->
+				    </div>
+					<br>
+				Hover | <a rel="colorbox" class="colorbox cboxElement" title="" href="/media/{{product.ProductImage}}">Large</a>
+				</div>
+			
+			<div class="list_carousel responsive">
+				<div class="caroufredsel_wrapper" style="display: block; text-align: left; float: none; position: relative; top: auto; right: auto; bottom: auto; left: auto; z-index: auto; width: 378px; height: 100px; margin: 0px; overflow: hidden;">
+					<ul id="boss-image-additional" style="text-align: left; float: none; position: absolute; top: 0px; right: auto; bottom: auto; left: 0px; margin: 0px; width: 1134px; height: 100px;">
+							<li style="width: 112px;"><a rel="useZoom: 'zoom1', smallImage: '/media/{{product.ProductImage}}' " class="cloud-zoom-gallery" title="" href="/media/{{product.ProductImage}}"><img alt="" title="" src="/media/{{product.ProductImage}}"></a></li>
+							<li style="width: 112px;"><a rel="useZoom: 'zoom1', smallImage: '/media/{{product.ProductImage}}' " class="cloud-zoom-gallery" title="" href="/media/{{product.ProductImage}}"><img alt="" title="" src="/media/{{product.ProductImage}}"></a></li>
+							<li style="width: 112px;"><a rel="useZoom: 'zoom1', smallImage: '/media/{{product.ProductImage}}' " class="cloud-zoom-gallery" title="" href="/media/{{product.ProductImage}}"><img alt="" title="" src="/media/{{product.ProductImage}}"></a></li>
+					</ul>
+				</div>
+		<a title="prev" href="#" class="prev hidden" id="prev_image_additional" style="display: none;">&lt;</a>
+		<a title="next" href="#" class="next hidden" id="next_image_additional" style="display: none;">&gt;</a>
+	</div>
+			<a rel="colorbox" class="colorbox cboxElement" title="" href="/static/home&storefront/image/a2-125x125.jpg"></a>
+			<a rel="colorbox" class="colorbox cboxElement" title="" href="/static/home&storefront/image/a2-125x125.jpg"></a>
+			<a rel="colorbox" class="colorbox cboxElement" title="" href="/static/home&storefront/image/a2-125x125.jpg"></a>
+			
+</div>
+</div>
+        
+        
+      <div class="six columns omega right paddingTop10">
+	      <div class="description">
+		  <h3>{{product.ProductTitle}}</h3>
+	                <span>Product Description:</span> <a href="#">{{product.ProductDescription}}</a><br>
+	                <span>Quantity Available:</span><em>{{product.Quantity}}</em><br><br> 
+	               <!--  <span>Product Code:</span> Product 21<br><br> -->
+	                <span>Availability:</span> <em>In Stock</em>
+	     </div>
+
+                      
+      	  
+      <div class="cart">
+        <div><b>Qty:</b>
+          <input type="number" value="1" size="2" name="quantity" min="1">
+          <input type="hidden" value="47" size="2" name="product_id">
+          &nbsp;<div class="price">Rs. {{product.ProductPrice}}<span class="price-tax"> Rs. {{product.ProductPrice}}</span><br></div>
+		  
+		  <div class="buttons">
+          <span class="boss_button"><input type="button" class="button" id="button-cart" value="Add to Cart"></span>
+		  </div>
+        </div>
+        
+     </div>
+  </div>
+  </div>
+</div>
+  
+  <!--google mAp-->
+  
+  <div class="box boss_latest five columns omega">
+  <div class="slider-heading"><span>Whats New</span></div>
+  <div class="box-content">
+      <p>In-Store Monsoon Sale starting from June 15th 2015, men's formal shoes available upto 70% less</p>
+    
+  </div>
+  <div class="slider-heading" style="margin-top:20px;"><span>Events at Store</span></div>
+  <div class="box-content">
+    <div class="boss-alphabet">
+      <img style="width:100%;" src="/static/home&storefront/image/b1g1.jpg"/>
+      <p>In-Store Monsoon Sale starting from June 15th 2015, men's formal shoes available upto 70% less</p>
+	</div>
+  </div>
+</div>
+  
+  <!--/google map-->
+  
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_featured0').carouFredSel({
+		//auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prevfeatured',
+		next: '#nextfeatured',
+		swipe: {
+			//onMouse: true,
+			onTouch : true
+		},
+		items: {
+			width: 170,
+			height: 202,
+			visible: {
+			min: 1,
+			max: 6
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+});
+</script><div class="clear"></div>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('#banner0 div:first-child').css('display', 'block');
+});
+
+var banner = function() {
+	$('#banner0').cycle({
+		before: function(current, next) {
+			$(next).parent().height($(next).outerHeight());
+		}
+	});
+}
+
+setTimeout(banner, 2000);
+//--></script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('#banner1 div:first-child').css('display', 'block');
+});
+
+var banner = function() {
+	$('#banner1').cycle({
+		before: function(current, next) {
+			$(next).parent().height($(next).outerHeight());
+		}
+	});
+}
+
+setTimeout(banner, 2000);
+//--></script><div class="clear"></div>
+<h1 style="display: none;">Furniture</h1>
+</div>
+</div>
+<div id="footer" class="twenty-four columns">
+  <div id="static-footer-top">
+  <script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_carousel0').carouFredSel({
+		auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_carousel0',
+		next: '#next_carousel0',
+		swipe: {
+		onTouch : true
+		},
+		items: {
+			//width: 'auto',
+			height: 82,
+			visible: {
+			min: 1,
+			max: 7
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 500   //  The duration of the transition.
+		}
+	});
+});
+</script>
+
+  </div>
+  <div id="static-footer-bottom">
+    <div class="static-footer-follow">
+<div>
+
+<a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/data/lhs/follow_1.png" title="facebook" /></a> <a href="javascript:coming_soon()" title="twitter"><img alt="" src="/static/home&storefront/image/data/lhs/follow_2.png" title="mastercard" /></a><a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/android.png" title="App for Customer" /></a><a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/android.png" title="App for Store Owners" /></a></div>
+</div>
+    <div class="static-footer-payment">
+<h3>Payment method</h3>
+
+<div><a href="javascript:coming_soon()" title="visa"><img alt="visa" src="/static/home&storefront/image/data/lhs/payment_1.png" title="visa" /></a> <a href="javascript:coming_soon()" title="mastercard"><img alt="" src="/static/home&storefront/image/data/lhs/payment_2.png" title="mastercard" /></a> <a href="javascript:coming_soon()" title="express"><img alt="" src="/static/home&storefront/image/data/lhs/payment_3.png" title="express" /></a> <a href="javascript:coming_soon()" title="paypal"><img alt="" src="/static/home&storefront/image/data/lhs/payment_4.png" title="paypal" /></a></div>
+</div>
+    <div class="static-footer-link"><a href="javascript:coming_soon()">About Shopping Street</a><a href="javascript:coming_soon()">Directory</a><a href="javascript:coming_soon()">Sales</a><a href="javascript:coming_soon()">Events</a>
+    </div>
+    <div id="powered">
+      <div id="bottom">
+        <div>
+          <div>
+            <div> © 2015               Shopping Street. All Rights Reserved.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+</div>
+</div>
+
+</body>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if (jQuery("#boss_zoom").html()){
+		jQuery(".product-info > .left").html(jQuery("#boss_zoom").html());
+		jQuery("#boss_zoom").remove();
+		if(getWidthBrowser() > 767){
+			$.fn.CloudZoom.defaults = {
+				adjustX: 30,
+				adjustY: 0,
+				tint: '#FFFFFF',
+				tintOpacity: 0.5,
+				softFocus: false,
+				lensOpacity: 0.7,
+				zoomWidth: '354',
+				zoomHeight: '354',
+				position: 'right',
+				showTitle: true,
+				titleOpacity: 0.5,
+				smoothMove: '3'
+			}; 
+		}
+	}
+});//--></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/cloud-zoom/cloud-zoom.1.0.3.js"></script>
+</div>
+  
+<script type="text/javascript" language="javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.carouFredSel-6.2.0-packed.js"></script>
+<script type="text/javascript" language="javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="http://demo.bossthemes.com/furniture/catalog/view/theme/bt_furniture/stylesheet/boss_carousel.css" media="screen" />
+<script type="text/javascript" language="javascript"><!--
+$(window).load(function(){
+	$('#boss-image-additional').carouFredSel({
+		auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_image_additional',
+		next: '#next_image_additional',
+		swipe: {
+		onTouch : true
+		},
+		items: {
+			width: 100,
+			height: 100,
+			visible: {
+			min: 1,
+			max: 3
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+	$('#boss-image-related').carouFredSel({
+		auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_related',
+		next: '#next_related',
+		swipe: {
+		onTouch : true
+		},
+		items: {
+			width: 150,
+			height: 305,
+			visible: {
+			min: 1,
+			max: 6
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+});
+//--></script>
+<script type="text/javascript"><!--
+function goToByScroll(id){
+		$('html,body').animate({scrollTop: $("#"+id).offset().top},'slow');
+		$('h2.ta-header').removeClass('selected');
+		$('#tab-review').prev().addClass('selected');
+}
+//--></script>  
+  
+<script type="text/javascript"><!--
+$('#button-cart').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=bossthemes/cart/add',
+		type: 'post',
+		data: $('.product-info input[type=\'text\'], .product-info input[type=\'hidden\'], .product-info input[type=\'radio\']:checked, .product-info input[type=\'checkbox\']:checked, .product-info select, .product-info textarea'),
+		dataType: 'json',
+		success: function(json) {
+		$('.warning, .attention, information, .error').remove();
+			if (json['error']) {
+				if (json['error']['option']) {
+					for (i in json['error']['option']) {
+						$('#option-' + i).after('<span class="error">' + json['error']['option'][i] + '</span>');
+					}
+				}
+			}  
+
+			if (json['success']) {
+				addProductNotice(json['title'], json['thumb'], json['success'], 'success');
+				$('#cart_menu span.s_grand_total').html(json['total_sum']);
+				$('#cart_menu div.s_cart_holder').html(json['output']);
+				$('#cart-total').html(json['total']);
+			}
+		}
+	});
+});
+//--></script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('.colorbox').colorbox({
+		overlayClose: true,
+		opacity: 0.5,
+		rel: "colorbox",
+		width: '80%', 
+		height: '80%',
+		maxWidth: 500,
+        maxHeight: 515	});
+});
+//--></script> 
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/ajaxupload.js"></script>
+<script type="text/javascript"><!--
+$('#review .pagination a').live('click', function() {
+	$('#review').fadeOut('slow');
+		
+	$('#review').load(this.href);
+	
+	$('#review').fadeIn('slow');
+	
+	return false;
+});			
+
+$('#review').load('http://demo.bossthemes.com/furniture/index.php?route=product/product/review&amp;product_id=47');
+
+$('#button-review').bind('click', function() {
+	$.ajax({
+		url: 'index.php?route=product/product/write&product_id=47',
+		type: 'post',
+		dataType: 'json',
+		data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&rating=' + encodeURIComponent($('input[name=\'rating\']:checked').val() ? $('input[name=\'rating\']:checked').val() : '') + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()),
+		beforeSend: function() {
+			$('.success, .warning').remove();
+			$('#button-review').attr('disabled', true);
+			$('#review-title').after('<div class="attention"><img src="/static/home&storefront/catalog/view/theme/default/image/loading.gif" alt="" /> Please Wait!</div>');
+		},
+		complete: function() {
+			$('#button-review').attr('disabled', false);
+			$('.attention').remove();
+		},
+		success: function(data) {
+			if (data['error']) {
+				$('#review-title').after('<div class="warning">' + data['error'] + '</div>');
+			}
+			
+			if (data['success']) {
+				$('#review-title').after('<div class="success">' + data['success'] + '</div>');
+								
+				$('input[name=\'name\']').val('');
+				$('textarea[name=\'text\']').val('');
+				$('input[name=\'rating\']:checked').attr('checked', '');
+				$('input[name=\'captcha\']').val('');
+			}
+		}
+	});
+});
+//--></script>
+<script type="text/javascript"><!--
+	$('h2.ta-header').first().addClass('selected');
+	$('h2.ta-header').click(function() {
+		if($(this).next().css('display') == 'none'){
+			$(this).next().show();
+			$(this).addClass('selected');
+		}else{
+			$(this).next().hide();
+			$(this).removeClass('selected');
+		}	
+		return false;
+	}).next().hide();	
+//--></script> 
+<script type="text/javascript"><!--
+$('#tabs a').tabs();
+//--></script> 
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/ui/jquery-ui-timepicker-addon.js"></script> 
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if ($.browser.msie && $.browser.version == 6) {
+		$('.date, .datetime, .time').bgIframe();
+	}
+
+	$('.date').datepicker({dateFormat: 'yy-mm-dd'});
+	$('.datetime').datetimepicker({
+		dateFormat: 'yy-mm-dd',
+		timeFormat: 'h:m'
+	});
+	$('.time').timepicker({timeFormat: 'h:m'});
+});
+
+//--></script>
+<script type="text/javascript"><!--
+	$(document).ready(function() {
+		product_resize();
+	});
+	$(window).resize(function() {
+		product_resize();
+	});
+	
+	function disableLink(e) {
+		e.preventDefault();
+		return false;
+	}
+
+	function product_resize()	{
+		if(getWidthBrowser() < 768){
+			$('#tabs').hide();
+			$('h2.ta-header').show();
+		} else {
+			$('h2.ta-header').hide();
+			$('#tabs').show();
+		}
+	}
+
+//--></script> 
+</html>

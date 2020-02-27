@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MarketAdmin</title>
+<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+<script src="/static/js/modernizr.custom.js"></script>
+<style type="text/css">
+
+.ButtonLink {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #FFF;
+	background-color: #333;
+	height: 28px;
+	margin-left: 5px;
+	margin-right: 5px;
+	border-radius: 6px;
+	padding: 5px;
+	cursor: pointer;
+	border: 0px;
+	width: 80px
+}
+
+/*.ButtonLink:hover {
+	color: #000;
+	background-color: #e5e5e5;
+	cursor: pointer;
+}*/
+
+.onClick {
+	text-align: center;
+	margin: 10px;
+}
+.Footer{
+	position:absolute;
+    bottom:0;
+    width:100%;
+    height:60px;   /* Height of the footer */
+    background:#865e00;
+}
+
+.store_details{
+	align:center;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<header class="gem-mainHeader">
+			<div class="gem-top-bar">
+				<div class="gem-site-logo">
+					<a href="#"> <img style="float: left; "src="/static/images/eShop.png"  /></a>
+				</div>
+			</div>
+			
+			<div class="gem-admin-bar">
+			<strong style="float: right;">Welcome &nbsp;</strong><br>
+			<strong style="float: right;"><font color='green'>{{marketadmin.MarketName}}</font></strong>
+				<ul>
+					<li class="gem-login"><a href="/logout" title="Logout">Logout</a>
+					<li class="gem-login"><a href="/cpwdmarketadmin" >Change Password</a>
+					</li>
+				</ul>
+			</div>
+			<br>
+		</header>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+		<p>&nbsp;</p>
+	
+	</div><br/><br/> 
+	{% if acceptedstores %}
+		<div id="message" align="center">
+		<strong style="color: darkblue; font-size: 20px; ">Stores Accepted</strong>
+		</div>
+	<div id="storeinfo" align="center">
+		<table width="70%" border="5">
+			<tbody style="text-align: center;">
+				<tr style="color: darkblue;font-size: 18px;">
+					<td><strong>Store Name</strong></td>
+					<td><strong>Contact Person</strong></td>
+					<td><strong>Email</strong></td>
+					<td><strong>Description</strong></td>
+					
+				</tr>
+				{% for store in acceptedstores.object_list %}
+				<tr style="height: 35px">
+					<td><strong>{{store.StoreName}}</strong></td>
+					<td><strong>{{store.ContactPerson}}</strong></td>
+					<td><strong>{{store.EmailAddress}}</strong></td>
+					<td><a href="/storedetails?storeid={{store.StoreId}}" style="color: blue"><strong>Details</strong></a></td>
+					
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<p>&nbsp;</p>
+	  <div class="paginationA" align="center">
+			<span class="step-links">
+						{% if acceptedstores.has_previous %}
+							<a href="?pageA={{ acceptedstores.previous_page_number }}" class="ButtonLink"><strong>Previous</strong></a>
+						{% endif %}
+						
+						<span class="current">
+							<strong>Page {{ acceptedstores.number }} of {{ acceptedstores.paginator.num_pages }}</strong>
+						</span>
+							
+						{% if acceptedstores.has_next %}
+							   <a href="?pageA={{ acceptedstores.next_page_number }}" class="ButtonLink"><strong>Next</strong></a>
+						{% endif %}
+			</span>
+		</div>
+		<p>&nbsp;</p>
+		
+	{% else %}
+	<div align="center">
+		<strong>No Stores accepted</strong>
+	</div>
+	{% endif %}
+	
+	<hr>
+	
+	{% if stores %}
+		<div id="message" align="center">
+			<strong style="color: darkblue;font-size:20px;">Store Requests</strong>
+		</div>
+		<br>
+	<div id="storeinfo" align="center">
+		<table width="70%" border="5">
+			<tbody style="text-align: center;">
+				<tr  style="color: darkblue;font-size: 18px;">
+					<td><strong>Store Name</strong></td>
+					<td><strong>Contact Person</strong></td>
+					<td><strong>Email</strong></td>
+					<td><strong>Description</strong></td>
+					<td><strong>Actions</strong></td>
+					<td><strong>SalesRepId</strong></td>
+					<!-- <td><strong>Status of SalesRepId</strong>  -->
+				</tr>
+				{% for store in stores.object_list %}
+				<tr style="height: 35px">
+					<td><strong>{{store.StoreName}}</strong></td>
+					<td><strong>{{store.ContactPerson}}</strong></td>
+					<td><strong>{{store.EmailAddress}}</strong></td>
+					<td><a href="/storedetails?storeid={{store.StoreId}}" style="color: blue"><strong>Details</strong></a></td>
+					<td><a href="#" onclick="return acceptcustomer(this);"  id="{{store.StoreId}}" class="ButtonLink"><strong>Accept</strong></a> 
+						<a href="#" onclick="return declinecustomer(this);"  id="{{store.StoreId}}" class="ButtonLink"><strong>Decline</strong></a></td>
+					<td><strong>{{store.SalesRepId}}</strong></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>	
+	</div>
+	<p>&nbsp;</p>
+	<div class="paginationB" align="center">
+	  {% if stores.has_previous %}
+		<a href="?pageB={{ stores.previous_page_number }}" class="ButtonLink"><strong>Previous</strong></a>
+			{% endif %}
+			<span class="current">
+				<strong>Page {{ stores.number }} of {{ stores.paginator.num_pages }}</strong>
+			</span>
+			{% if stores.has_next %}
+			<a href="?pageB={{ stores.next_page_number }}" class="ButtonLink"><strong>Next</strong></a>
+			{% endif %}
+	</div>	
+	{% else %}
+		<div align="center">
+			<strong>No Stores</strong>
+		</div>
+	{% endif %}
+	
+	
+	
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	
+	<footer>
+		<div class="Footer">
+			<div class="btm-links">
+				<!-- <a href="#">Link 1</a> | <a href="#">Link 2</a> | <a href="#">Link
+					3</a> | <a href="#">Link 4</a> -->
+			</div>
+			<div id="copyright">Copyright @ eShop.com. All rights
+				reserved.</div>
+			<div id="powered">
+				Powered by <a href="http://www.eShop.com"> eShop.com </a>
+			</div>
+		</div>
+	</footer>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script type="text/javascript">
+function acceptcustomer(storeitem){
+	
+	var action=confirm("Are you sure you want to accept this store ?");	
+	if (action==true){
+		$.ajax({
+	        url: "/acceptstore",
+	        data: "storeid="+storeitem.id,
+	        success: function (data) {
+	        	if(data=="store accepted"){
+					alert("Store Accepted Successfully");
+					window.location.href = '/marketadmin';
+				}
+				else if(data=="Session Expired"){
+					alert(data);
+					window.location.href = '/marketadmin';
+				}
+				else{
+					alert(data);
+				}
+	        }
+		});
+	}
+	return false;	
+}
+
+function declinecustomer(storeitem){
+	
+	var action=confirm("Are you sure you want to accept this store ?");
+	if (action==true){
+	$.ajax({
+        url: "/declinestore",
+        data: "storeid="+storeitem.id,
+        success: function (data) {
+        	if(data=="store declined"){
+				alert("Store is Declined");
+				window.location.href = '/marketadmin';
+				//location.reload();
+			}
+        	else if(data=="Session Expired"){
+				alert(data);
+				window.location.href = '/marketadmin';
+			}
+			else{
+				alert(data);
+			}
+        }
+	});
+	}
+}
+
+</script>
+</body>
+</html>

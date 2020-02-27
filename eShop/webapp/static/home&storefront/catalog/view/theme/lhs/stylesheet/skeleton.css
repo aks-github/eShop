@@ -1,0 +1,384 @@
+/*========================1200========================== */
+	.container { position: relative; margin: 0 auto; padding: 0; width: 1200px;}
+    .container .column,
+    .container .columns { float: left; display: inline; margin-left: 10px; margin-right: 10px; }
+    .row { margin-bottom: 20px; }
+	
+	 /* Nested Column Classes */
+    .column.alpha, .columns.alpha { margin-left: 0; }
+    .column.omega, .columns.omega { margin-right: 0; }
+	.column.alpha.omega, .columns.alpha.omega {margin-left: 0; margin-right: 0}
+   
+    /* Base Grid */
+    .container .one.column,
+    .container .one.columns { width: 30px; }
+    .container .two.columns { width: 80px; }
+    .container .three.columns { width: 130px; }
+    .container .four.columns { width: 180px; }
+    .container .five.columns {
+	width: 230px;
+}
+    .container .six.columns { width: 280px; }
+    .container .seven.columns { width: 330px; }
+    .container .eight.columns { width: 380px; }
+    .container .nine.columns { width: 430px; }
+    .container .ten.columns { width: 480px; }
+    .container .eleven.columns { width: 530px; }
+    .container .twelve.columns { width: 580px; }
+    .container .thirteen.columns { width: 630px; }
+    .container .fourteen.columns { width: 680px; }
+    .container .fifteen.columns { width: 730px; }
+    .container .sixteen.columns { width: 780px; }
+	.container .seventeen.columns { width: 830px; }
+    .container .eighteen.columns { width: 880px; }
+    .container .nineteen.columns { width: 681px; }
+	/*.boss_featured{ width: 681px !important; }*/
+    .container .twenty.columns { width: 980px; }
+    .container .twenty-one.columns { width: 1030px; }
+    .container .twenty-two.columns { width: 1080px; }
+	.container .twenty-three.columns { width: 1130px; }
+	.container .twenty-four.columns, .twenty-four { width: 1180px; }
+
+    /*.container .one-third.column { width: 320px; }
+    .container .two-thirds.column { width: 640px; }*/
+
+    /* Offsets */
+    .container .offset-by-one { padding-left: 50px; }
+    .container .offset-by-two { padding-left: 100px; }
+    .container .offset-by-three { padding-left: 150px; }
+    .container .offset-by-four { padding-left: 200px; }
+    .container .offset-by-five { padding-left: 250px; }
+    .container .offset-by-six { padding-left: 300px; }
+    .container .offset-by-seven { padding-left: 350px; }
+    .container .offset-by-eight { padding-left: 400px; }
+    .container .offset-by-nine { padding-left: 450px; }
+    .container .offset-by-ten { padding-left: 500px; }
+    .container .offset-by-eleven { padding-left: 550px; }
+    .container .offset-by-twelve { padding-left: 600px; }
+    .container .offset-by-thirteen { padding-left: 650px; }
+    .container .offset-by-fourteen { padding-left: 700px; }
+    .container .offset-by-fifteen { padding-left: 750px; }
+	.container .offset-by-sixteen { padding-left: 800px; }
+    .container .offset-by-seventeen { padding-left: 850px; }
+    .container .offset-by-eightteen { padding-left: 900px; }
+    .container .offset-by-nineteen { padding-left: 950px; }
+    .container .offset-by-twenty { padding-left: 1000px; }
+    .container .offset-by-twenty-one { padding-left: 1050px; }
+    .container .offset-by-twenty-two { padding-left: 1100px; }
+    .container .offset-by-twenty-three { padding-left: 1150px; }
+
+
+	/*========================960 <= width < 1200px========================== */
+    @media only screen and (min-width: 1024px) and (max-width: 1280px) {	
+	
+	
+	.boss_featured {width:576px !important;}
+	
+	
+	#boss_menu > ul > li {
+    background: none repeat scroll 0 0 #009966;
+    border-radius: 500px 500px 500px 500px;
+    display: inline-block;
+    height: 91px;
+    margin-left: 4px !important;
+    position: relative;
+    text-align: center;
+    width: 91px;
+}
+
+	
+	.container { position: relative; margin: 0 auto; padding: 0; width: 1008px;}   	
+		    /* Base Grid */
+    .container .one.column,
+    .container .one.columns { width: 22px; }
+    .container .two.columns { width: 64px; }
+    .container .three.columns { width: 106px; }
+    .container .four.columns { width: 148px; }
+    .container .five.columns { width: 190px; }
+    .container .six.columns { width: 232px; }
+    .container .seven.columns { width: 274px; }
+    .container .eight.columns { width: 316px; }
+    .container .nine.columns { width: 358px; }
+    .container .ten.columns { width: 400px; }
+    .container .eleven.columns { width: 442px; }
+    .container .twelve.columns { width: 484px; }
+    .container .thirteen.columns { width: 526px; }
+    .container .fourteen.columns { width: 568px; }
+    .container .fifteen.columns { width: 610px; }
+    .container .sixteen.columns { width: 652px; }
+	.container .seventeen.columns { width: 694px; }
+    .container .eighteen.columns { width: 736px; }
+    .container .nineteen.columns { width: 778px; }
+    .container .twenty.columns { width: 820px; }
+    .container .twenty-one.columns { width: 862px; }
+    .container .twenty-two.columns { width: 904px; }
+	.container .twenty-three.columns { width: 946px; }
+	.container .twenty-four.columns, .twenty-four { width: 988px }
+
+    /*.container .one-third.column { width: 320px; }
+    .container .two-thirds.column { width: 640px; }*/
+
+    /* Offsets */
+    .container .offset-by-one { padding-left: 42px; }
+    .container .offset-by-two { padding-left: 84px; }
+    .container .offset-by-three { padding-left: 126px; }
+    .container .offset-by-four { padding-left: 168px; }
+    .container .offset-by-five { padding-left: 210px; }
+    .container .offset-by-six { padding-left: 252px; }
+    .container .offset-by-seven { padding-left: 294px; }
+    .container .offset-by-eight { padding-left: 336px; }
+    .container .offset-by-nine { padding-left: 378px; }
+    .container .offset-by-ten { padding-left: 420px; }
+    .container .offset-by-eleven { padding-left: 462px; }
+    .container .offset-by-twelve { padding-left: 504px; }
+    .container .offset-by-thirteen { padding-left: 546px; }
+    .container .offset-by-fourteen { padding-left: 588px; }
+    .container .offset-by-fifteen { padding-left: 630px; }
+	.container .offset-by-sixteen { padding-left: 672px; }
+    .container .offset-by-seventeen { padding-left: 714px; }
+    .container .offset-by-eightteen { padding-left: 756px; }
+    .container .offset-by-nineteen { padding-left: 798px; }
+    .container .offset-by-twenty { padding-left: 840px; }
+    .container .offset-by-twenty-one { padding-left: 882px; }
+    .container .offset-by-twenty-two { padding-left: 924px; }
+    .container .offset-by-twenty-three { padding-left: 966px; }
+   }
+   
+@media only screen and (min-width: 980px) and (max-width: 1024px) 
+{
+	.boss_featured {width:548px !important;}
+	
+	
+	#boss_menu > ul > li {
+    background: none repeat scroll 0 0 #009966;
+    border-radius: 500px 500px 500px 500px;
+    display: inline-block;
+    height: 91px;
+    margin-left: 4px !important;
+    position: relative;
+    text-align: center;
+    width: 91px;
+}
+
+	
+	.container { position: relative; margin: 0 auto; padding: 0; width: 960px;}
+	.container .twenty-four.columns, .twenty-four { width: 940px }	
+	
+	.container .one.column,
+    .container .one.columns { width: 20px; }
+    .container .two.columns { width: 60px; }
+    .container .three.columns { width: 100px; }
+    .container .four.columns { width: 140px; }
+    .container .five.columns { width: 180px; }
+    .container .six.columns { width: 220px; }
+    .container .seven.columns { width: 260px; }
+    .container .eight.columns { width: 300px; }
+    .container .nine.columns { width: 340px; }
+    .container .ten.columns { width: 380px; }
+    .container .eleven.columns { width: 420px; }
+    .container .twelve.columns { width: 460px; }
+    .container .thirteen.columns { width: 500px; }
+    .container .fourteen.columns { width: 540px; }
+    .container .fifteen.columns { width: 580px; }
+    .container .sixteen.columns { width: 620px; }
+	.container .seventeen.columns { width: 660px; }
+    .container .eighteen.columns { width: 700px; }
+    .container .nineteen.columns { width: 740px; }
+    .container .twenty.columns { width: 780px; }
+    .container .twenty-one.columns { width: 820px; }
+    .container .twenty-two.columns { width: 860px; }
+	.container .twenty-three.columns { width: 900px; }
+	.container .twenty-four.columns, .twenty-four { width: 940px }
+
+    /*.container .one-third.column { width: 320px; }
+    .container .two-thirds.column { width: 640px; }*/
+
+    /* Offsets */
+    .container .offset-by-one { padding-left: 40px; }
+    .container .offset-by-two { padding-left: 80px; }
+    .container .offset-by-three { padding-left: 120px; }
+    .container .offset-by-four { padding-left: 160px; }
+    .container .offset-by-five { padding-left: 200px; }
+    .container .offset-by-six { padding-left: 240px; }
+    .container .offset-by-seven { padding-left: 280px; }
+    .container .offset-by-eight { padding-left: 320px; }
+    .container .offset-by-nine { padding-left: 360px; }
+    .container .offset-by-ten { padding-left: 400px; }
+    .container .offset-by-eleven { padding-left: 440px; }
+    .container .offset-by-twelve { padding-left: 480px; }
+    .container .offset-by-thirteen { padding-left: 520px; }
+    .container .offset-by-fourteen { padding-left: 560px; }
+    .container .offset-by-fifteen { padding-left: 600px; }
+	.container .offset-by-sixteen { padding-left: 640px; }
+    .container .offset-by-seventeen { padding-left: 680px; }
+    .container .offset-by-eightteen { padding-left: 720px; }
+    .container .offset-by-nineteen { padding-left: 760px; }
+    .container .offset-by-twenty { padding-left: 800px; }
+    .container .offset-by-twenty-one { padding-left: 840px; }
+    .container .offset-by-twenty-two { padding-left: 880px; }
+    .container .offset-by-twenty-three { padding-left: 920px; }
+}
+
+   
+/* #Tablet (Portrait)
+/*========================768px <= width < 960px ========================== */
+    @media only screen and (min-width: 768px) and (max-width: 980px) {
+		.fb-like-box{display:none !important;}
+		
+
+
+	 
+	 .boss_featured{width:548px !important;}
+	 .box-content{max-height:153px;}
+    .container { width: 720px }
+	.boss_featured .box-content{max-height:193px;}
+        /* Base Grid */
+    .container .one.column,
+    .container .one.columns { width: 10px; }
+    .container .two.columns { width: 40px; }
+    .container .three.columns { width: 70px; }
+    .container .four.columns { width: 100px; }
+    .container .five.columns { width: 130px; }
+    .container .six.columns { width: 160px; }
+    .container .seven.columns { width: 190px; }
+    .container .eight.columns { width: 220px; }
+    .container .nine.columns { width: 250px; }
+    .container .ten.columns { width: 280px; }
+    .container .eleven.columns { width: 310px; }
+    .container .twelve.columns { width: 340px; }
+    .container .thirteen.columns { width: 370px; }
+    .container .fourteen.columns { width: 400px; }
+    .container .fifteen.columns { width: 430px; }
+    .container .sixteen.columns { width: 460px; }
+	.container .seventeen.columns { width: 490px; }
+    .container .eighteen.columns { width: 520px; }
+    .container .nineteen.columns { width: 550px; }
+    .container .twenty.columns { width: 580px; }
+    .container .twenty-one.columns { width: 610px; }
+    .container .twenty-two.columns { width: 640px; }
+	.container .twenty-three.columns { width: 670px; }
+	.container .twenty-four.columns , .twenty-four{ width: 700px;}
+
+    /*.container .one-third.column { width: 320px; }
+    .container .two-thirds.column { width: 640px; }*/
+
+    /* Offsets */
+    .container .offset-by-one { padding-left: 30px; }
+    .container .offset-by-two { padding-left: 60px; }
+    .container .offset-by-three { padding-left: 90px; }
+    .container .offset-by-four { padding-left: 120px; }
+    .container .offset-by-five { padding-left: 150px; }
+    .container .offset-by-six { padding-left: 180px; }
+    .container .offset-by-seven { padding-left: 210px; }
+    .container .offset-by-eight { padding-left: 240px; }
+    .container .offset-by-nine { padding-left: 270px; }
+    .container .offset-by-ten { padding-left: 300px; }
+    .container .offset-by-eleven { padding-left: 330px; }
+    .container .offset-by-twelve { padding-left: 360px; }
+    .container .offset-by-thirteen { padding-left: 390px; }
+    .container .offset-by-fourteen { padding-left: 420px; }
+    .container .offset-by-fifteen { padding-left: 450px; }
+	.container .offset-by-sixteen { padding-left: 480px; }
+    .container .offset-by-seventeen { padding-left: 510px; }
+    .container .offset-by-eightteen { padding-left: 540px; }
+    .container .offset-by-nineteen { padding-left: 570px; }
+    .container .offset-by-twenty { padding-left: 600px; }
+    .container .offset-by-twenty-one { padding-left: 630px; }
+    .container .offset-by-twenty-two { padding-left: 660px; }
+    .container .offset-by-twenty-three { padding-left:690px; }
+    }
+
+/* #Mobile (Portrait) 
+/*======================== width < 768px ========================== */
+	@media only screen and (max-width: 767px) {		
+        .container { width: 100%; }
+        .container .columns,
+        .container .column { margin: 0; }
+		
+		.fb-like-box{display:none !important;}
+
+        .container .one.column,
+		.container .one.columns ,
+		.container .two.columns ,
+		.container .three.columns ,
+		.container .four.columns ,
+		.container .five.columns ,
+		.container .six.columns ,
+		.container .seven.columns ,
+		.container .eight.columns,
+		.container .nine.columns ,
+		.container .ten.columns ,
+		.container .eleven.columns ,
+		.container .twelve.columns ,
+		.container .thirteen.columns,
+		.container .fourteen.columns ,
+		.container .fifteen.columns ,
+		.container .sixteen.columns,
+		.container .seventeen.columns ,
+		.container .eighteen.columns ,
+		.container .nineteen.columns ,
+		.container .twenty.columns ,
+		.container .twenty-one.columns,
+		.container .twenty-two.columns,
+		.container .twenty-three.columns,
+		.container .twenty-four.columns , .twenty-four{ width: 100%; }
+
+        /* Offsets */
+        .container .offset-by-one ,
+		.container .offset-by-two ,
+		.container .offset-by-three ,
+		.container .offset-by-four,
+		.container .offset-by-five,
+		.container .offset-by-six,
+		.container .offset-by-seven,
+		.container .offset-by-eight,
+		.container .offset-by-nine ,
+		.container .offset-by-ten ,
+		.container .offset-by-eleven ,
+		.container .offset-by-twelve ,
+		.container .offset-by-thirteen,
+		.container .offset-by-fourteen ,
+		.container .offset-by-fifteen ,
+		.container .offset-by-sixteen ,
+		.container .offset-by-seventeen ,
+		.container .offset-by-eightteen ,
+		.container .offset-by-nineteen ,
+		.container .offset-by-twenty ,
+		.container .offset-by-twenty-one ,
+		.container .offset-by-twenty-two,
+		.container .offset-by-twenty-three { padding-left:0 }
+    }
+	
+/* #Clearing*/
+
+    /* Self Clearing Goodness */
+    .container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+    /* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+    .clearfix:before,
+    .clearfix:after,
+    .row:before,
+    .row:after {
+      content: '\0020';
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0; }
+    .row:after,
+    .clearfix:after {
+      clear: both; }
+    .row,
+    .clearfix {
+      zoom: 1; }
+
+    /* You can also use a <br class="clear" /> to clear columns */
+    .clear {
+      clear: both;
+      display: block;
+      overflow: hidden;
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    }

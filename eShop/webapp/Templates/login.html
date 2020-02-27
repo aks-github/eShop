@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Login Portal</title>
+  <link rel="stylesheet" href="/static/css/adminloginstyle.css">
+</head>
+
+<body>
+  <section class="container">
+    <div class="login">
+      <h1>Login</h1>
+	      <form method="post" action="/validateuser">
+	        <p>Username:<input type="text" name="username" value="" placeholder="Email" required="required"></p>
+	        <p>Password:<input type="password" name="password" value="" placeholder="Password" required="required"></p>
+	        <p class="submit"><input type="submit" value="Login"></p>
+	        <a href="/registercustomer"><strong>Sign Up</strong></a>
+	      </form>
+	      <form method="post" action="/registercustomer">
+	      	
+	      </form>
+	      {% if message %}
+	      <br>
+	      <div id="message" align="center">
+	      	<font color="red"><b>{{message}}</b></font>
+	      </div>
+	      {% endif %}
+    </div>
+  </section>
+
+</body>
+</html>

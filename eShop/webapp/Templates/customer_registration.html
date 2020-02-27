@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Customer Registration</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		 
+		
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+		<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+		
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(/static/images/bg.png;
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 900px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 100%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        float: left;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+			
+		</style>
+		
+		
+		
+<style type="text/css">
+
+.glossymenu{
+margin: 5px 0;
+padding: 0;
+width: 170px; /*width of menu*/
+border: 1px solid #9A9A9A;
+border-bottom-width: 0;
+}
+
+.glossymenu a.menuitem{
+background: black url(/static/images/glossyback.gif) repeat-x bottom left;
+font: bold 14px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+color: white;
+display: block;
+position: relative; /*To help in the anchoring of the ".statusicon" icon image*/
+width: auto;
+padding: 4px 0;
+padding-left: 10px;
+text-decoration: none;
+}
+
+
+.glossymenu a.menuitem:visited, .glossymenu .menuitem:active{
+color: white;
+}
+
+.glossymenu a.menuitem .statusicon{ /*CSS for icon image that gets dynamically added to headers*/
+position: absolute;
+top: 5px;
+right: 5px;
+border: none;
+}
+
+.glossymenu a.menuitem:hover{
+background-image: url(/static/images/glossyback2.gif);
+}
+
+.glossymenu div.submenu{ /*DIV that contains each sub menu*/
+background: white;
+}
+
+</style>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="/static/js/ddaccordion.js"></script>
+
+
+
+<script type="text/javascript">
+
+
+ddaccordion.init({
+	headerclass: "submenuheader", //Shared CSS class name of headers group
+	contentclass: "submenu", //Shared CSS class name of contents group
+	revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+	mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+	collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
+	defaultexpanded: [], //index of content(s) open by default [index1, index2, etc] [] denotes no content
+	onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+	animatedefault: false, //Should contents open by default be animated into view?
+	persiststate: true, //persist state of opened contents within browser session?
+	toggleclass: ["", ""], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+	togglehtml: ["suffix", "<img src='/static/images/plus.gif' class='statusicon' />", "<img src='/static/images/minus.gif' class='statusicon' />"], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+	animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+	oninit:function(headers, expandedindices){ //custom code to run when headers have initalized
+		//do nothing
+	},
+	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+		//do nothing
+	}
+})
+
+
+</script>
+
+<script type="text/javascript">	
+var country_arr = new Array("India", "USA");
+
+var s_a = new Array();
+s_a[0]="";
+s_a[1]="Andhra Pradesh|Arunachal Pradesh|Assam|Bihar|Chhattisgarh|Goa|Gujarat|Haryana|Himachal Pradesh|Jammu and Kashmir|Jharkhand|Karnataka|Kerala|Madhya Pradesh|Maharashtra|Manipur|Meghalaya|Mizoram|Nagaland|Odisha(Orissa)|Punjab|Rajasthan|Sikkim|Tamil Nadu|Tripura|Uttar Pradesh|Uttarakhand|West Bengal";
+s_a[2]="Alabama|Alaska|Arizona|Arkansas|California|Colorado|Connecticut|Delaware|Florida|Georgia|Hawaii|Idaho|Illinois|Indiana|Iowa|ansas|Kentucky|Louisiana|Maine|Maryland|Massachusetts|Michigan|Minnesota|Mississippi|Missouri|Montana|Nebraska|Nevada|New Hampshire|New Jersey|New Mexico|New York|North Carolina|North Dakota|Ohio|Oklahoma|Oregon|Pennsylvania|Rhode Island|South Carolina|South Dakota|Tennessee|Texas|Utah|Vermont|Virginia|Washington|West Virginia|Wisconsin|Wyoming";
+
+function print_country(country){
+    //given the id of the <select> tag as function argument, it inserts <option> tags
+    var option_str = document.getElementById(country);
+    option_str.length=0;
+    option_str.options[0] = new Option('Select Country','');
+    option_str.selectedIndex = 0;
+    for (var i=0; i<country_arr.length; i++) {
+    option_str.options[option_str.length] = new Option(country_arr[i],country_arr[i]);
+    }
+}
+
+function print_state(state, selectedIndex){
+    var option_str = document.getElementById(state);
+    option_str.length=0;    // Fixed by Julian Woods
+    option_str.options[0] = new Option('Select State','');
+    option_str.selectedIndex = 0;
+    var state_arr = s_a[selectedIndex].split("|");
+    for (var i=0; i<state_arr.length; i++) {
+    option_str.options[option_str.length] = new Option(state_arr[i],state_arr[i]);
+    }
+}
+</script>
+	</head>
+	<body>
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="/"> <img src="/static/images/eShoplogo.jpg"/></a>
+						</div>
+					</div>
+				</header>
+				
+		<p>&nbsp;</p>
+		
+<div class="mainContent">
+
+{% if message %}
+<div align="center"><strong>{{message}}</strong>
+<!-- <script type="text/javascript">alert('{{message}}');</script>-->
+ <form action="/logout" method="post">
+<input type="submit" value="close" class ="ButtonLink"/>
+</form>
+ 
+</div>
+{%endif%}
+
+
+{% if customer_regform1 %}
+<script type="text/javascript">
+function checkEmail(email) {
+    var filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!filter.test(email)) {
+		return false;    
+ 	}
+    return true;  
+}
+
+
+function validateMutipleSelect(){
+	var appu = $('select[name="storecategories"] :selected');
+	if(appu.length > 0) {
+		return true;
+	}
+    return false;  
+	}
+
+
+	function validateCustomerReg(ref){
+		var filter=/^\d+$/;
+		var salesrepid = /^[0-9a-zA-Z]+$/;
+		var storename = /^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+		var letters=/^[0-9a-zA-Z ]+$/;
+		var address=/^[a-zA-Z0-9 -:.,_&$@!\/#()+\\']+$/;
+		try{
+
+			if((/^\s/.test(ref.salesrepid.value[0])) || ref.salesrepid.value.length < 3 || ref.salesrepid.value.length > 16 || !(ref.salesrepid.value.match(salesrepid))){
+				alert("SalesRep/MarketId should be between 3 to 16 Alphanumeric Characters only");
+				return false;
+			}
+			
+			if(ref.marketlist.value=="" || ref.marketlist.value=="--select your market---"){
+				alert("Choose Market");
+				return false;
+			}
+			
+			if((/^\s/.test(ref.storename.value[0])) || ref.storename.value.length < 3 || ref.storename.value.length > 64 || !(ref.storename.value.match(storename))){
+				alert("Store name should be between 3 to 64 Alphanumeric Characters  without spaces at beginning");
+				return false;
+			}
+			
+			
+			 if(validateMutipleSelect()==false){
+				alert("Choose atleast one store category");
+				return false;
+			} 
+			
+			
+		 
+			if((/^\s/.test(ref.streetaddr.value[0])) || ref.streetaddr.value.length < 3 || ref.streetaddr.value.length > 500 || !(ref.streetaddr.value.match(address))){
+				alert("Please provide a complete Street address. It should be greater than 3 and less than 500 Alphanumeric Characters  without spaces at beginning");
+				return false;
+			} 
+			
+			
+			if((/^\s/.test(ref.city.value[0])) || ref.city.value.length < 3 || (ref.city.value.length > 32) || !(ref.city.value.match(letters))){
+				alert("Please provide a valid city name between 3 to 32 Alphanumeric Characters  without spaces at beginning");
+				return false;
+			}
+			
+			
+			if(ref.postalcode.value.length!=6 || !filter.test(ref.postalcode.value)){
+				alert("Please provide a valid 6 digit Postal code");
+				return false;
+			}
+			
+			
+			if(ref.country.value==""){
+				alert("Choose Country");
+				return false;
+			}
+			
+			if(ref.state.value==""){
+				alert("Choose state");
+				return false;
+			}
+			
+			if((/^\s/.test(ref.website.value[0])) || ref.website.value.length<=4 ){
+				var rgx =/^(\s*(http\:\/\/)?([a-z\d\-]{1,63}\.)*[a-z\d\-]{1,255}\.[a-z]{2,6}\s*){6,32}$/;
+			  	if(!rgx.test(ref.website.value)){
+			  		alert("Please provide a valid website name. eg. www.eShop.com");
+					return false;		
+			  	}
+			}
+			
+			if(ref.mainphonenumber.value.length <8 || ref.mainphonenumber.value.length > 16 || !filter.test(ref.mainphonenumber.value)){
+				alert("Please provide a valid phone number between 8 to 16");
+				return false;
+			}
+			
+			
+			if((/^\s/.test(ref.contactperson.value[0])) || ref.contactperson.value.length < 3 || ref.contactperson.value.length > 32 || !(ref.contactperson.value.match(letters)) ){
+				alert("Please provide a valid contact person name.");
+				return false;
+			}
+			
+			
+			/* if(!PutValues()){
+				alert("Please choose store categories");
+				return false
+			}
+			 */
+			
+			return true;
+			
+		}
+		catch(err){
+			alert(err);
+			//alert("Error in filling form");
+			return false;
+		}
+	}
+
+</script>
+<div id="form1head" align="center">
+<h2>Store Registration</h2>
+</div>
+
+<div id="form1" align="center">
+	<form action="/customercredentials" method="post" onsubmit="return validateCustomerReg(this);">
+		<table cellspacing="5">
+		<tr>
+		<td><strong><font color="green">Step 1:</font>&nbsp;<font color="red">Market Details</font></strong></td>
+		</tr>
+		<tr>
+		<td> <strong>SalesRep/MarketId:</strong> </td>
+		<td><input type="text" name="salesrepid" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>MarketArea:</strong> </td>
+		<td>
+		<select name="marketlist"  id="marketlist" class="inputtext" required="required">
+		<option selected="selected" class="inputtext">--select your market---</option>
+			{% for market in markets %}
+				<option value="{{market.MarketId}}">{{market.MarketName}}</option>
+			{%endfor%}
+		</select>
+		</td>
+		</tr>
+		<tr><td><p>&nbsp;</p></td></tr>
+		<tr>
+		<td><strong><font color="green" >Step 2:</font>&nbsp;<font color="red" >Store Details</font></strong></td><td></td>
+		</tr>
+		<tr>
+		<td><strong>StoreName: </strong></td><td><input type="text" name="storename" id="storename" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>StoreCategory:</strong> </td>
+		<!--  
+		<td>
+		<select name="storecategory" id="storecategory" class="inputtext" required="required">
+			<option selected="selected" class="inputtext">--select your store category---</option>
+			{% for category in storescategory %}
+				<option value="{{category.StoreCategoryName}}">{{category.StoreCategoryName}}</option>
+			{%endfor%}
+		</select>
+		</td>
+		-->
+		<tr>
+		
+
+		<td></td>
+		
+		<td>
+			<div class="glossymenu" id="glossymenu">
+				{% for key, value in categories.items %}
+				<a class="menuitem submenuheader" href="#" >{{key}}</a>
+					<div class="submenu">
+						<select multiple  multiple style="height:200px; width:100%;" name="storecategories" id="storecategories">
+						{% for i in value %}
+							  <option value="{{ i.SubCategoryName}}">{{ i.SubCategoryName }}</option>
+						{% endfor %}
+						</select>   
+					</div>
+				{% endfor %}
+			</div>
+		
+		</td>
+		
+		</tr>
+		<tr>
+		<td><strong>StreetAddress:</strong> </td><td><textarea name="streetaddr" id="streetaddr" class="inputtext" required="required"></textarea></td>
+		</tr>
+		<tr>
+		<td><strong>City/Town: </strong></td><td><input type="text" name="city" id="city" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>PostalCode: </strong></td><td><input type="text" name="postalcode" id="postalcode" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>Country</strong></td>
+		<td><select onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select></td><br />
+		 </tr>
+		 <tr>
+		 <td><LABLE><strong>State:</strong></LABLE></td>
+		 <td><select name ="state" id ="state"></select></td>
+		<script language="javascript">print_country("country");</script>
+		 </tr>
+		<tr>
+		<td><strong>Phone Number:</strong> </td><td><input type="text" name="mainphonenumber" id="mainphonenumber" class="inputtext" required="required"></td>
+		</tr>
+		<tr><td><strong>Website:</strong> </td><td><input type="text" name="website" id="website" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><strong>Contact Person: </strong></td><td><input type="text" name="contactperson" id="contactperson" class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td><input type="hidden" id="category" name="category" value=""></td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		<td>
+		<input type="button" value="Cancel" onclick="goBack()" class="ButtonLink"> &nbsp;&nbsp;
+		
+		<input type="submit" id="submitbtn" value="Next" class="ButtonLink"> &nbsp;&nbsp;
+		</td>
+		</tr>
+		</table>
+	</form>	
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+<script type="text/javascript">
+
+function goBack(){
+	window.location.href="/";
+	}
+
+$( "#searchbymarket").autocomplete({
+	source: function( request, response ) {  
+	jQuery.getJSON( "/searchmarket",request, response);
+	}
+});
+
+
+/*
+function PutValues(){
+	try{
+		var checkobj=[];
+		 $("glossymenu#select").each(function(){
+			 if($(this).val()!=null){ 
+				 //$(this).attr("id")
+				 checkobj.push($(this).val());
+				 }
+		});
+		document.getElementById("category").value=checkobj;
+		return true;
+	}
+	catch(error){
+		alert(error);
+		return false;
+	}
+}
+*/
+
+</script>
+{% endif %}
+
+
+
+
+{% if customer_regform2 %}
+<script type="text/javascript">
+
+
+
+	function validateCustomerCredentialsform(ref){
+		
+		try{
+			 var emailfilter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			 var shoptimings=/^[a-zA-Z0-9 -:.,_&]+$/;
+			 
+			 if(ref.searchbyservicepack.value=="" || ref.searchbyservicepack.value=="Choose Service Pack"){
+					alert("Choose service pack");
+					return false;
+				}
+		
+             if(ref.hoursofservice.value!=""){
+				 
+				 if(/^\s/.test(ref.hoursofservice.value[0])){
+					alert("Hours Of Operation cannot start with sapce");
+					return false;
+					}
+				 
+				 if(!shoptimings.test(ref.hoursofservice.value)){
+					alert("Invalid Hours Of Operation.Please enter the timimgs of the shop ");
+					return false;
+				 }
+				 	
+				 	/* var x = parseFloat(ref.hoursofservice.value);
+				    if (isNaN(x) || x > 24 || x < 1 ) {
+				    	alert("Please provide a valid hoursof operation. It should be between 1 to 24");
+				    	return false;    
+				    }	 */
+				}
+             
+			 if((/^\s/.test(ref.username.value[0])) || ref.username.value=="" || !emailfilter.test(ref.username.value) || ref.username.value <3 || ref.username.value > 60 ){
+				 alert("Please enter valid Email address.");
+				 return false;
+			 }
+			 
+			 
+			 if((/^\s/.test(ref.pwd.value[0])) || ref.pwd.value=="" || ref.pwd.value.length < 6 || ref.pwd.value.length > 16){
+				 alert("Password should not be less than 6 digits and more than 16 digits.");
+				 ref.pwd.value="";
+				 ref.cpwd.value="";
+				 return false;
+			 }
+			 
+			 if(ref.cpwd.value != ref.pwd.value){
+				 alert("password & confirm password values does not matched.");
+				 ref.pwd.value="";
+				 ref.cpwd.value="";
+				 return false;
+			 }
+			 return true;
+			
+		}
+			 catch(err){
+				 alert(err);
+				 return false;
+			 }
+			 
+	}
+
+
+</script>
+
+
+<div id="form2" align="center">
+	<form action="/customerreg" method="post" enctype="multipart/form-data" onsubmit="return validateCustomerCredentialsform(this);">
+		<table cellspacing="10">
+		<tr>
+		<td><strong><font color="green" >Step 3:</font>&nbsp;<font color="red">Choose Service Packs</font></strong></td><td></td>
+		</tr>
+		<tr>
+		<td><strong>Service Pack:</strong></td>
+		<td>
+			<select id="searchbyservicepack" name="searchbyservicepack" class="inputtext" required >
+			<option selected="selected">Choose Service Pack</option>
+				{% for servicepack in marketservicepacks %}
+					<option value="{{servicepack.ServicePackId}}">{{servicepack.ServicePackName}}</option>
+				{%endfor%}
+			</select>
+		</td>
+		</tr>
+		<tr>
+		<td><strong>BannerImage</strong></td>
+		<td><input type="file" name="bannerimage" id="bannerimage" class="inputtext" required="required"></input></td>
+		</tr>
+		
+		<tr>
+		<td><strong>Store Logo</strong></td>
+		<td><input type="file" name="storelogo" id="storelogo" class="inputtext" required="required"></td>
+		</tr>
+		
+		<tr>
+		<td><strong>Hours Of Operation</strong></td><td><input type="text" name="hoursofservice" id="hoursofservice" class="inputtext" required="required"></td>
+		</tr>
+		<tr><td><p>&nbsp;</p></td></tr>
+		<tr>
+		<td><strong><font color="green">Step 4:</font>&nbsp;<font color="red">Your Credentials</font></strong></td><td></td>
+		</tr>
+		<tr>
+		<td><strong>Email Address </strong></td><td><input type="text" name="username" id="username" class="inputtext" required="required" ></td><td></td>
+		</tr>
+		<tr><td></td><td><div id="emailaddrerrorerror"></div></td></tr>
+		<tr>
+		<td><strong>Password </strong></td><td><input type="password" name="pwd" id="pwd" class="inputtext" required="required"></td>
+		</tr>
+		
+		<tr>
+		<td><strong>Confirm Password </strong></td><td><input type="password" name="cpwd" id="cpwd"  class="inputtext" required="required"></td>
+		</tr>
+		<tr>
+		<td>&nbsp;</td>
+		</tr>
+		<tr >
+		<td>&nbsp;</td>
+		
+		<td ><input type="button" class="ButtonLink" id="backbtn" value="Go Back">
+		<input type="submit" value="Submit" id="lastsubmit" class="ButtonLink">
+		</td>
+		</table>
+	</form>
+</div>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<script type="text/javascript">
+
+$("#backbtn").click(function(){
+	window.history.back();
+});
+/* 
+$( "#searchbyservicepack").autocomplete({
+	source: function( request, response ) {  
+	jQuery.getJSON( "/searchservicepack",request, response);
+	}
+	});
+ */
+ 
+ 
+$("#username").blur(function(){
+	var emailfilter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	username=document.getElementById("username").value;
+	if(username==""){
+		obj.innerHTML="<font color='red'>Please provide email address</font>"
+		document.getElementById("lastsubmit").disabled=true;
+	}
+	
+	else if(!emailfilter.test(username)){
+		var obj=document.getElementById("emailaddrerrorerror");
+		obj.innerHTML="<font color='red'>Please provide valid Email Address</font>"
+		//document.getElementById("emailaddress").focus();
+		document.getElementById("lastsubmit").disabled=true;	
+	}
+	else{
+		document.getElementById("lastsubmit").disabled=false;	
+		$.ajax({
+				url:"/checkemailaddress",
+				//type:'post',
+				data:"username="+username,
+				success:function(data){
+					if(data!="ok"){
+						var obj=document.getElementById("emailaddrerrorerror")
+						obj.innerHTML="<font color='red'>* Email Address already Exist</font>";
+						document.getElementById("lastsubmit").disabled = true;
+						}
+					else {
+						var obj=document.getElementById("emailaddrerrorerror")
+						obj.innerHTML="<font color='green'>Go Ahead!!! this Email Address is available</font>";
+						document.getElementById("lastsubmit").disabled = false; 
+						}
+				}
+		});
+	}
+	});
+</script>
+{%endif%}
+	
+</div><!-- End of main content -->		
+</div><!-- End of container -->		
+</body>	
+</html>
+
+			
+

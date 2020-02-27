@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+
+<style type="text/css">
+<!--
+body {
+	background-image: url(/static/home&storefront/image/data/background.png);
+}
+.style1 {font-size: 14px}
+-->
+</style><head>
+<meta charset="UTF-8" />
+<title>product category page</title>
+<base  />
+<meta name="description" content="About Shoping Street" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/client-page.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/boss_carousel.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/skeleton-client.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/responsive-client.css" />
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<!--  <script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/common.js"></script> -->
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/getwidthbrowser.js"></script>
+<!--  <script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/bossthemes.js"></script>-->
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/notify.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.selectbox-0.2.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.carouFredSel-6.2.0-packed.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/tabs.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/jquery.cycle.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".boss_select").selectbox();
+});
+function coming_soon() {
+	alert("Coming Soon")
+}
+</script>
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie8.css" />
+<![endif]-->
+
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie9.css" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie7.css" />
+<![endif]-->
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie6.css" />
+<script type="text/javascript" src="catalog/view/javascript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('#logo img');
+</script>
+<![endif]-->
+</head>
+<body class=home_page>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=513756015364457";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="frame_container">
+<div class="header-top"></div>
+
+<div id="container" class="container">
+<div id="header" class="twenty-four columns">	
+	<div class="header-middle">
+					<div id="logo" class="nine columns alpha"><a href="#"><img src="/static/home&storefront/image/data/logo.png"  title=""/></a></div>
+<div id="boss-search" class="fourteen columns omega">
+	<div class="choose-select">
+		<div class="input_cat">
+		    <select name="filter_category_id" class="boss_select" id="SearchByRef">
+		      <option value="Searchstore" selected>Search by store</option>
+		      <option value="Searchproduct">Search by product</option>
+		    </select>
+		</div>
+		<div class="bkg_input_search">
+			<input name="filter_name" type="text" value="" name="search" id="SearchBar" size="30" placeholder="Search entire store here..." id="SearchBar" />
+			<input title="Search" type="button" value="Search" id="boss-button-search" class="button-search" />
+		</div>
+	</div>
+</div>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script type="text/javascript">
+
+	$("#SearchBar").keyup(function() {
+	var category_id = $('#SearchByRef').val();
+	if(category_id=="Searchstore"){
+		
+		$( "#SearchBar").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/storesearch",request, response);
+			}
+		});
+	}
+	
+	if(category_id=="Searchproduct"){
+		$( "#SearchBar").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/productsearch",request, response);
+			}
+		});
+	}
+	
+	
+}); 
+
+	$('#boss-button-search').bind('click', function() {
+		url = '/search'; 
+		var search = $('#SearchBar').val();
+		if (search) {
+			url += '?search=' + encodeURIComponent(search);
+		}
+		var category_id = $('#SearchByRef').val();
+		if (category_id) {
+			url += '&category_id=' + encodeURIComponent(category_id);
+		}
+		location = url;
+	});
+
+</script>
+
+<script type="text/javascript">
+$(function () {
+	$("#boss_filter_search").selectbox();
+});
+</script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if(getWidthBrowser() < 959) {
+		$('#cart > .heading a').live('click', function() {
+			if($('#cart').hasClass('my-active')){
+				$('#cart').removeClass('active');
+				$('#cart').removeClass('my-active');
+			} else {
+				$('#cart').addClass('my-active');
+			}
+		});
+	}
+});
+--></script>	</div>
+	<div class="header-bottom">
+	 
+     <h3>Select a store to view details about the products and services offered. <br>
+       Choose from the categories below and get all the information you are looking for. </h3>
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="notification"></div>
+<div class="twenty-four columns margin-top10">
+ 
+<div id="content">
+
+
+<div style="margin-left:5px;" class="box boss_featured twentycolumns omega">
+	
+	{% for subcategory,stores in subcategories.items %}
+		{% if stores %}
+		  <div class="box-heading"><span>{{category}} -&nbsp;{{subcategory}}</span></div>
+		  <div class="boss_product">
+			<div class="product-grid">
+				  {% for store in stores %}
+			        <div>
+			        	<div class="image"><a href="/store/{{store.StoreId}}/"><img src="/media/{{store.StoreLogo}}" title="" alt="" height="125px" width="125px"></a></div>
+			        	<div class="name" ><a href="/store/{{store.StoreId}}/">{{store.StoreName}}</a></div>
+			        	<!--  <div class="description">Sed ullamcorper mattis metus sit amet facilisis. Praesent faucibus, magna uttter sodales consectetur..</div><div class="price"><span class="price-tax">Ex Tax: $90.00</span></div><div class="cart"></div>-->
+			        </div>
+			      {% endfor %}
+      		</div>
+		  <div class="pagination"> </div>
+		 </div>
+		{% endif %}
+  	{% endfor %}
+	
+	
+</div>
+  
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_featured0').carouFredSel({
+		//auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prevfeatured',
+		next: '#nextfeatured',
+		swipe: {
+			//onMouse: true,
+			onTouch : true
+		},
+		items: {
+			width: 170,
+			height: 202,
+			visible: {
+			min: 1,
+			max: 6
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+});
+</script><div class="clear"></div>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('#banner0 div:first-child').css('display', 'block');
+});
+
+var banner = function() {
+	$('#banner0').cycle({
+		before: function(current, next) {
+			$(next).parent().height($(next).outerHeight());
+		}
+	});
+}
+
+setTimeout(banner, 2000);
+//--></script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('#banner1 div:first-child').css('display', 'block');
+});
+
+var banner = function() {
+	$('#banner1').cycle({
+		before: function(current, next) {
+			$(next).parent().height($(next).outerHeight());
+		}
+	});
+}
+
+setTimeout(banner, 2000);
+//--></script><div class="clear"></div>
+<h1 style="display: none;">Furniture</h1>
+</div>
+</div>
+
+<div id="footer" class="twenty-four columns">
+  <div id="static-footer-top">
+  <script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_carousel0').carouFredSel({
+		auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_carousel0',
+		next: '#next_carousel0',
+		swipe: {
+		onTouch : true
+		},
+		items: {
+			//width: 'auto',
+			height: 82,
+			visible: {
+			min: 1,
+			max: 7
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 500   //  The duration of the transition.
+		}
+	});
+});
+</script>
+  </div>
+  <div id="static-footer-bottom">
+    <div class="static-footer-follow">
+<div>
+
+<a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/data/lhs/follow_1.png" title="facebook" /></a> <a href="javascript:coming_soon()" title="twitter"><img alt="" src="/static/home&storefront/image/data/lhs/follow_2.png" title="mastercard" /></a><a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/android.png" title="App for Customer" /></a><a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/android.png" title="App for Store Owners" /></a></div>
+</div>
+    <div class="static-footer-payment">
+<h3>Payment method</h3>
+
+<div><a href="javascript:coming_soon()" title="visa"><img alt="visa" src="/static/home&storefront/image/data/lhs/payment_1.png" title="visa" /></a> <a href="javascript:coming_soon()" title="mastercard"><img alt="" src="/static/home&storefront/image/data/lhs/payment_2.png" title="mastercard" /></a> <a href="javascript:coming_soon()" title="express"><img alt="" src="/static/home&storefront/image/data/lhs/payment_3.png" title="express" /></a> <a href="javascript:coming_soon()" title="paypal"><img alt="" src="/static/home&storefront/image/data/lhs/payment_4.png" title="paypal" /></a></div>
+</div>
+    <div class="static-footer-link"><a href="javascript:coming_soon()">About Shopping Street</a><a href="javascript:coming_soon()">Directory</a><a href="javascript:coming_soon()">Sales</a><a href="javascript:coming_soon()">Events</a>
+    </div>
+    <div id="powered">
+      <div id="bottom">
+        <div>
+          <div>
+            <div> © 2015 Shopping Street. All Rights Reserved.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+</div>
+</div>
+
+</body>
+
+</html>

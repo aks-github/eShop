@@ -1,0 +1,351 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+
+<style type="text/css">
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(/static/images/bg.png;
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 900px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 100%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        float: left;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+    
+    .container {
+    width: 100%;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center top;
+    min-height: 722px;
+}
+
+/* STRUCTURE */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    /*background-image: url('../images/contentBg.png');*/
+    background-repeat: no-repeat;
+    background-position: center top;
+    min-height: 722px;
+}
+
+.containerInner {
+    width: 100%;
+    margin: 0 auto;
+    background-image: url('../images/contentInnerBg.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    min-height: 522px;
+}
+
+.container2 {
+    width: 100%;
+    margin: 0 auto;
+    min-height: 522px;
+}
+
+/* CONTENT */
+.mainContent, .mainFooter {
+    position: relative;
+    padding-top: 15px;
+    width: 1100px;
+    margin: auto;
+}
+
+
+.ButtonLink {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #FFF;
+    background-color: #333;
+    height: 28px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+    border: 0px;
+}
+
+.ButtonLink:hover {
+        color: #000;
+        background-color: #e5e5e5;
+        cursor: pointer;
+    }
+
+.onClick {
+    text-align: center;
+    margin: 10px;
+}
+
+</style>
+
+<script type="text/javascript">
+$(function() {
+	$('#startdate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+	$('#enddate').datepicker({ dateFormat: 'yy-mm-dd' });
+});
+</script>
+</head>
+
+<body>
+	<header class="mainHeader">
+		<div class="top-bar">
+			<div class="site-logo">
+				<a href="/superadmindashboard/"> <img src="/static/images/eShoo.png"></a>
+			</div>
+					
+			<div id="admin-bar" align="right">
+				<div class="adminBg">
+					<p><strong>Welcome</strong></p></div>
+					<a href="/logout/" title="Logout">logout</a>
+			</div>
+		</div>
+	</header>
+	<br/>
+	<div class="nav-bar" id="topnav">
+		<nav class="nav-menu">
+			<ul id="main-nav">
+				<li><a href="/createmarket/">Create Market</a></li>
+				<li><a href="/salesref/">Sales Representative</a></li>
+				<li class="active"><a href="/services">Services</a></li>
+				<li><a href="/servicepacks/">Service Pack</a></li>
+				<li><a href="/packallotment/">Pack Allotment</a></li>
+			</ul>
+		</nav>
+	</div>
+
+
+
+	<div id="dialog" class="web_dialog" style="display: none;">
+		<form method="post" action="/createservice/" >
+			<table style="width: 100%; border: 0px; padding: 14px;" cellpadding="3" cellspacing="0">
+					<tbody style="padding-left: 15px;">
+						<tr>
+							<td>Service Name</td>
+							<td>
+							<input type="text" name="servicename" id="servicename" />
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Description</td>
+							<td>
+							<textarea id="description" name="servicedescription"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>StartDate</td>
+							<td>
+							<input type="text" id="startdate" name="startdate" >
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>EndDate</td>
+							<td>
+							<input type="text" id="enddate" name="enddate" >
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>Rate</td>
+							<td>
+							<input type="text" id="rate" name="rate" >
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td>discount</td>
+							<td>
+							<input type="text" id="discount" name="discount">
+							</td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align: center;">
+							<input type="submit" value="Submit">
+							</td>
+						</tr>
+					</tbody>
+			</table>
+		</form>
+		</div>
+	
+	
+	<div class="mainContent" align="center">
+		<div id="addservice">
+			<table width="70%" border="0">
+			<tr>
+			<td><input type="button" id="addservice" name="addservicee" value="Add Service" class="ButtonLink"/></td>
+			</tr>
+			</table>
+		</div>
+		
+		<div id="message" align="center">
+		{{message}}
+		</div>
+		
+		
+		<!-- 
+		{% if showserviceinfo %}
+		<div id="serviceinfo">
+			{% for serviceinfo in showserviceinfo %}
+				<form action="">
+					<table style="width: 100%; border: 0px; padding: 14px;" cellpadding="3" cellspacing="0">
+						<tr><td>Service Name</td><td><input type="text" name="servicename" id="servicename" value="{{serviceinfo.ServiceName}}"/></td></tr>
+						<tr><td>Description</td><td><input type="text" name="servicdescription" id="servicdescription" value="{{serviceinfo.Description}}"/></td></tr>
+						<tr><td>StartDate</td><td><input type="date" name="startdate" id="startdate" value="{{serviceinfo.StartDate}}"/></td></tr>
+						<tr><td>EndDate</td><td><input type="date" name="enddate" id="enddate" value="{{serviceinfo.EndDate}}"/></td></tr>
+						<tr><td>Rate</td><td><input type="text" name="rate" id="rate" value="{{serviceinfo.Rate}}"/></td></tr>
+						<tr><td>Discount</td><td><input type="text" name="discount" id="discount" value="{{serviceinfo.Discount}}"/></td></tr>
+					</table>
+				</form>
+			{% endfor %}
+		</div>
+		{% endif %}
+		 -->
+		
+		{% if services %}
+		<br>
+		
+		<div id="services">
+			<table width="70%" border="0">
+	            <tbody style="background-color: #e4e4e4; text-align: center;">
+	               <tr>
+		       			  <td width="55%" style="padding-top: 10px; padding-bottom: 10px;">
+		                  <strong>Service Name</strong>
+		                  </td>
+		                  <td width="35%">
+		                  <strong>Action</strong>
+		                  </td>
+	               </tr>
+	                  
+	                  {% for service in services %}
+	                  <tr id={{service.ServiceId}}>
+		                  <td style="text-align: left;">
+		                  <center>{{service.ServiceName}}</center>
+		                  </td>
+		                  <td>
+		                  <a href="/">Edit</a>
+		                  &nbsp;&nbsp;&nbsp;&nbsp;
+		                  <a href="#" id={{service.ServiceId}} onclick="return DeleteService(this);">Delete</a>
+		                  </td>
+	                  </tr>
+	                  {% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% else %}
+	<div align="center"><strong>No Service added</strong></div>
+	{% endif %}
+	
+		
+</div>
+
+
+<script>
+$("#addservice").click(function(){
+	$("#dialog").dialog({
+	      height: 500,
+	      width: 400,
+	      modal: true
+	    });
+});
+
+function DeleteService(serviceitem){
+	$.ajax({
+		url:"/deleteservice",
+		//type:'POST',
+		data:"serviceid="+serviceitem.id,
+		success:function(data){
+			if(data=="ok"){
+				alert("Service Deleted Successfully");
+				window.location.href = '/services';
+			}
+			else{
+				alert(data);	
+			}
+		}
+	});	
+}
+</script>
+</body>
+</html>
+		

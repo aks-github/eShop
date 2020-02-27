@@ -1,0 +1,269 @@
+/* General Demo Style */
+/* @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);*/
+
+html {
+    height: 100%;
+}
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 1;
+}
+
+/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+body {
+    font-family: 'Lato', Calibri, Arial, sans-serif;
+    background: #f9f9f9;
+    font-weight: 300;
+    font-size: 15px;
+    color: #333;
+    overflow: scroll;
+    overflow-x: hidden;
+    background-image: url(../images/bg.png);
+}
+
+a {
+    color: #555;
+    text-decoration: none;
+}
+
+img {
+    border: 0px;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+}
+
+    .container > header {
+        width: 100%;
+        max-width: 1240px;
+        margin: 0 auto;
+        position: relative;
+        padding: 0 30px 50px 30px;
+    }
+
+    .container > header {
+        padding: 28px 30px 28px;
+        text-align: center;
+    }
+
+        .container > header h1 {
+            font-size: 34px;
+            line-height: 38px;
+            margin: 0 auto;
+            font-weight: 700;
+            color: #333;
+        }
+
+            .container > header h1 span {
+                display: block;
+                font-size: 20px;
+                font-weight: 300;
+            }
+
+.gem-site-logo {
+    width: 315px;
+    height: 53px;
+    margin-top: 5px;
+    float: left;
+    /*background-image: url(../images/gem-allinone.png);*/
+    background-repeat: no-repeat;
+    background-position: -160px 0px;
+}
+
+.gem-admin-bar {
+    float: right;
+}
+
+    .gem-admin-bar p {
+        text-align: right;
+        font-size: 120%;
+        margin-top: 12px;
+        margin-right: 5px;
+        font-weight: 600;
+    }
+
+    .gem-admin-bar ul {
+        list-style-type: none;
+        width: 1100px;
+        margin-top: 32px;
+    }
+
+        .gem-admin-bar ul li a {
+            float: right;
+            margin-left: 5px;
+        }
+
+    .gem-admin-bar li a {
+        width: 124px;
+    }
+
+    .gem-admin-bar .gem-login a {
+        background-color: #865e00;
+        color: #fff;
+        padding: 8px;
+        opacity: 1;
+        border-radius: 18px;
+    }
+
+        .gem-admin-bar .gem-login a:hover {
+            opacity: 0.7;
+        }
+
+    .gem-admin-bar .gem-signup a {
+        background-color: #865e00;
+        color: #fff;
+        padding: 8px;
+        opacity: 1;
+        border-radius: 18px;
+    }
+
+        .gem-admin-bar .gem-signup a:hover {
+            opacity: 0.7;
+        }
+
+.main {
+    float: left;
+}
+
+    .main > p {
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+/* POPUP */
+
+.web_dialog_overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    opacity: .5;
+    filter: alpha(opacity=15);
+    -moz-opacity: .15;
+    z-index: 101;
+    display: none;
+}
+
+.web_dialog {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -190px;
+    margin-top: -100px;
+    background-color: #ffffff;
+    border: 2px solid #865e00;
+    padding: 0px;
+    z-index: 102;
+    font-family: Verdana;
+    font-size: 10pt;
+}
+
+.web_dialog_title {
+    border-bottom: solid 2px #865e00;
+    background-color: #865e00;
+    padding: 4px;
+    color: White;
+    font-weight: bold;
+}
+
+    .web_dialog_title a {
+        color: White;
+        text-decoration: none;
+    }
+
+.align_right {
+    text-align: right;
+}
+
+.inputtext {
+    border: 1px solid #865e00;
+    border-radius: 7px;
+    padding:7px;
+}
+
+/* FOOTER */
+footer {
+	position: relative;
+    color: #999;
+    font-size: 85%;
+    background-color: #865e00;
+    float: left;
+    width: 100%;
+}
+
+.Footer {
+	position: relative;
+    clear: both;
+    color: #fff;
+    font-size: 12px;
+    width: 90%;
+    margin: auto;
+}
+
+
+#footer a {
+    color: #fff;
+}
+
+    #footer a:hover {
+        color: #fff;
+    }
+
+.btm-links {
+    width: 45%;
+    float: left;
+    padding: 6px 0px;
+}
+
+    .btm-links a {
+        color: #fff;
+    }
+
+#copyright {
+    text-align: right;
+    width: 45%;
+    float: right;
+    padding: 6px 0px;
+}
+
+#powered {
+    float: right;
+    text-align: right;
+    font-size: 10px;
+    width: 95%;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+    #powered a {
+        color: #fff;
+    }

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Service Creation </title>
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		<script src="/static/js/modernizr.custom.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+				<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+		
+/* MAIN NAVIGATION */
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(../images/nav-bar-bg.png);
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 554px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 120%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: left;
+        position: relative;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="#"> <img src="/static/images/eShoplogo.png" /></a>
+						</div>
+					</div>
+					
+					<p>&nbsp;</p>
+					<div align="right"><strong>Welcome Admin</strong></div><br>
+					<div id="logout" align="right">
+					<a href="/showchangepassword" class="ButtonLink">Change Password</a> &nbsp;&nbsp;
+					<a href="/logout" class="ButtonLink">Log out</a>
+					</div><br>
+					
+					<div class="nav-bar" id="topnav">
+						<nav class="nav-menu">
+							<ul id="main-nav">
+								<li ><a href="/listmarket/">Market</a></li> <!-- /createmarket -->
+								<li><a href="/salesref">Sales Representative</a></li>
+								<li  class="active"><a href="/services">Services</a></li>
+								<li><a href="/servicepacks">Service Pack</a></li>
+								<li><a href="/showallotment">Pack Allotment</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+				
+				
+<div class="mainContent" >
+	
+{% if message %}
+		<div align="center">
+			<strong>{{message}}</strong>
+			<p>&nbsp;</p>
+			<a href="/services" class="ButtonLink">Go Back to Services</a>
+			
+		</div>
+{% endif %}	
+
+
+{% if services %}
+		<script type="text/javascript">
+				function DeleteService(serviceitem,servicename){
+					var r=confirm("Are you sure to delete "+servicename+" service?");
+					if (r==true){					
+					$.ajax({
+						url:"/deleteservice",
+						//type:'POST',
+						data:"serviceid="+serviceitem.id,
+						success:function(data){
+							if(data=="ok"){
+								alert("Service Deleted Successfully");
+								window.location.href = '/services';
+							}
+							else{
+								alert(data);	
+							}
+						}
+					});
+				}
+					
+			}
+				
+	</script>
+		
+		
+		<div id="addservicebtn" align="center">
+			<a href="/addservice" class="ButtonLink">Add service</a>	
+		</div>
+		
+		<p>&nbsp;</p>
+		
+		<div id="services" align="center">
+			<h3>Services</h3>
+			<table width="70%" border="0">
+	            <tbody style="background-color: #e4e4e4; text-align: center;">
+	               <tr>
+		       			  <td width="55%" style="padding-top: 10px; padding-bottom: 10px;">
+		                  <strong>Service Name</strong>
+		                  </td>
+		                  <td width="35%">
+		                  <strong>Action</strong>
+		                  </td>
+	               </tr>
+	                  
+	                  {% for service in services.object_list %}
+	                  <tr id={{service.ServiceId}}>
+		                  <td style="text-align: left;">
+		                  <center>{{service.ServiceName}}</center>
+		                  </td>
+		                  <td>
+		                  <a href="/editservice?serviceid={{service.ServiceId}}"><strong>Edit</strong></a>
+		                  &nbsp;&nbsp;&nbsp;&nbsp;
+		                  <a href="#" id={{service.ServiceId}} onclick="return DeleteService(this,'{{service.ServiceName}}');"><strong>Delete</strong></a>
+		                  </td>
+	                  </tr>
+	                  {% endfor %}
+				</tbody>
+			</table>
+			<p>&nbsp;</p>
+			<div class="pagination">
+					<span class="step-links">
+						{% if services.has_previous %}
+							<a href="?page={{ services.previous_page_number }}" class="ButtonLink"><strong>Previous</strong></a>
+						{% endif %}
+						
+						<span class="current">
+							<strong>Page {{ services.number }} of {{ services.paginator.num_pages }}</strong>
+						</span>
+							
+						{% if services.has_next %}
+							   <a href="?page={{ services.next_page_number }}" class="ButtonLink"><strong>Next</strong></a>
+						{% endif %}
+					</span>
+			</div>
+		</div>
+{% endif %}
+	
+	
+	
+{%if addservice%}
+		<script type="text/javascript">
+		$(function() {
+			$('#startdate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+			$('#enddate').datepicker({ dateFormat: 'yy-mm-dd' });
+		});
+		
+		
+
+		function checkServiceName(servicename) {
+		    var filter = /^([a-zA-Z0-9 ]){3,32}$/;
+		    if (!filter.test(servicename)) {
+				return false;    
+		 	}
+		    return true;  
+		}
+		
+		
+		function checkServiceDescription(servicedescription) {
+		    var filter = /^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,500}$/;
+		    if (!filter.test(servicedescription)) {
+				return false;    
+		 	}
+		    return true;  
+		}
+		function checkStartDate(servicestartdate) {
+		    var filter = /^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+		    if (!filter.test(servicestartdate)) {
+				return false;    
+		 	}
+		    return true;  
+		}
+		function checkEndDate(serviceenddate) {
+		    var filter = /^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+		    if (!filter.test(serviceenddate)) {
+				return false;    
+		 	}
+		    return true;  
+		}
+		
+		
+		function checkRate(servicerate) {
+			if(/^\s/.test(servicerate[0])){
+				return false;
+			}
+			
+			var filter=/^\d+(?:\.\d{0,2})$/;
+			
+			if(!filter.test(servicerate)){
+				return false;
+			}
+			
+		    var x = parseFloat(servicerate);
+		    if (isNaN(x)) {
+		    	return false;    
+		    }
+		}
+		
+		function checkDiscount(servicediscount) {
+			
+			if(/^\s/.test(servicediscount[0])){
+				return false;
+			}
+			
+		    var x = parseFloat(servicediscount);
+		    if (isNaN(x) || x < 0 || x > 100) {
+		    	return false;    
+		    }
+		    return true;  
+		}
+		
+		function validateservice(){
+			
+			var servicename=document.getElementById('servicename')
+			var servicediscription=document.getElementById('description')
+			var servicetypename=document.getElementById('servicetypename')
+			var startdate=document.getElementById('startdate')
+			var enddate=document.getElementById('enddate')
+			var rate=document.getElementById('rate')
+			var discount=document.getElementById('discount')
+			var sms=document.getElementById('sms')
+			var email=document.getElementById('email')
+			var productshowcase=document.getElementById('productshowcase')
+			var advertising=document.getElementById('advertise')
+			
+			if ((/^\s/.test(servicename.value[0])) || checkServiceName(servicename.value)==false){
+				alert("Service Name should not contain any special characters and should not start with space and should be in range of 3 to 32.");
+				return false;	
+			}
+		
+			if ((/^\s/.test(servicediscription.value[0])) ||checkServiceDescription(servicediscription.value)==false){
+				alert("Service Discription should be alpha numeric and should not start with space and should be in range of 3 to 500");
+				return false;	
+			}
+			
+			if (servicetypename.value==""){
+				alert("Choose the ServiceType");
+				return false;	
+			}
+			
+			if(servicenumbers.value!=""){
+				var servicenumberfilter = /^([0-9]){1,8}$/;
+				
+				if(!servicenumberfilter.test(servicenumbers.value)){
+					alert("Invalid number of Limits value");
+					return false;
+				}
+			}
+			
+			
+			if (checkStartDate(startdate.value)==false){
+				alert("Startdate Invalid");
+				return false;	
+			}
+			if (checkEndDate(enddate.value)==false){
+				alert("Enddate Invalid");
+				return false;	
+			}
+			
+			if (checkRate(rate.value)==false){
+				alert("Invalid Rate. Must be in a format decimals. e.g. 99.99 ");
+				return false;	
+			}
+			
+			if (checkDiscount(discount.value)==false){
+				alert("Invalid Discount. Please give discount in Range of percentage");
+				return false;	
+			}
+			return true;
+		}
+			
+		
+		
+</script>
+			
+		<div id="addservice" align="center">
+		<h3>Create Service</h3>
+			<form method="post" id="createservice">
+				<table style="padding: 14px;">
+						<tbody >
+							<tr>
+								<td><strong>Service Name</strong></td>
+								<td><input type="text" name="servicename" id="servicename" required="required" class="inputtext" /></td>
+							</tr>
+							
+							<tr><td>&nbsp;</td><td><div id="servicenameerror"></div></td></tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>Description</strong></td>
+								<td>
+								<textarea id="description" name="servicedescription" required="required" rows="3" cols="18" class="inputtext"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>Service Type</strong></td>
+								<td>
+								<select id="servicetypename" class="inputtext" name="servicetypename" required="required">
+									<option selected="selected" value="" disabled="disabled">---select service type---</option>
+									{% for servicetype in servicetypes %}
+										<option value="{{servicetype.ServiceTypeName}}">{{servicetype.ServiceTypeName}}</option>
+									{% endfor %}
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>Number of Limit</strong></td>
+								<td>
+								<input type="text" name="servicenumbers" id="servicenumbers" value="" class="inputtext" placeholder="Blank for unlimited"/>
+								</td>
+							</tr>	
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>StartDate</strong></td>
+								<td>
+								<input type="text" id="startdate" name="startdate" required="required" class="inputtext" >
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>EndDate</strong></td>
+								<td><input type="text" id="enddate" name="enddate" required="required" class="inputtext" ></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>Rate</strong></td>
+								<td>
+								<input type="text" id="rate" name="rate" required="required" class="inputtext" >
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td><strong>Discount</strong></td>
+								<td>
+								<input type="text" id="discount" name="discount" class="inputtext" ><strong>%</strong>
+								</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+							</tr>
+							<tr><td>&nbsp;</td>
+								<td>
+								
+								<input type="submit" value="Submit" class="ButtonLink" id="submitBtn"> &nbsp;&nbsp;
+								<a href="/services" class="ButtonLink">Cancel</a>
+								</td>
+							</tr>
+						</tbody>
+				</table>
+			</form>	
+		</div>
+	
+	<script type="text/javascript">
+	
+	$("#createservice").submit(function(){
+		
+		if(validateservice()){
+		    var formData = new FormData($(this)[0]);
+		    $.ajax({
+		        url: '/createservice',
+		        type: 'POST',
+		        data: formData,
+		        async: false,
+		        success: function (data) {
+		    		alert(data);
+		    		window.location.href = '/services';
+		        },
+		        cache: false,
+		        contentType: false,
+		        processData: false
+		    });
+		}
+		
+	    return false;
+	});
+
+	
+	$("#servicename").blur(function(){
+		servicename=document.getElementById("servicename").value;
+		
+		if(servicename!==""){
+		$.ajax({
+				url:"/checkservice",
+				//type:'post',
+				data:"servicename="+servicename,
+				success:function(data){
+					if(data!="ok"){
+						document.getElementById("servicenameerror").innerHTML="<font color='red'>Service name already Exist</font>";
+						document.getElementById("submitBtn").disabled=true;
+						}
+					else {
+						document.getElementById("servicenameerror").innerHTML="<font color='green'>Service Name Available</font>";
+						document.getElementById("submitBtn").disabled = false; 
+					}
+				}
+				});
+		}
+		else{
+			document.getElementById("servicenameerror").innerHTML="<font color='red'>Mandatory field</font>";
+		}
+	
+		});
+</script>
+{%endif%}
+
+
+
+
+
+
+{% if editservice %}
+
+<script type="text/javascript">
+$(function() {
+	$('#enddate').datepicker({ dateFormat: 'yy-mm-dd' }).datepicker("setDate", new Date());
+});
+
+
+
+function checkServiceName(servicename) {
+    var filter = /^([a-zA-Z0-9 ]){3,32}$/;
+    if (!filter.test(servicename)) {
+		return false;    
+ 	}
+    return true;  
+}
+
+
+function checkServiceDescription(servicedescription) {
+    var filter = /^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,500}$/;
+    if (!filter.test(servicedescription)) {
+		return false;    
+ 	}
+    return true;  
+}
+function checkEndDate(serviceenddate) {
+    var filter = /^[0-9]{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+    if (!filter.test(serviceenddate)) {
+		return false;    
+ 	}
+    return true;  
+}
+
+function checkRate(servicerate) {
+	if(/^\s/.test(servicerate[0])){
+		return false;
+	}
+	
+	var filter=/^\d+(?:\.\d{0,2})$/;
+	
+	if(!filter.test(servicerate)){
+		return false;
+	}
+	
+    var x = parseFloat(servicerate);
+    if (isNaN(x)) {
+    	return false;    
+    }
+}
+
+function checkDiscount(servicediscount) {
+	if(/^\s/.test(servicediscount[0])){
+		return false;
+	}
+	
+	var x = parseFloat(servicediscount);
+    if (isNaN(x) || x < 0 || x > 100) {
+    	return false;    
+    }
+    return true;  
+}
+
+function validate(reference){
+	
+	if ((/^\s/.test(reference.servicename.value[0])) || checkServiceName(reference.servicename.value)==false){
+		alert("Service Name should not contain special characters and must not be less than 3 and greater than 32 and should not start with space");
+		return false;	
+	}
+	
+	
+	if ((/^\s/.test(reference.servicedesc.value[0])) || checkServiceDescription(reference.servicedesc.value)==false){
+		alert("Service Description must not be less than 3 and greater than 500");
+		return false;
+	}
+	
+	
+	if (checkEndDate(reference.enddate.value)==false){
+		alert("Enddate Invalid");
+		return false;
+	}
+	
+	if (checkRate(reference.rate.value)==false){
+		alert("Invalid Rate. Must be in a format decimals. e.g. 99.99 ");
+		return false;
+	}
+	
+	if (checkDiscount(reference.discount.value)==false){
+		alert("Invalid Discount. Please give discount in range of percentage");
+		return false;	
+	}
+	return true;
+}
+</script>
+<div id="editservice" align="center">
+	<form method="post" action="/updateservice" onsubmit="return validate(this);">
+			<h2>Edit Service</h2>
+			<table cellspacing="10">
+				<tr>
+				<td><input type="hidden" name="serviceid" id="serviceid" value="{{serviceinfo.ServiceId}}" class="inputtext"></td>
+				</tr>
+				<tr>
+				<td> <strong>Service Name </strong></td>
+				<td><input type="text" name="servicename" id="servicename" value="{{serviceinfo.ServiceName}}" class="inputtext"></td>
+				</tr>
+				<tr>
+				<td> <strong>Description </strong></td>
+				<td><input type="text" name="servicedesc" id="servicedesc" value="{{serviceinfo.Description}}" class="inputtext"></td>
+				</tr>
+				<tr>
+				<td> <strong>End Date </strong></td>
+				<td><input type="text" name="enddate" id="enddate" value="{{serviceinfo.EndDate}}" class="inputtext"></td>
+				</tr>
+				<tr>
+				<td> <strong>Rate </strong></td>
+				<td><input type="text" name="rate" id="rate" value="{{serviceinfo.Rate}}" class="inputtext"></td>
+				</tr>
+				<tr>
+				<td> <strong>Discount </strong></td>
+				<td><input type="text" name="discount" id="discount" value="{{serviceinfo.Discount}}" class="inputtext"></td>
+				</tr>
+				
+				<tr>
+				<td>&nbsp;</td>
+				</tr>
+				
+				<tr>
+				<td>&nbsp;</td>
+				<td>
+				<input type="submit" value="Save" class="ButtonLink">
+				<a href="/services" class="ButtonLink">Cancel</a></td>
+				</tr>
+			</table>
+		</form>
+</div>
+{% endif %}
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+	
+	
+</div><!-- End of main content -->		
+</div><!-- End of container -->		
+</body>	
+</html>
+
+			
+

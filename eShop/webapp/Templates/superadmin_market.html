@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Market Registration</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		
+		<script src="/static/js/modernizr.custom.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+		<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+		
+/* MAIN NAVIGATION */
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(../images/nav-bar-bg.png);
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 554px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 120%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: left;
+        position: relative;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+			
+		</style>
+	</head>
+	<body>
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="#"> <img src="/static/images/eShop.png" /></a>
+						</div>
+					</div>
+					<p>&nbsp;</p>
+					<div align="right"><strong>Welcome Admin</strong></div><br>
+					
+					<div id="logout" align="right">
+					<a href="/showchangepassword" class="ButtonLink">Change Password</a> &nbsp;&nbsp;
+					<a href="/logout" class="ButtonLink">Log out</a>
+					</div><br>
+					
+					<div class="nav-bar" id="topnav">
+						<nav class="nav-menu">
+							<ul id="main-nav">
+								<li  class="active"><a href="/listmarket/">Market</a></li> <!-- /createmarket -->
+								<li><a href="/salesref">Sales Representative</a></li>
+								<li><a href="/services">Services</a></li>
+								<li><a href="/servicepacks">Service Pack</a></li>
+								<li><a href="/showallotment">Pack Allotment</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+				
+				
+<div class="mainContent" >	
+
+{% if message %}
+<div align="center">
+	<strong>{{message}}</strong>
+	<p>&nbsp;</p>
+	<a href="/listmarket" class="ButtonLink">Go Back to Market</a>
+</div>
+{% endif %}
+
+
+
+{% if showmarket %}
+
+	<div id="showmarkets" align="center">
+		<div id="addmarket">
+			<a href="/createmarket" class="ButtonLink">Create Market</a>
+		</div>
+		
+		<p>&nbsp;</p>
+		
+		<div id="contents">	
+		<h3>Markets</h3>
+			<table width="80%" border="0">
+	            <tbody style="background-color: #e4e4e4; text-align: center;">
+	               <tr>
+		       			  <td width="15%" style="padding-top: 10px; padding-bottom: 10px;">
+		                  <strong>Market Name</strong>
+		                  </td>
+		                  <td width="20%">
+		                  <strong>Username</strong>
+		                  </td>
+		                  <td width="35%">
+		                  <strong>Market Address</strong>
+		                  </td>
+		                  <td width="10%">
+		                  <strong>Contact Person</strong>
+		                  </td>
+		                  <td width="10%">
+		                  <strong>ContactPhoneNumber</strong>
+		                  </td>
+		                  <td width="10%">
+		                  <strong>Date Created</strong>
+		                  </td>
+		                  <td width="10%">
+		                  <strong>Action</strong>
+		                  </td>
+	               </tr>
+	        		{% for market in showmarket.object_list %}
+	                  <tr>
+		                  <td style="text-align: left;"><center>{{market.MarketName}}</center></td>
+		                  <td>{{market.UserId.username}}</td>
+		                  <td>{{market.MarketAddress}}</td>
+		                  <td>{{market.ContactPerson}}</td>
+		                  <td>{{market.ContactPhoneNumber}}</td>
+		                  <td>{{market.UserId.date_joined}}</td>
+		                  <td>
+		                  <a href="/editmarket?marketid={{market.MarketId}}"><strong>Edit</strong></a>
+		                  &nbsp;&nbsp;&nbsp;&nbsp;
+		                  </td>
+	                  </tr>
+	                  {% endfor %}
+				</tbody>
+			</table>
+			<p>&nbsp;</p>
+				<div class="pagination">
+					<span class="step-links">
+						{% if showmarket.has_previous %}
+							<a href="?page={{ showmarket.previous_page_number }}" class="ButtonLink"><strong>previous</strong></a>
+						{% endif %}
+						
+						<span class="current">
+							<strong>Page {{ showmarket.number }} of {{ showmarket.paginator.num_pages }}</strong>
+						</span>
+							
+						{% if showmarket.has_next %}
+							   <a href="?page={{ showmarket.next_page_number }}" class="ButtonLink"><strong>Next</strong></a>
+						{% endif %}
+					</span>
+				</div>
+		</div>
+{%endif%}
+
+
+
+
+
+
+
+{% if stepone%}
+
+	<div id="stepone" align="center">			
+			<script type="text/javascript">
+			
+			function checkMarketName(marketname) {
+				var filter = /^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,64}$/;
+			    if (!filter.test(marketname)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			
+			function checkMarketAddress(marketaddress) {
+			    var filter =/^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,500}$/;
+			    
+			    if (!filter.test(marketaddress)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			function checkMarketDescription(marketdescription) {
+				 var filter =/^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,500}$/;
+			    if (!filter.test(marketdescription)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			function checkContactPerson(contactperson) {
+				var filter = /^([a-zA-Z0-9 ]){3,32}$/;
+			    if (!filter.test(contactperson)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			function checkMobileNumber(mobilenumber){
+				var filter=/^([0-9]){8,15}$/;
+			    if(!filter.test(mobilenumber)){
+			    	return false;
+			    }
+			    else return true;
+			}
+			function checkEmail(email) {
+			    var filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})$/;
+			    if (!filter.test(email)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			
+			
+			function validate(reference){
+				
+				if (/^\s/.test(reference.mname.value[0])){
+					alert("Market name should start with alphabets.");
+					return false;	
+				}
+				
+				if (checkMarketName(reference.mname.value)==false ){
+					alert("Market name should be alphanumeric  and should be in range of 3 to 64.");
+					return false;	
+				}
+				
+				
+				
+				
+				if ((/^\s/.test(reference.maddr.value[0])) || checkMarketAddress(reference.maddr.value)==false){
+					alert("Market Address should be alphanumeric and should Not start with space and should be in range of 3 to 500 ");
+					return false;
+				}
+				
+				
+				if ((/^\s/.test(reference.mdesc.value[0])) || checkMarketDescription(reference.mdesc.value)==false) {
+					alert("Market Description should be alphanumeric and should Not start with space and should be in range of 3 to 500 ");
+					return false;
+				}
+				
+				
+				if ((/^\s/.test(reference.contactname.value[0])) || checkContactPerson(reference.contactname.value)==false){
+					alert("Contact Person Name Invalid. Should not start with a space and Use of special characters is not allowed and should be in range of 3 to 32");
+					return false;
+				}
+				
+				if (checkMobileNumber(reference.contactno.value)==false){
+					alert("Phone number invalid. Please enter valid  mobile number.");
+					return false;
+				}
+				
+				if ((/^\s/.test(reference.contactemail.value[0])) || checkEmail(reference.contactemail.value)==false || reference.contactemail.value < 3 || reference.contactemail.value > 60){
+					alert("Email-ID invalid");
+					return false;	
+				}
+				
+				if((/^\s/.test(reference.mwebsite.value[0])) || reference.mwebsite.value.length<=4 ){
+					var rgx =/^(\s*(http\:\/\/)?([a-z\d\-]{1,63}\.)*[a-z\d\-]{1,255}\.[a-z]{2,6}\s*){6,32}$/;
+				  	if(!rgx.test(reference.mwebsite.value)){
+				  		alert("Please provide a valid website name. eg. www.eShop.com");
+						return false;		
+				  	}
+				}
+				return true;
+			}
+			
+			</script>
+		
+		
+			<form id="form1" action="/marketadminreg/" method="post" onsubmit="return validate(this);">
+						<label><strong>Step-I: Create New Market</strong></label>
+						<p>&nbsp;</p>
+						<table>
+							<tr><td><strong>Market Name:</strong></td><td><input type="text" name="mname" id="mname" class="inputtext" required="required"></td>
+							</tr>
+							<tr><td></td><td><div align="right" id="marketnameerror"></div></td></tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+							<td><strong>Market Address: </strong></td><td>
+							<textarea class="inputtext" name="maddr" id="maddr" required="required" rows="3" cols="17"></textarea></td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+							<td><strong>Market Description:</strong></td><td>
+							<textarea name="mdesc" class="inputtext" required="required" rows="3" cols="17"></textarea></td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+							<td><strong>Contact Person: </strong></td><td><input type="text" name="contactname" id="contactname" class="inputtext" required="required"></td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+							<td><strong>Phone Number: </strong></td><td><input type="text" name="contactno" id="contactno" class="inputtext" required="required"></td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+							<td><strong>Contact Email Address: </strong></td><td><input type="text" name="contactemail" id="contactemail" class="inputtext" required="required"></td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr>
+							<td><strong>Market Website: </strong></td><td><input type="text" name="mwebsite" id="mwebsite" class="inputtext"></td>
+							</tr>
+							<tr><td>&nbsp;</td></tr>
+							<tr><td></td>
+							<td><input type="submit" id="submitbtn" value="Next" class="ButtonLink"> &nbsp;&nbsp; 
+							<a href="/listmarket" class="ButtonLink">Cancel</a></td>
+							</tr>
+						</table>
+				</form>
+						<p>&nbsp;</p>
+			</div>
+			
+<script type="text/javascript">			
+		$("#mname").blur(function(){
+			marketname=document.getElementById("mname").value;
+			
+			if(marketname!="" && !(/^\s/.test(marketname[0]))){
+				$.ajax({
+						url:"/checkmarketname",
+						//type:'post',
+						data:"marketname="+marketname,
+						success:function(data){
+							//alert(data);
+							if(data!="ok"){
+								document.getElementById("marketnameerror").innerHTML="<font color='red'><strong>Market Name Exist</strong></font>";
+								document.getElementById("submitbtn").disabled=true;
+								}
+							else {
+								document.getElementById("marketnameerror").innerHTML="<font color='green'><strong>Market Name Available</strong></font>";
+								document.getElementById("submitbtn").disabled=false;
+							}
+						}
+					});
+				}
+			document.getElementById("marketnameerror").innerHTML="<font color='red'><strong> * Invalid field name</strong></font>";			
+			
+			});
+</script>
+{% endif %}
+	
+	
+	
+	
+{%if steptwo%}
+
+	<script type="text/javascript">
+	
+	function validatesteptwo(reference){
+		
+		var filter = /^[a-zA-Z0-9 @.]+$/;
+		
+		if((/^\s/.test(reference.uname.value[0])) || reference.uname.value.length < 6 || reference.uname.value.length > 70 || !filter.test(reference.uname.value)){
+	  		alert("Please provide a valid username and should not start with space");
+			return false;	
+		}
+		
+		if((/^\s/.test(reference.pwd.value[0])) || reference.pwd.value.length < 6 || reference.pwd.value.length > 16 ){
+			alert("Password should be in the range of 6 to 16 and should not start with space");
+			return false;
+		}
+		
+		
+		if(reference.pwd.value.length != reference.cpwd.value.length){
+			alert("Password and confirm password fields does not have same values.");
+			reference.pwd.value="";
+			reference.cpwd.value="";
+			return false;
+		}
+		
+		return true;
+		
+	}
+	</script>	
+		
+		<div class="steptwo" align="center">
+			<label><strong>Step-II: Credentials for market admin</strong></label>
+			<p>&nbsp;</p>
+				<form action="/marketadmincredentials/" method="post" onsubmit="return validatesteptwo(this);" enctype="multipart/form-data">
+				<!--  
+				<input type="hidden" value="{{bean.MarketAreaName}}" name="marketareaname"/>
+				<input type="hidden" value="{{bean.MarketName}}" name="marketname"/>
+				<input type="hidden" value="{{bean.MarketAddress}}" name="marketaddress"/>
+				<input type="hidden" value="{{bean.MarketDescription}}" name="marketdescription"/>
+				<input type="hidden" value="{{bean.ContactPerson}}" name="contactperson"/>
+				<input type="hidden" value="{{bean.ContactPhoneNumber}}" name="contactphoneno"/>
+				<input type="hidden" value="{{bean.ContactEmailAddress}}" name="contactemailaddr"/>
+				<input type="hidden" value="{{bean.MarketWebsite}}" name="marketwebsite"/>
+				-->
+				<table>
+					<tr>
+					<td><strong>Market Image</strong></td>
+					<td><input type="file" name="marketimage" id="marketimage" class="inputtext" required="required"></input></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+					<td><strong>Market Logo</strong></td>
+					<td><input type="file" name="marketlogo" id="marketlogo" class="inputtext" required="required"></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+					<td><strong>UserName: </strong></td><td><input type="text" name="uname" id="uname" class="inputtext" required="required"></td>
+					</tr>
+					<tr><td>&nbsp;</td><td><div id="usererror"></div></td></tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+					<td><strong>Password: </strong></td><td><input type="password" name="pwd" id="pwd" class="inputtext" required="required"></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr>
+					<td><strong>Confirm password:</strong></td><td><input type="password" name="cpwd" id="cpwd" class="inputtext" required="required"></td>
+					</tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr >
+					<td></td>
+					<td>
+					<input type="button" value="Back" onclick="goBack()" class="ButtonLink"> &nbsp;&nbsp;
+					<input type="submit" value="Create" id="create" class="ButtonLink">
+					</td>
+					</tr>
+				</table>
+			</form>
+			
+			<p>&nbsp;</p>
+		</div>
+		
+		
+<script type="text/javascript">
+
+function goBack(){
+window.history.back()
+}
+
+
+$("#uname").blur(function(){
+	username=document.getElementById("uname").value;
+	$.ajax({
+			url:"/checkusername",
+			data:"username="+username,
+			success:function(data){
+				//alert(data);
+				if(data!="ok"){
+					document.getElementById("usererror").innerHTML="<font color='red'><strong>username exist</strong></font>";
+					document.getElementById("create").disabled = true; 
+					}
+				else {
+					document.getElementById("usererror").innerHTML="<font color='green'><strong>username available</strong></font>";
+					document.getElementById("create").disabled = false;
+					}
+			}
+		});
+	});
+</script>
+
+{%endif%}
+	
+
+
+
+
+{% if editmarketprofile %}
+	
+		<script type="text/javascript">
+			
+			function checkMarketName(marketname) {
+				
+				var filter = /^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,64}$/;
+			    if (!filter.test(marketname)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			
+			function checkMarketAddress(marketaddress) {
+				var filter =/^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,500}$/;
+			    if (!filter.test(marketaddress)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			function checkMarketDescription(marketdescription) {
+				var filter =/^([a-zA-Z0-9 -:.,_&$@!\/#()+\\']){3,500}$/;
+			    if (!filter.test(marketdescription)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			function checkContactPerson(contactperson) {
+				var filter = /^([a-zA-Z0-9 ]){3,32}$/;
+			    if (!filter.test(contactperson)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			function checkMobileNumber(mobilenumber){
+				var filter=/^([0-9]){8,15}$/;
+			    if(!filter.test(mobilenumber)){
+			    	return false;
+			    }
+			    else return true;
+			}
+			function checkEmail(email) {
+			    var filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})$/;
+			    if (!filter.test(email)) {
+					return false;    
+			 	}
+			    return true;  
+			}
+			
+			
+			function validate(reference){
+				
+				if ((/^\s/.test(reference.mname.value[0])) || checkMarketName(reference.mname.value)==false){
+					alert("Market name should be alphanumeric and should be in range of 3 to 64 and and should not start with space");
+					return false;	
+				}
+				
+				
+				if ((/^\s/.test(reference.maddr.value[0])) || checkMarketAddress(reference.maddr.value)==false){
+					alert("Market Address should be alphanumeric and should Not start with space and should be in range of 3 to 500");
+					return false;
+				}
+				
+				if ((/^\s/.test(reference.mdesc.value[0])) || checkMarketDescription(reference.mdesc.value)==false){
+					alert("Market Description should be alphanumeric and should Not start with space and should be in range of 3 to 500 ");
+					return false;
+				}
+				
+				
+				if ((/^\s/.test(reference.contactname.value[0])) || checkContactPerson(reference.contactname.value)==false){
+					alert("Contact Person Name Invalid. Should not start with a space and Use of special characters is not allowed and should be in range of 3 to 32");
+					return false;
+				}
+				
+				if (checkMobileNumber(reference.contactno.value)==false){
+					alert("Mobile number invalid. Please enter valid  mobile number");
+					return false;
+				}
+				
+				if ((/^\s/.test(reference.contactemail.value[0])) || checkEmail(reference.contactemail.value)==false || reference.contactemail.value < 3 || reference.contactemail.value > 60){
+					alert("Email-ID invalid.");
+					return false;	
+				}
+				
+				if((/^\s/.test(reference.mwebsite.value[0])) || reference.mwebsite.value.length<=4 ){
+					var rgx =/^(\s*(http\:\/\/)?([a-z\d\-]{1,63}\.)*[a-z\d\-]{1,255}\.[a-z]{2,6}\s*){6,32}$/;
+				  	if(!rgx.test(reference.mwebsite.value)){
+				  		alert("Please provide a valid website name. eg. www.eShop.com");
+						return false;		
+				  	}
+				}
+				return true;
+			}
+			
+			</script>
+
+
+<div id="editmarketprofile" align="center">
+	<form action="/updatemarket" method="post" onsubmit="return validate(this);">
+			<h2>Edit Market</h2>
+			<table>
+				<tr>
+				<td><input type="hidden" name="marketid" id="marketid" value="{{marketinfo.MarketId}}" class="inputtext" ></td>
+				</tr>
+				<tr><td><strong>Market Name:</strong></td>
+				<td><input type="text" name="mname" id="mname" value="{{marketinfo.MarketName}}" class="inputtext" ></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>Market Address: </strong></td>
+				<td><input type="text" name="maddr" id="maddr" value="{{marketinfo.MarketAddress}}" class="inputtext" ></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>Market Description:</strong></td><td>
+				<textarea name="mdesc" class="inputtext" rows="3" cols="17">{{marketinfo.MarketDescription}}</textarea></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>Contact Person: </strong></td>
+				<td><input type="text" name="contactname" value="{{marketinfo.ContactPerson}}" class="inputtext" ></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>PhoneNumber: </strong></td>
+				<td><input type="text" name="contactno" value="{{marketinfo.ContactPhoneNumber}}" class="inputtext" ></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>Contact Email Address: </strong></td>
+				<td><input type="text" name="contactemail" value="{{marketinfo.ContactEmailAddress}}" class="inputtext" ></td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+				<td><strong>MarketWebsite: </strong></td>
+				<td><input type="text" name="mwebsite" value="{{marketinfo.MarketWebsite}}" class="inputtext" ></td>
+				</tr>
+				<tr>
+				<td><p>&nbsp;</p></td>
+				<td><input type="submit" value="Save" class="ButtonLink">
+				<a href="/listmarket" class="ButtonLink" style="width: 150px;height: 150px">&nbsp;Cancel&nbsp;</a></td>
+				</tr>
+			</table>
+			<p>&nbsp;</p>
+		</form>
+	
+	</div>
+{% endif %}
+
+
+
+
+
+</div><!-- End of main content -->		
+</div><!-- End of container -->		
+</body>	
+</html>
+
+			
+

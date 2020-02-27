@@ -1,0 +1,739 @@
+<!DOCTYPE html> 
+<html lang="en-US"> 
+
+<head> 
+
+<meta charset="UTF-8" />
+<meta name="robots" content="index, follow" />
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<title>Consumer</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+ <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+
+
+<link rel='stylesheet' id='jigoshop_theme_styles-css'  href='/static/wp-content/plugins/jigoshop/assets/css/frontend1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jigoshop_fancybox_styles-css'  href='/static/wp-content/plugins/jigoshop/assets/css/fancybox1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='jqueryui_styles-css'  href='/static/wp-content/plugins/jigoshop/assets/css/ui1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='agurghis-flexslider-css-css'  href='/static/wp-content/themes/eShop/css/flexslider1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='agurghis-style-css-css'  href='/static/wp-content/themes/eShop/style1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='agurghis-main-css-css'  href='/static/wp-content/themes/eShop/css/main1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='agurghis-grid-css-css'  href='/static/wp-content/themes/eShop/css/grid1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='agurghis-font-awesome-css-css'  href='/static/wp-content/themes/eShop/css/font-awesome1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='agurghis-prettyPhoto-css-css'  href='/static/wp-content/themes/eShop/css/prettyPhoto1bba.css' type='text/css' media='all' />
+<link rel='stylesheet' id='layerslider_css-css'  href='/static/wp-content/plugins/LayerSlider/css/layerslider001e.css?ver=2.0.0' type='text/css' media='all' />
+<link rel='stylesheet' id='bbp-default-bbpress-css'  href='/static/wp-content/plugins/bbpress/templates/default/css/bbpress950a.css?ver=2.2.3' type='text/css' media='screen' />
+<script type='text/javascript' src='/static/wp-includes/js/jquery/jquery4511.js?ver=1.8.3'></script>
+<script type='text/javascript' src='/static/wp-content/plugins/jigoshop/assets/js/jquery.fancybox-1.3.4.pack1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/plugins/jigoshop/assets/js/jquery-ui-1.9.2.min2c00.js?ver=1.9.2'></script>
+<script type='text/javascript' src='/static/wp-content/plugins/jigoshop/assets/js/blockui1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/plugins/jigoshop/assets/js/jigoshop_frontend1bba.js'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jigoshop_params = {"ajax_url":"http:\/\/alexgurghis.com\/themes\/supernova-jigoshop\/wp-admin\/admin-ajax.php","assets_url":"http:\/\/alexgurghis.com\/themes\/supernova-jigoshop\/wp-content\/plugins\/jigoshop","checkout_url":"http:\/\/alexgurghis.com\/themes\/supernova-jigoshop\/wp-admin\/admin-ajax.php?action=jigoshop-checkout","countries":"{\"AL\":{\"BER\":\"Berat\",\"DIB\":\"Dib\\u00ebr\",\"DUR\":\"Durr\\u00ebs\",\"ELB\":\"Elbasan\",\"FIE\":\"Fier\",\"GJI\":\"Gjirokast\\u00ebr\",\"KOR\":\"Kor\\u00e7\\u00eb\",\"KUK\":\"Kuk\\u00ebs\",\"LEZ\":\"Lezh\\u00eb\",\"SHK\":\"Shkod\\u00ebr\",\"TIR\":\"Tiran\\u00eb\",\"VLO\":\"Vlor\\u00eb\"},\"AU\":{\"ACT\":\"Australian Capital Territory\",\"NSW\":\"New South Wales\",\"NT\":\"Northern Territory\",\"QLD\":\"Queensland\",\"SA\":\"South Australia\",\"TAS\":\"Tasmania\",\"VIC\":\"Victoria\",\"WA\":\"Western Australia\"},\"BR\":{\"AC\":\"Acre\",\"AL\":\"Alagoas\",\"AM\":\"Amazonas\",\"AP\":\"Amap\\u00e1\",\"BA\":\"Bahia\",\"CE\":\"Cear\\u00e1\",\"DF\":\"Distrito federal\",\"ES\":\"Esp\\u00edrito santo\",\"GO\":\"Goi\\u00e1s\",\"MA\":\"Maranh\\u00e3o\",\"MG\":\"Minas gerais\",\"MS\":\"Mato grosso do sul\",\"MT\":\"Mato grosso\",\"PA\":\"Par\\u00e1\",\"PB\":\"Paraiba\",\"PE\":\"Pernambuco\",\"PI\":\"Piau\\u00ed\",\"PR\":\"Paran\\u00e1\",\"RJ\":\"Rio de janeiro\",\"RN\":\"Rio grande do norte\",\"RO\":\"Rond\\u00f4nia\",\"RR\":\"Roraima\",\"RS\":\"Rio grande do sul\",\"SC\":\"Santa catarina\",\"SE\":\"Sergipe\",\"SP\":\"S\\u00e3o paulo\",\"TO\":\"Tocantins\"},\"CA\":{\"AB\":\"Alberta\",\"BC\":\"British Columbia\",\"MB\":\"Manitoba\",\"NB\":\"New Brunswick\",\"NL\":\"Newfoundland\",\"NS\":\"Nova Scotia\",\"NT\":\"Northwest Territories\",\"NU\":\"Nunavut\",\"ON\":\"Ontario\",\"PE\":\"Prince Edward Island\",\"QC\":\"Quebec\",\"SK\":\"Saskatchewan\",\"YT\":\"Yukon Territory\"},\"CH\":{\"AG\":\"Aargau\",\"AI\":\"Appenzell Innerrhoden\",\"AR\":\"Appenzell Ausserrhoden\",\"BE\":\"Bern\",\"BL\":\"Basel-Landschaft\",\"BS\":\"Basel-Stadt\",\"FR\":\"Freiburg\",\"GE\":\"Genf\",\"GL\":\"Glarus\",\"JU\":\"Jura\",\"LU\":\"Luzern\",\"NE\":\"Neuenburg\",\"NW\":\"Nidwalden\",\"OW\":\"Obwalden\",\"SG\":\"St. Gallen\",\"SH\":\"Schaffhausen\",\"SO\":\"Solothurn\",\"SZ\":\"Schwyz\",\"TG\":\"Thurgau\",\"TI\":\"Tessin\",\"UR\":\"Uri\",\"VD\":\"Waadt\",\"VS\":\"Wallis\",\"ZG\":\"Zug\",\"ZH\":\"Z\\u00fcrich\"},\"ES\":{\"AA\":\"\\u00c1lava\",\"AB\":\"Albacete\",\"AN\":\"Alicante\",\"AM\":\"Almer\\u00eda\",\"AS\":\"Asturias\",\"AV\":\"\\u00c1vila\",\"BD\":\"Badajoz\",\"BL\":\"Baleares\",\"BR\":\"Barcelona\",\"BU\":\"Burgos\",\"CC\":\"C\\u00e1ceres\",\"CD\":\"C\\u00e1diz\",\"CN\":\"Cantabria\",\"CS\":\"Castell\\u00f3n\",\"CE\":\"Ceuta\",\"CR\":\"Ciudad Real\",\"CO\":\"C\\u00f3rdoba\",\"CU\":\"Cuenca\",\"GN\":\"Gerona\",\"GD\":\"Granada\",\"GJ\":\"Guadalajara\",\"GP\":\"Guip\\u00fazcoa\",\"HL\":\"Huelva\",\"HS\":\"Huesca\",\"JA\":\"Ja\\u00e9n\",\"AC\":\"La Coru\\u00f1a\",\"LR\":\"La Rioja\",\"LP\":\"Las Palmas\",\"LN\":\"Le\\u00f3n\",\"LD\":\"L\\u00e9rida\",\"LG\":\"Lugo\",\"MD\":\"Madrid\",\"MG\":\"M\\u00e1laga\",\"ME\":\"Melilla\",\"MR\":\"Murcia\",\"NV\":\"Navarra\",\"OR\":\"Orense\",\"PL\":\"Palencia\",\"PV\":\"Pontevedra\",\"SL\":\"Salamanca\",\"SC\":\"Santa Cruz de Tenerife\",\"SG\":\"Segovia\",\"SV\":\"Sevilla\",\"SR\":\"Soria\",\"TG\":\"Tarragona\",\"TE\":\"Teruel\",\"TD\":\"Toledo\",\"VN\":\"Valencia\",\"VD\":\"Valladolid\",\"VZ\":\"Vizcaya\",\"ZM\":\"Zamora\",\"ZG\":\"Zaragoza\"},\"CZ\":{\"JC\":\"Jihocesk\\u00fd kraj [South Bohemian Region]\",\"JM\":\"Jihomoravsk\\u00fd kraj [South Moravian Region]\",\"KA\":\"Karlovarsk\\u00fd kraj [Karlovy Vary Region]\",\"KR\":\"Kr\\u00e1lov\\u00e9hradeck\\u00fd kraj [Hradec Kr\\u00e1lov\\u00e9 Region]\",\"LI\":\"Libereck\\u00fd kraj [Liberec Region]\",\"MO\":\"Moravskoslezsk\\u00fd kraj [Moravian-Silesian Region]\",\"OL\":\"Olomouck\\u00fd kraj [Olomouc Region]\",\"PA\":\"Pardubick\\u00fd kraj [Pardubice Region]\",\"PL\":\"Plzensk\\u00fd kraj [Plzen Region]\",\"PR\":\"Praha (Hlavni mesto Praha) [Prague]\",\"ST\":\"Stredocesk\\u00fd kraj [Central Bohemian Region]\",\"US\":\"\\u00dasteck\\u00fd kraj [\\u00dast\\u00ed Region]\",\"VY\":\"Vysocina\",\"ZL\":\"Zl\\u00ednsk\\u00fd kraj [Zl\\u00edn Region]\"},\"DE\":{\"NDS\":\"Niedersachsen\",\"BAW\":\"Baden-W\\u00fcrttemberg\",\"BAY\":\"Bayern\",\"BER\":\"Berlin\",\"BRG\":\"Brandenburg\",\"BRE\":\"Bremen\",\"HAM\":\"Hamburg\",\"HES\":\"Hessen\",\"MEC\":\"Mecklenburg-Vorpommern\",\"NRW\":\"Nordrhein-Westfalen\",\"RHE\":\"Rheinland-Pfalz\",\"SAR\":\"Saarland\",\"SAS\":\"Sachsen\",\"SAC\":\"Sachsen-Anhalt\",\"SCN\":\"Schleswig-Holstein\",\"THE\":\"Th\\u00fcringen\"},\"FI\":{\"\\u00c5AL\":\"\\u00c5land\",\"EKA\":\"Etel\\u00e4-Karjala [South Karelia]\",\"EPO\":\"Etel\\u00e4-Pohjanmaa [South Ostrobothnia]\",\"ESA\":\"Etel\\u00e4-Savo\",\"KAI\":\"Kainuu\",\"KHA\":\"Kanta-H\\u00e4me\",\"KPO\":\"Keski-Pohjanmaa [Central Ostrobothnia]\",\"KSO\":\"Keski-Suomi [Central Finland]\",\"KYM\":\"Kymenlaakso (Kymmenedalen)\",\"LAP\":\"Lappi [Lapland]\",\"PHA\":\"P\\u00e4ij\\u00e4t-H\\u00e4me\",\"PIR\":\"Pirkanmaa\",\"POH\":\"Pohjanmaa [Ostrobothnia]\",\"PKA\":\"Pohjois-Karjala [North Karelia]\",\"PPO\":\"Pohjois-Pohjanmaa [North Ostrobothnia]\",\"PSA\":\"Pohjois-Savo\",\"SAT\":\"Satakunta\",\"UUS\":\"Uusimaa (Nyland)\",\"VSS\":\"Varsinais-Suomi (Egentliga Finland)\"},\"FR\":{\"ALS\":\"Alsace\",\"AQU\":\"Aquitaine\",\"AUV\":\"Auvergne\",\"BAS\":\"Basse-Normandie [Lower Normandy]\",\"BOU\":\"Bourgogne [Burgundy]\",\"BRE\":\"Bretagne [Brittany]\",\"CEN\":\"Centre\",\"CHA\":\"Champagne - Ardenne\",\"COR\":\"Corse\",\"FRA\":\"Franche-Comt\\u00e9\",\"HAU\":\"Haute-Normandie [Upper Normandy]\",\"ILE\":\"\\u00cele-de-France\",\"LAN\":\"Languedoc - Roussillon\",\"LIM\":\"Limousin\",\"LOR\":\"Lorraine\",\"MID\":\"Midi - Pyr\\u00e9n\\u00e9es\",\"NOR\":\"Nord - Pas-de-Calais\",\"PAY\":\"Pays de la Loire\",\"PIC\":\"Picardie\",\"POI\":\"Poitou - Charentes\",\"PRO\":\"Provence - Alpes - C\\u00f4te d'Azur\",\"RHO\":\"Rh\\u00f4ne - Alpes\"},\"GR\":{\"AOR\":\"\\u00c1gio \\u00d3ros [Mount Athos]\",\"AMT\":\"Anatolik\\u00ed Makedon\\u00eda & Thrak\\u00ed [East Macedonia & Thrace]\",\"ATT\":\"Attik\\u00ed [Attica]\",\"DEL\":\"Dytik\\u00ed Ell\\u00e1da [Western Greece]\",\"DMD\":\"Dytik\\u00ed Makedon\\u00eda [West Macedonia]\",\"ION\":\"I\\u00f3nia Nisi\\u00e1 [Ionian Islands]\",\"IPI\":\"\\u00cdpiros [Epirus]\",\"KMD\":\"Kedrik\\u00ed Makedon\\u00eda [Central Macedonia]\",\"KRI\":\"Kr\\u00edti [Crete]\",\"NAI\":\"N\\u00f3tio Aiga\\u00edo [South Aegean]\",\"PEL\":\"Pelop\\u00f3nnisos [Peloponnese]\",\"SEL\":\"Stere\\u00e1 Ell\\u00e1da [Central Greece]\",\"THE\":\"Thessal\\u00eda [Thessaly]\",\"VAI\":\"V\\u00f3rio Aiga\\u00edo [Northern Aegean]\"},\"HK\":{\"HONG KONG\":\"Hong Kong Island\",\"KOWLOONG\":\"Kowloong\",\"NEW TERRITORIES\":\"New Territories\"},\"HU\":{\"BAC\":\"B\\u00e1cs-Kiskun\",\"BAR\":\"Baranya\",\"BEK\":\"B\\u00e9k\\u00e9s\",\"BOR\":\"Borsod-Aba\\u00faj-Zempl\\u00e9n\",\"BUD\":\"Budapest\",\"CSO\":\"Csongr\\u00e1d\",\"FEJ\":\"Fej\\u00e9r\",\"GYO\":\"Gyor-Moson-Sopron\",\"HAJ\":\"Hajd\\u00fa-Bihar\",\"HEV\":\"Heves\",\"JAS\":\"J\\u00e1sz-Nagykun-Szolnok\",\"KOM\":\"Kom\\u00e1rom-Esztergom\",\"NOG\":\"N\\u00f3gr\\u00e1d\",\"PES\":\"Pest\",\"SOM\":\"Somogy\",\"SZA\":\"Szabolcs-Szatm\\u00e1r-Bereg\",\"TOL\":\"Tolna\",\"VAS\":\"Vas\",\"VES\":\"Veszpr\\u00e9m\",\"ZAL\":\"Zala\"},\"IE\":{\"G\":\"Galway (incl. Galway City)\",\"LM\":\"Leitrim\",\"MO\":\"Mayo\",\"RN\":\"Roscommon\",\"SO\":\"Sligo\",\"CW\":\"Carlow\",\"D\":\"Dublin\",\"DR\":\"D\\u00fan Laoghaire-Rathdown\",\"FG\":\"Fingal\",\"KE\":\"Kildare\",\"KK\":\"Kilkenny\",\"LS\":\"Laois\",\"LD\":\"Longford\",\"LH\":\"Louth\",\"MH\":\"Meath\",\"OY\":\"Offaly\",\"SD\":\"South Dublin\",\"WH\":\"Westmeath\",\"WX\":\"Wexford\",\"WW\":\"Wicklow\",\"CE\":\"Clare\",\"C\":\"Cork (incl. Cork City)\",\"KY\":\"Kerry\",\"LK\":\"Limerick (incl. Limerick City)\",\"NT\":\"North Tipperary\",\"ST\":\"South Tipperary\",\"WD\":\"Waterford (incl. Waterford City)\",\"CN\":\"Cavan\",\"DL\":\"Donegal\",\"MIN\":\"Monaghan\"},\"NL\":{\"D\":\"Drenthe\",\"Fl\":\"Flevoland\",\"Fr\":\"Friesland\",\"Gld\":\"Gelderland\",\"Gr\":\"Groningen\",\"L\":\"Limburg\",\"N-B\":\"Noord-Brabant\",\"N-H\":\"Noord-Holland\",\"O\":\"Overijssel\",\"U\":\"Utrecht\",\"Z\":\"Zeeland\",\"Z-H\":\"Zuid-Holland\"},\"NZ\":{\"AUK\":\"Auckland\",\"BOP\":\"Bay of Plenty\",\"CAN\":\"Canterbury\",\"GIS\":\"Gisborne\",\"HKB\":\"Hawke's Bay\",\"MWT\":\"Manawatu-Wanganui\",\"MBH\":\"Marlborough\",\"NTL\":\"Northland\",\"OTA\":\"Otago\",\"STL\":\"Southland\",\"TKI\":\"Taranaki\",\"TAS\":\"Tasman\",\"WKO\":\"Waikato\",\"WGN\":\"Wellington\",\"WTC\":\"West Coast\"},\"RO\":{\"ALB\":\"Alba\",\"ARA\":\"Arad\",\"ARG\":\"Arge\\u0219\",\"BAC\":\"Bac\\u0103u\",\"BIH\":\"Bihor\",\"BIS\":\"Bistri\\u021ba-N\\u0103s\\u0103ud\",\"BOT\":\"Boto\\u0219ani\",\"BRA\":\"Br\\u0103ila\",\"BRS\":\"Bra\\u0219ov\",\"BUC\":\"Bucure\\u0219ti\",\"BUZ\":\"Buz\\u0103u\",\"CAL\":\"C\\u0103l\\u0103ra\\u0219i\",\"CAR\":\"Cara\\u0219-Severin\",\"CLU\":\"Cluj\",\"CON\":\"Constan\\u021ba\",\"COV\":\"Covasna\",\"DAM\":\"D\\u00e2mbovi\\u021ba\",\"DOL\":\"Dolj\",\"GAL\":\"Gala\\u021bi\",\"GIU\":\"Giurgiu\",\"GOR\":\"Gorj\",\"HAR\":\"Harghita\",\"HUN\":\"Hunedoara\",\"IAL\":\"Ialomi\\u021ba\",\"IAS\":\"Ia\\u0219i\",\"ILF\":\"Ilfov\",\"MAR\":\"Maramure\\u0219\",\"MEH\":\"Mehedin\\u021bi\",\"MUR\":\"Mure\\u0219\",\"NEA\":\"Neam\\u021b\",\"OLT\":\"Olt\",\"PRA\":\"Prahova\",\"SAL\":\"S\\u0103laj\",\"SAT\":\"Satu Mare\",\"SIB\":\"Sibiu\",\"SUC\":\"Suceava\",\"TEL\":\"Teleorman\",\"TIM\":\"Timi\\u0219\",\"TUL\":\"Tulcea\",\"VAL\":\"V\\u00e2lcea\",\"VAS\":\"Vaslui\",\"VRA\":\"Vrancea\"},\"SR\":{\"BOR\":\"Bor\",\"BRA\":\"Branicevo\",\"GBE\":\"Grad Beograd\",\"JAB\":\"Jablanica\",\"KOL\":\"Kolubara\",\"MAC\":\"Macva\",\"MOR\":\"Moravica\",\"NIS\":\"Ni\\u0161ava\",\"PCI\":\"Pcinja\",\"PIR\":\"Pirot\",\"POD\":\"Podunavlje [Danube]\",\"POM\":\"Pomoravlje\",\"RSN\":\"Rasina\",\"RSK\":\"Ra\\u0161ka\",\"SUM\":\"\\u0160umadija\",\"TOP\":\"Toplica\",\"ZAJ\":\"Zajecar\",\"ZLA\":\"Zlatibor\",\"JBK\":\"Ju\\u017ena Backa\",\"JBN\":\"Ju\\u017eni Banat\",\"SBK\":\"Severna Backa\",\"SBN\":\"Severni Banat\",\"SRB\":\"Srednji Banat\",\"SRE\":\"Srem\",\"ZBK\":\"Zapadna Backa [West Backa]\"},\"SE\":{\"BLE\":\"Blekinge l\\u00e4n\",\"DAL\":\"Dalarnas l\\u00e4n\",\"GAV\":\"G\\u00e4vleborgs l\\u00e4n\",\"GOT\":\"Gotlands l\\u00e4n\",\"HAL\":\"Hallands l\\u00e4n\",\"JAM\":\"J\\u00e4mtlands l\\u00e4n\",\"JON\":\"J\\u00f6nk\\u00f6pings l\\u00e4n\",\"KAL\":\"Kalmar l\\u00e4n\",\"KRO\":\"Kronobergs l\\u00e4n\",\"NOR\":\"Norrbottens l\\u00e4n\",\"ORE\":\"\\u00d6rebro l\\u00e4n\",\"OST\":\"\\u00d6sterg\\u00f6tlands l\\u00e4n\",\"SKA\":\"Sk\\u00e5ne l\\u00e4n\",\"SOD\":\"S\\u00f6dermanlands l\\u00e4n\",\"STO\":\"Stockholms l\\u00e4n\",\"UPP\":\"Uppsala l\\u00e4n\",\"VAR\":\"V\\u00e4rmlands l\\u00e4n\",\"VAS\":\"V\\u00e4sterbottens l\\u00e4n\",\"VNL\":\"V\\u00e4sternorrlands l\\u00e4n\",\"VML\":\"V\\u00e4stmanlands l\\u00e4n\",\"VGO\":\"V\\u00e4stra G\\u00f6talands l\\u00e4n\"},\"US\":{\"AK\":\"Alaska\",\"AL\":\"Alabama\",\"AR\":\"Arkansas\",\"AZ\":\"Arizona\",\"CA\":\"California\",\"CO\":\"Colorado\",\"CT\":\"Connecticut\",\"DC\":\"District Of Columbia\",\"DE\":\"Delaware\",\"FL\":\"Florida\",\"GA\":\"Georgia\",\"HI\":\"Hawaii\",\"IA\":\"Iowa\",\"ID\":\"Idaho\",\"IL\":\"Illinois\",\"IN\":\"Indiana\",\"KS\":\"Kansas\",\"KY\":\"Kentucky\",\"LA\":\"Louisiana\",\"MA\":\"Massachusetts\",\"MD\":\"Maryland\",\"ME\":\"Maine\",\"MI\":\"Michigan\",\"MN\":\"Minnesota\",\"MO\":\"Missouri\",\"MS\":\"Mississippi\",\"MT\":\"Montana\",\"NC\":\"North Carolina\",\"ND\":\"North Dakota\",\"NE\":\"Nebraska\",\"NH\":\"New Hampshire\",\"NJ\":\"New Jersey\",\"NM\":\"New Mexico\",\"NV\":\"Nevada\",\"NY\":\"New York\",\"OH\":\"Ohio\",\"OK\":\"Oklahoma\",\"OR\":\"Oregon\",\"PA\":\"Pennsylvania\",\"RI\":\"Rhode Island\",\"SC\":\"South Carolina\",\"SD\":\"South Dakota\",\"TN\":\"Tennessee\",\"TX\":\"Texas\",\"UT\":\"Utah\",\"VA\":\"Virginia\",\"VT\":\"Vermont\",\"WA\":\"Washington\",\"WI\":\"Wisconsin\",\"WV\":\"West Virginia\",\"WY\":\"Wyoming\"},\"USAF\":{\"AA\":\"Americas\",\"AE\":\"Europe\",\"AP\":\"Pacific\"}}","currency_symbol":"\u00a3","get_variation_nonce":"757cd6750f","load_fancybox":"1","option_guest_checkout":"yes","select_state_text":"Select a state\u2026","state_text":"state","update_order_review_nonce":"f1ce5336ce","billing_state":null,"shipping_state":null,"is_checkout":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='/static/wp-content/plugins/jigoshop/assets/js/script1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.easing.1.31bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.prettyPhoto1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.tools.min1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/scripts1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.quovolver1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/twitter1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.isotope.min1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.hoverdir1bba.js'></script>
+<script type='text/javascript' src='/static/wp-content/themes/eShop/js/jquery.flexslider1bba.js'></script>
+<script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=true&amp;ver=3.5'></script>
+<script type='text/javascript' src='/static/wp-content/plugins/LayerSlider/js/layerslider.kreaturamedia.jquery-min001e.js?ver=2.0.0'></script>
+<script type='text/javascript' src='/static/wp-content/plugins/LayerSlider/js/jquery-easing-1.3001e.js?ver=2.0.0'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Sample Page' href='sample-page-2/index.html' />
+<link rel='next' title='Sortable 4 Columns' href='sortable-4-columns/index.html' />
+<meta name="generator" content="WordPress 3.5" />
+<link rel='canonical' href='index.html' />
+    <script type="text/javascript">
+    
+    jQuery(document).ready(function(){
+    	
+    	    	jQuery("#layerslider_1").layerSlider({    		
+   			autoStart			: false,
+   			pauseOnHover		: true,
+			firstLayer			: 1,
+			animateFirstLayer	: false,
+			twoWaySlideshow		: true,
+    		keybNav				: true,
+    		touchNav			: true,
+    		imgPreload			: true,
+    		navPrevNext			: true,
+    		navStartStop		: false,
+    		navButtons			: false,
+    		skin				: 'minimal',
+    		skinsPath			: 'http://alexgurghis.com/themes/supernova-jigoshop/wp-content/plugins/LayerSlider/skins/',
+    		    		globalBGColor		: 'white',
+    		    		    		yourLogo			: false,
+    		yourLogoStyle		: 'position: absolute; left: 10px; top: 10px; z-index: 99;',
+    		yourLogoLink		: false,
+    		yourLogoTarget		: '_self',
+    		
+    		loops				: 0,
+    		forceLoopNum		: true,
+    		autoPlayVideos		: true,
+    		
+    		    		
+    		autoPauseSlideshow	: 'auto',
+    		youtubePreview		: 'maxresdefault.jpg',
+    		
+    		cbInit				: function() { },
+    		cbStart				: function() { },
+    		cbStop				: function() { },
+    		cbPause				: function() { },
+    		cbAnimStart			: function() { },
+    		cbAnimStop			: function() { },
+    		cbPrev				: function() { },
+    		cbNext				: function() { }    	});
+    	    });
+    
+    </script>
+    
+		<script type="text/javascript">
+			/* <![CDATA[ */
+			var ajaxurl = 'wp-admin/admin-ajax.html';
+
+						/* ]]> */
+		</script>
+
+	
+<!-- Jigoshop Version: 1.4.9 -->
+
+
+<!--[if lte IE 6]>
+	<style>#top, #bottom, #left, #right { display: none; }</style>
+<![endif]-->
+
+<!--[if IE]> 
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+
+<!--[if lte IE 7]> 
+	<script src="js/IE8.js" type="text/javascript"></script>
+<![endif]--> 
+
+<!--[if lt IE 7]>  
+	<link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/>
+<![endif]--> 
+
+
+<!-- Main Color -->
+
+<style type="text/css">
+
+	a { color: #19d7e3; }
+
+	.info-break a {  color: #19d7e3; }
+
+	#footer a, #socket a { color: #19d7e3; }
+
+	a h1, a h2, a h3, a h4, a h5, a h6 { color: #19d7e3; }
+
+	#main a h1, #main ar h2, #main a h3, #main a h4, #main a h5, #main a h6 { color: #19d7e3; }
+
+	.left-round { background-color: #19d7e3; }
+
+	.slogan { border-left: solid 5px #19d7e3; }
+
+	.info-break a:hover { color: #19d7e3; }
+
+	#search_submit_block {
+	background: #02A4A7;
+}
+
+	.post-content h5 { border-left: solid 5px #19d7e3; }
+
+	.comment-reply-link { color: #19d7e3; }
+
+	.comment-reply-link:hover { color: #19d7e3; }
+
+	.input-textarea:focus {	border: 1px solid #19d7e3; }
+
+	.contactform textarea:focus { border: 1px solid #19d7e3; }
+
+	.widget-title h5{ border-left: solid 5px #19d7e3; }
+
+	.sidebar .widget a:hover { color: #19d7e3; }
+
+	.sidebar .news-link:hover>.news-headline { color: #19d7e3; }
+
+	.news-link:hover>.news-headline { color: #19d7e3; }
+
+	.flickr_images:hover { background-color: #19d7e3; }
+
+	.project:hover > h1, .project:hover > h2, .project:hover > h3, .project:hover > h4, .project:hover > h5, .project:hover > h6, .project:hover > p { background-color: #19d7e3; }
+
+	#filters a:hover { color: #19d7e3; }
+
+	#filters a.active_sort { color: #19d7e3; } 
+
+	h4.trigger.active, h4.trigger:hover, h4.trigger.active:hover {	color: #19d7e3; }
+
+	.sep-boxed-pricing ul li.title-row { background: #19d7e3; }
+
+	ul.tabs li a:hover, ul.tabs li.active a { color: #19d7e3; }
+
+	input#bbp_topic_title:focus, input#bbp_topic_tags:focus { border: 1px solid #19d7e3; }
+
+	.button.read-more, .input-submit {	background-color: #19d7e3; }
+
+	.post-category { background: #19d7e3; }
+
+	.tagcloud a { background: #19d7e3; }
+
+	.arrow-right { border-left: 10px solid #19d7e3; }
+
+	.entry-title span {
+	color: #02A4A7;
+	border-left: solid 5px #19d7e3;
+}
+
+	.main_menu .menu li.current_page_item a, .main_menu .menu li a:hover {
+	color: #00A4A6;
+}
+
+	#content .main_menu .menu li a.menu-button-change {	background: #19d7e3; }
+
+	.main_menu .menu ul { background-color: #19d7e3; }
+
+}
+
+</style>
+
+
+<!-- Second Color -->
+
+<style type="text/css">
+
+	#footer a:hover, #socket a:hover {	color: #19afb9;	}
+
+	a:hover { color: #19afb9; }
+
+	.info-break a:hover {  color: #19afb9; }
+
+	a h1:hover, a h2:hover, a h3:hover, a h4:hover, a h5:hover, a h6:hover { color: #19afb9; }
+
+	#main a:hover h1, #main a:hover h2, #main a:hover h3, #main a:hover h4, #main a:hover h5, #main a:hover h6 { color: #19afb9; }
+
+	.sep-boxed-pricing ul li.title-row { border-color: #19afb9; }
+
+	.button.read-more, .input-submit { border: 1px solid #19afb9; }
+
+	.breaking-news p a:hover { color: #19afb9; }
+
+	#searchsubmit:hover { background: #19afb9 url(/static/home&storefront/images/icon-search.png); }
+
+	.main_menu .menu ul li { border-bottom: 1px solid #19afb9; }
+	
+	/* New Changes */
+	#c{
+	background-color:#02A4A7;
+	padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+	color:#FFFFFF;
+	-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+border:1px #BB003C solid;
+font-family:'Droid Sans',sans-serif;
+font-size:11px;
+	} 
+	
+	#cform input[type="button"]{
+ min-width: 90px;
+text-align: center;
+padding: 0 8px;
+color:#fff;
+margin: 0 1.5em 1.2em 0;
+height: 32px; 
+font-size: 13px;
+line-height: 29px;
+vertical-align: bottom;
+font-weight: bold;
+border: 1px solid #3079ED;
+background-color: #4D90FE;
+
+-webkit-border-radius: 2px;
+moz-border-radius: 2px;
+border-radius: 2px;
+
+text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+
+background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#4787ED));
+background-image: -webkit-linear-gradient(top,#4D90FE,#4787ED);
+background-image: -moz-linear-gradient(top,#4D90FE,#4787ED);
+background-image: -ms-linear-gradient(top,#4D90FE,#4787ED);
+background-image: -o-linear-gradient(top,#4D90FE,#4787ED);
+background-image: linear-gradient(top,#4D90FE,#4787ED);
+}
+
+#cform input[type="button"]:hover{
+border: 1px solid #2F5BB7;
+color: white;
+text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+background-color: #357AE8;
+background-image: -webkit-gradient(linear,left top,left bottom,from(#4D90FE),to(#357AE8));
+background-image: -webkit-linear-gradient(top,#4D90FE,#357AE8);
+background-image: -moz-linear-gradient(top,#4D90FE,#357AE8);
+background-image: -ms-linear-gradient(top,#4D90FE,#357AE8);
+background-image: -o-linear-gradient(top,#4D90FE,#357AE8);
+background-image: linear-gradient(top,#4D90FE,#357AE8);
+}
+	
+	
+	/*  end */
+
+</style>
+
+
+<!-- google webfont font replacement -->
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+
+			
+	
+		<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+		
+		<style type="text/css">
+	
+			h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, .entry-title span, .entry-title strong { font-family: 'Armata',"Helvetica Neue",Arial,Helvetica,Geneva,sans-serif; font-weight: lighter; }
+				
+		</style>																																																
+	
+
+
+<style type="text/css">
+			body { font-size: 14px; }
+		
+			.page-title { font-size: 40px; }
+		
+			h1 { font-size: 40px; }
+		
+			h2 { font-size: 30px; }
+		
+			h3 { font-size: 24px; }
+		
+			h4 { font-size: 20px; }
+		
+			h5 { font-size: 16px; }
+		
+			h6 { font-size: 14px; }
+		</style>
+
+<style type="text/css">
+.style1 {color: #00A4A5}
+.button1 {background-color: #19d7e3; }
+.button1 {border: 1px solid #19afb9; }
+.input-submit1 {background-color: #19d7e3; }
+.input-submit1 {border: 1px solid #19afb9; }
+
+</style>
+
+<!--new changes   -->
+ 
+<style type="text/css">
+
+label { margin-right: 12px; margin-bottom: 9px; font-family: Georgia, serif; color: #646464; font-size: 1.2em; }
+.three_fourth {	overflow: hidden; margin-left: 4%; width:74%; float:left; 	position:relative; margin-bottom: 30px;  background-color:#FFFFFF; }
+
+</style>
+
+<!-- End -->
+
+<!-- New Changes -->
+
+<link type="text/css" href="static/css/profile/contact.css" rel="stylesheet"/>
+
+
+
+<!--  End -->
+</head>
+
+<body id="top" class="home page page-id-15 page-template page-template-template-left-sidebar-php">
+
+	<div id="content">
+
+		<header id="header">
+
+			<div id="header-border"></div>
+
+			<div id="header-content">
+
+				<div class="container">
+
+					<div class="three-fourth">
+					  <form name="form1" method="post" action="/indexsearch"  onsubmit="return Validate(this);">
+				      
+				       <select name="marketList" id="marketList" onchange="return rendertomarket();">
+				        	 <option value="" selected class=placeholder>Select your market area</option> 
+					       {% for market in markets %}
+					         <option value="{{market.MarketId}}">{{market.MarketName}}</option>
+					       {% endfor %}
+				       </select>
+				        
+				       OR 
+					     <input name="storeSearch" type="text" id="storeSearch" placeholder="Search Store" size="20" >
+				        OR 
+				        <input name="productSearch" type="text" id="productSearch" placeholder="Search Product" size="20" >
+				        <input name="button" type="submit" class="button1" id="button" value="Search">
+				          
+			              <span class="top-info" >
+			      
+			            <!--   <a class="button-agurghis rose" href="/consumerviewprofile"> 
+		                  <span class="button-inner">MY PROFILE</span></a>
+		                  <span class="top-info"><a class="button-agurghis rose" href="/cpwdconsumer"><span class="button-inner">CHANGE PASSWORD</span></a><a class="button-agurghis rose" href="/logout" ><span class="button-inner">LOGOUT</span></a>-->
+					  
+					   
+                          
+                       <!--    <span class="wel" style="color:#FFFFFF; float:left; margin-right:38px;">Welcome Guest!</span></a>--> 
+                          
+                         <a  href="/consumerviewprofile" >  
+  		                  <span class="button-inner" id="c"  >MY PROFILE</span></a>
+                         
+                       <a  href="#" id="changebtn"  >
+  		                  <span class="button-inner" id="c"  >CHANGE PASSWORD</span></a>
+  		                  
+                      <a href="/logout"   ><span class="button-inner" id="c">LOG OUT</span></a>
+                       	  
+					   <a class="button-agurghis rose" href=""><span class="button-inner">DOWNLOAD THE APP</span></a>
+					  
+					  
+					  </span>
+					  </form>
+				    </div>
+			    </div>
+			</div>
+		</header>
+
+	<script type="text/javascript">
+		
+		function rendertomarket(){
+			var market=document.getElementById('marketList').value;
+			if(market!=""){
+				market="/" + market;
+				$('#marketList option[value=""]:first').attr('selected','selected');
+				window.open(market);
+			}
+			/* else{
+				location.reload();
+			} */
+		}
+		
+	
+		function Validate(ref){
+			var storesearch=ref.storeSearch.value;
+			var productsearch=ref.productSearch.value;
+			
+			if (storesearch!="" || productsearch!=""){
+				return true;
+			}
+			else{
+				alert("search field is empty");
+				return false;
+			}
+		}
+	
+		
+		$( "#storeSearch").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/storesearch",request, response);
+			}
+		});
+		
+		$( "#productSearch").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/productsearch",request, response);
+			}
+		});
+		
+		function validatepwd(){
+			
+			//var oldpassword=document.getElementById('oldpwd')
+			var newpassword=document.getElementById('newpwd')
+			var confirmpassword=document.getElementById('conpwd')
+			
+		
+			 if((/^\s/.test(newpassword.value[0])) || newpassword.value.length < 3 || newpassword.value.length > 32){
+				 alert("New Password should be between 3 to 32 Character.");
+				 return false;
+			 }
+			 
+			 
+			 if((/^\s/.test(confirmpassword.value[0])) || confirmpassword.value.length < 3 || confirmpassword.value.length > 32){
+				 alert("Confirm Password should be between 3 to 32 Character.");
+				 return false;
+			 }
+			 
+			 if(newpassword.value != confirmpassword.value){
+				 alert("Password & Confirm password values does not matched.");
+				 return false;
+			 }
+			 return true;
+		}
+		
+		$( "#changebtn" ).click(function() {
+			$("#changepassword").attr( 'style','visibility', 'true' );
+				$( "#changepassword" ).dialog({
+					modal: true,
+					height:280,
+					width:390,
+					
+					 buttons: {
+						 	Change: function(){
+						 		if(validatepwd()){
+						 
+						 			var oldpassword=$("#changepassword").find('input[name="oldpwd"]').val();
+							 		var newpassword=$("#changepassword").find('input[name="newpwd"]').val();
+							 		var confirmpassword=$("#changepassword").find('input[name="conpwd"]').val();
+							 		if(oldpassword!="" && newpassword!="" && confirmpassword!=""){
+							 			$('#changepasswordform').submit();
+							 		
+							 			return true;
+							 		}
+							 		
+							 		alert("Please fill the form");
+							 		return false;
+						 		}
+						        },
+			   		        Cancel: function() {
+					          $( this ).dialog( "close" );
+					        }
+				        
+					      }
+				
+				});
+			});
+			
+			
+		
+		
+		
+	</script>
+	<script type="text/javascript">
+		function coming_soon() {
+			alert("Coming Soon")
+		}
+		function cancel() {
+			location.href="/consumerhome"
+		}
+	</script>
+		<section id="body-content">
+
+			<div class="container">
+
+				<div class="one_fourth first">
+
+					<div class="logo">
+						<a href="#"><img src="/static/wp-content/themes/eShop/images/logo.png" alt="Logo" />													</a>					</div>
+				</div>
+
+				<div class="menu-container">
+				<div align="right"><a href="#"><span class="button-inner">Welcome {{consumerinfo.EmailAddress}}</span></a></div> 
+					<div class="main_menu">
+						<div>
+							<ul id="menu-main-menu" class="menu">
+                            
+                            <li id="menu-item-499" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15"><a href="javascript:coming_soon()">Home</a></li>
+                            <li id="menu-item-499" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15"><a href="javascript:coming_soon()">Links</a></li>
+                            <li id="menu-item-499" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15"><a href="javascript:coming_soon()">Links</a></li>
+                            <li id="menu-item-499" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15"><a href="javascript:coming_soon()">Links</a></li>
+                            <li id="menu-item-499" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15"><a href="javascript:coming_soon()">Links</a></li>
+                            <li id="menu-item-499" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-15"><a href="javascript:coming_soon()">Links</a></li>
+</ul>						</div>
+					</div>
+				</div>
+			</div>
+
+<script type="text/javascript">
+	
+	function validateEditConsumer(ref){
+		
+		var filter=/^\d+$/;
+			
+			if((/^\s/.test(ref.fullname.value[0])) || ref.fullname.value.length < 3 || ref.fullname.value.length > 64){
+				alert("Name should be between 3 to 64 Characters without spaces at beginning");
+				return false;
+			}
+			
+			if(ref.phonenumber.value.length <8 || ref.phonenumber.value.length > 16 || !filter.test(ref.phonenumber.value)){
+				alert("Please provide a valid phone number between 8 to 16");
+				return false;
+			}
+			
+			 if((/^\s/.test(ref.streetaddress.value[0])) || ref.streetaddress.value.length < 3 || ref.streetaddress.value.length > 250){
+				alert("Please provide a complete Street address. It should not less than 3 and greater than 250 Characters without spaces at beginning");
+				return false;
+			} 
+			
+			if((/^\s/.test(ref.city.value[0])) || (ref.city.value.length < 3) || (ref.city.value.length > 64)){
+				alert("City should not be less than 32 and more than 64 Characters without spaces at beginning");
+				return false;
+			}
+			
+			if((/^\s/.test(ref.state.value[0])) || (ref.state.value.length < 3) || (ref.state.value.length > 64)){
+				alert("Sate should not be less than 32 and more than 64 Characters without spaces at beginning");
+				return false;
+			}
+			
+			if((/^\s/.test(ref.country.value[0])) || (ref.country.value.length < 3) || (ref.country.value.length > 64)){
+				alert("Country should not be less than 32 and more than 64 Characters without spaces at beginning");
+				return false;
+			}
+			
+			if(ref.postalcode.value.length > 0)
+			{
+				if(ref.postalcode.value.length > 10 || !filter.test(ref.postalcode.value)){
+					alert("Postal Code should not be more than 10 digit");
+					return false;
+				}  
+			}
+			return true;
+	}
+	</script>
+
+	  <div class="container">	
+
+		<div class="three_fourth alignright">
+			 <div class="entry-title">
+				<h5><span class="style1">Profile</span></h5>
+			</div>
+		
+		<div id="contactform">
+			<form method="post" id="cform" name="" action="/consumerupdateprofile"  onsubmit="return validateEditConsumer(this);">
+	 
+        <div class="row">
+        <label for="fullname">Full Name</label>
+        <input  type="text" id="fullname" name="fullname"  value="{{consumerinfo.Name}}"  required="required"/>
+         
+        </div>
+        <div class="row">
+        <label for="email">Email Address</label>
+        <input id="emailAddress"  type="text" name="emailAddress" disabled="disabled" value="{{consumerinfo.EmailAddress}}">  
+     
+        </div>
+        <div class="row">
+        <label for="phone">Phone</label>
+        <input type="text" id="phonenumber" name="phonenumber" value="{{consumerinfo.MobileNumber}}" />
+        </div>
+        
+        <div class="row">
+        <label for="message">Address</label>
+        <textarea class="textarea" id="streetaddress" name="streetaddress" >{{consumerinfo.StreetAddress|default_if_none:""}}</textarea>
+        </div>
+        
+        <div class="row">
+        <label for="phone">City/Town</label>
+        <input type="text" id="city" name="city" value="{{consumerinfo.City|default_if_none:''}}" />
+        </div>
+        
+        <div class="row">
+        <label for="phone">State</label>
+        <input type="text" id="state" name="state" value="{{consumerinfo.State|default_if_none:''}}" />
+        </div>
+        
+        
+       
+        <div class="row">
+        <label for="country">Country</label>
+       <!--   <select class="select" name="country" id="country">
+        
+        <option value="India">India</option>
+        <option value="China">China</option>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        </select>-->
+         <input type="text" id="country" name="country" value="{{consumerinfo.Country|default_if_none:''}}" />
+        </div>
+        
+         
+        <div class="row">
+        <label for="phone">Postal Code</label>
+        <input type="text" id="postalcode" name="postalcode" value="{{consumerinfo.PostalCode|default_if_none:''}}" />
+        </div>
+        <div class="row" style="float:left;">
+        <input type="submit" name="submit" value="Save" />
+        </div>
+        
+        <div class="row" style="float:left;">
+        <input type="button" value="Cancel" onclick="cancel()">
+        </div>
+        
+    </form>
+    </div>
+    
+<div class="clear"></div>
+<div class="clear"></div>
+				</div>
+        
+
+<div class="one_fourth first sidebar_spot">
+  <div class="full"><div class="title-full">
+  <h4>TWITTER FEED</h4>
+</div><ul class="product_list_widget"><li></li></ul>
+</div><div class="full"><div class="title-full">
+  <h4>Why eShop</h4>
+</div><div class="widget-quote">
+<blockquote><p>Faster Delivery. Committed Delivery within 4 hours in your market. </p></blockquote>
+<blockquote><p>Provides a compatible way of virtual shopping.</p></blockquote>
+<blockquote><p>Delivery as fast as you never experienced before</p></blockquote>
+<blockquote><p>Easy to locate stores, products and market.</p></blockquote>
+<blockquote><p>Easy to search your product from various stores.</p></blockquote>
+
+<!-- 
+<blockquote><p>Donec rutrum convallis viverra. Suspendisse vehicula, risus sit amet luctus pharetra, quam ante condimentum metus, porttitor vulputat.</p></blockquote>
+<blockquote><p>Suspendisse ipsum urna, pellentesque eget sagittis eget, porta eget ligula. Mauris id posuere nisl. Aliquam sit amet urna lorem. Donec et odio et velit.</p></blockquote>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu eros velit, non blandit ipsum. Donec pretium, nibh vitae tristique tempor, enim sem.</p></blockquote>
+<blockquote><p>Suspendisse ipsum urna, pellentesque eget sagittis eget, porta eget ligula. Mauris id posuere nisl. Aliquam sit amet urna lorem. Donec et odio et velit.</p></blockquote>
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu eros velit, non blandit ipsum. Donec pretium, nibh vitae tristique tempor.</p></blockquote>
+<blockquote><p>Donec rutrum convallis viverra. Suspendisse vehicula, risus sit amet luctus pharetra, quam ante condimentum metus, porttitor vulputat.</p></blockquote>
+<blockquote><p>Donec rutrum convallis viverra. Suspendisse vehicula, risus sit amet luctus pharetra, quam ante condimentum metus, porttitor vulputate.</p></blockquote>
+ -->
+</div></div>				</div>	
+		  </div>		
+		</section>
+		<div id="changepassword" title="Change Password" style="visibility: hidden">
+			<br>
+			<div align="center">
+				<form id="changepasswordform"  name="changepasswordform" method="post" action="/changepassword">
+					<strong>Old Password:&nbsp;&nbsp;</strong><input type="password" id="oldpwd" name="oldpwd" required="required">
+					<p></p>
+					<strong>New Password:&nbsp;&nbsp;</strong><input type="password" id="newpwd"  name="newpwd" required="required">
+					<p></p>
+					<strong>Confirm Password:&nbsp;&nbsp;</strong><input type="password" id="conpwd"  name="conpwd" required="required">
+				</form>
+			</div>
+			</div>
+		
+		
+		<div id="socket">
+
+			<div class="container">	
+
+				<span class="copyright">
+					&#64; Copyright 2015 eShop | All rights Reserved </span>
+						
+  <div class="backtop">
+					<a href="#backtop">Top</a>				</div>
+			</div>
+	  </div>
+	</div>
+	{% if message %} <script type="text/javascript">alert("{{message}}"); window.location.href="/consumerhome"</script> {% endif %}	
+</body>
+
+</html>

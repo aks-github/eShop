@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+
+<style type="text/css">
+<!--
+body {
+	background-image: url(/static/home&storefront/image/data/background.png);
+}
+.style1 {font-size: 14px}
+-->
+</style><head>
+<meta charset="UTF-8" />
+<title>{{market.MarketName}}</title>
+<base  />
+<meta name="description" content="About Shoping Street" />
+<meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/boss_carousel.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/skeleton.css" />
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/responsive.css" />
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/ui/jquery-ui-1.8.16.custom.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/javascript/jquery/ui/themes/ui-lightness/jquery-ui-1.8.16.custom.css" />
+<!--  <script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/common.js"></script> -->
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/getwidthbrowser.js"></script>
+<!-- <script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/bossthemes.js"></script> -->
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/notify.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.selectbox-0.2.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.carouFredSel-6.2.0-packed.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/tabs.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/jquery/jquery.cycle.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".boss_select").selectbox();
+});
+function coming_soon() {
+	alert("Coming Soon")
+}
+</script>
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie8.css" />
+<![endif]-->
+
+<!--[if IE 9]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie9.css" />
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie7.css" />
+<![endif]-->
+<!--[if lt IE 7]>
+<link rel="stylesheet" type="text/css" href="catalog/view/theme/lhs/stylesheet/ie6.css" />
+<script type="text/javascript" src="catalog/view/javascript/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">
+DD_belatedPNG.fix('#logo img');
+</script>
+<![endif]-->
+</head>
+<body class=home_page>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "http://connect.facebook.net/en_US/all.js#xfbml=1&appId=513756015364457";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="frame_container">
+<div class="header-top"></div>
+
+<div id="container" class="container">
+<div id="header" class="twenty-four columns">	
+	<div class="header-middle">
+	<div id="logo" class="nine columns alpha"><a href="#"><img src="/media/{{market.MarketLogo}}" height="72px" width="400px" title="{{market.MarketName}}"/></a></div>
+	<div id="boss-search" class="fourteen columns omega">
+		<div class="choose-select">
+			<div class="input_cat">
+			    <select name="filter_category_id" class="boss_select" id="SearchByRef">
+			      <option value="Searchstore" selected>Search by store</option>
+			      <option value="Searchproduct">Search by product</option>
+			    </select>
+			</div>
+			<div class="bkg_input_search">
+				<input name="filter_name" type="text" value="" name="search" id="SearchBar" size="30" placeholder="Enter your search here..." id="SearchBar" />
+				<input title="Search" type="button" value="Search" id="boss-button-search" class="button-search" />
+			</div>
+		</div>
+	</div>
+ 
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css"> 
+<script type="text/javascript">
+$("#SearchBar").keyup(function() {l
+	var category_id = $('#SearchByRef').val();
+	if(category_id=="Searchstore"){
+		
+		$( "#SearchBar").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/storesearch",request, response);
+			}
+		});
+	}
+	
+	if(category_id=="Searchproduct"){
+		$( "#SearchBar").autocomplete({
+			source: function( request, response ) {  
+			jQuery.getJSON( "/productsearch",request, response);
+			}
+		});
+	}
+	
+	
+}); 
+
+	$('#boss-button-search').bind('click', function() {
+		url = '/search'; 
+		var search = $('#SearchBar').val();
+		if (search) {
+			url += '?search=' + encodeURIComponent(search);
+		}
+		var category_id = $('#SearchByRef').val();
+		if (category_id) {
+			url += '&category_id=' + encodeURIComponent(category_id);
+		}
+		location = url;
+	});
+
+</script>
+
+
+<script type="text/javascript">
+$(function () {
+	$("#boss_filter_search").selectbox();
+});
+</script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	if(getWidthBrowser() < 959) {
+		$('#cart > .heading a').live('click', function() {
+			if($('#cart').hasClass('my-active')){
+				$('#cart').removeClass('active');
+				$('#cart').removeClass('my-active');
+			} else {
+				$('#cart').addClass('my-active');
+			}
+		});
+	}
+});
+--></script>	</div>
+	<div class="header-bottom">	
+		<div id="boss_menu" class="mega-menu nineteen columns alpha omega">
+  <ul>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/1"><img src="/static/home&storefront/image/cache/data/lhs/apparel.png" alt="Apparels" title="Apparels" width="48" height="46"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/2"><img src="/static/home&storefront/image/cache/data/lhs/footwear.png" alt="Footwear" title="Footwear"  width="48" height="46"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/3"><img src="/static/home&storefront/image/cache/data/lhs/food.png" alt="Food" title="Food"  width="48" height="46"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/4"><img src="/static/home&storefront/image/cache/data/lhs/beauty.png" alt="Beauty" title="Beauty"  width="48" height="46"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/5"><img src="/static/home&storefront/image/cache/data/lhs/gadgets.png" alt="Gadgets" title="Gadgets"  width="48" height="44"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/6"><img src="/static/home&storefront/image/cache/data/lhs/opticals.png" alt="Opticals" title="Opticals"  width="48" height="46"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/7"><img src="/static/home&storefront/image/cache/data/lhs/toysndgifts.png" alt="Toys & Gifts" title="Toys & Gifts"  width="48" height="44"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/8"><img src="/static/home&storefront/image/cache/data/lhs/jewellery.png" alt="Jewellery" title="Jewellery"  width="48" height="44"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/9"><img src="/static/home&storefront/image/cache/data/lhs/homedecor.png" alt="Home & Decor" title="Home & Decor"  width="48" height="44"></a></li>
+  	<li class="sub-menu" ><a href="/{{market.MarketId}}/categories/10"><img src="/static/home&storefront/image/cache/data/lhs/others.png" alt="Others" title="Others"  width="48" height="44"></a></li>
+  </ul>
+  
+</div>		
+		<div id="boss_menu_vertical" class="boss_menu_vertical" style="text-align:left; padding:2px 2px;">  
+ <p style="padding:5px;"> <strong>  Welcome to {{market.MarketName}}!</strong><br>
+ {{market.MarketDescription}}
+  <br>
+A full-fledged market where you can access everything. This area has an array of shops selling shoes, garments,   accessories, household articles etc. It has some of the most fashionable   boutiques, jewellery, footwear, optical, branded products etc.</p>
+<div class="quick-select">
+  <div class="sub-inside">
+  <ul class="display-menu">
+  	<li  > 
+	<img title="" src="/static/home&storefront/image/cache/data/lhs/shopby_8-23x23.png" alt="" />  <a href="javascript:coming_soon()">Directory</a>
+				
+			</li>
+  	
+  	<li  > 
+	<img title="" src="/static/home&storefront/image/cache/data/lhs/shopby_8-23x23.png" alt="" />  <a href="javascript:coming_soon()">Sales</a>
+				
+			</li>
+  	<li class="last" > 
+	<img title="" src="/static/home&storefront/image/cache/data/lhs/shopby_8-23x23.png" alt="" />  <a href="javascript:coming_soon()">Events</a>
+			
+			</li>
+    </ul>
+  </div>
+</div>  
+  </div>		 
+		<div id="static-header-bottom">
+     <div class="fluid_container fourteen columns">
+     <div class="slider-heading"><span></span></div>
+     
+     <!--
+		<div class="camera_wrap camera_azure_skin" id="camera_wrap_0">
+            <div data-src="/static/home&storefront/image/cache/data/lhs/product/banner.jpg" data-link="#">  </div>
+        </div> #camera_wrap_1 -->
+         
+         <link rel="stylesheet" type="text/css" href="/static/css/jquery.panorama.css" /> 
+	            <style type="text/css">
+	           		 .panorama-viewport {
+	            		width : auto!important;
+	            		speed:1;
+	            		step:2,
+	            		auto: true,
+	            		navi: true
+	            		
+	            		
+	            }
+	            </style>
+				<script type="text/javascript" src="/static/js/jquery.js"></script>
+				<script type="text/javascript" src="/static/js/jquery.panorama1.js"></script>
+	
+				<div id="page" >
+					<img src="/media/{{market.MarketImage}}" class="panorama" width="677px" height="220" />
+				</div>   
+				<div class='marquee-with-options'></div>
+           
+</div>
+
+<link rel="stylesheet" type="text/css" href="/static/home&storefront/catalog/view/theme/lhs/stylesheet/camera.css" media="screen" /><script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.easing.js"></script>
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/camera.min.js"></script>
+
+
+<!--news ticker-->
+
+	<script src="/static/home&storefront/js/jquery.pause.min.js"></script>
+
+		<script src="/static/home&storefront/js/jquery.marquee.js"></script>
+		<script>
+			$(function(){
+				var $mwo = $('.marquee-with-options');
+				$('.marquee').marquee();
+				$('.marquee-with-options').marquee({
+					//speed in milliseconds of the marquee
+					speed: 5000,
+					//gap in pixels between the tickers
+					gap: 50,
+					//gap in pixels between the tickers
+					delayBeforeStart: 0,
+					//'left' or 'right'
+					direction: 'left',
+					//true or false - should the marquee be duplicated to show an effect of continues flow
+					duplicated: true,
+					//on hover pause the marquee - using jQuery plugin https://github.com/tobia/Pause
+					pauseOnHover: true
+				});
+
+				//pause and resume links
+				$('.pause').click(function(e){
+					e.preventDefault();
+					$mwo.trigger('pause');
+				});
+				$('.resume').click(function(e){
+					e.preventDefault();
+					$mwo.trigger('resume');
+				});
+				//toggle
+				$('.toggle').hover(function(e){
+					$mwo.trigger('pause');
+				},function(){
+					$mwo.trigger('resume');
+				})
+				.click(function(e){
+					e.preventDefault();
+				})
+			});
+		</script>
+
+<!--/news ticker END-->
+
+
+<script type="text/javascript">
+	jQuery(function(){
+		jQuery('#camera_wrap_0').camera({
+			autoAdvance: false,
+		    mobileAutoAdvance: false,
+            //time: 3000,  
+			alignment: 'topLeft',
+			height: 'auto',
+			//loader: 'bar',
+			//pagination: false,
+			thumbnails: false
+		});
+	});
+</script>
+ 
+     <div class="box boss_latest five columns omega">
+  <div class="box-heading"><span>Latest Products</span></div>
+  <div class="box-content">
+	<div class="list_carousel responsive product-grid">
+		<ul id="boss_latest1">
+		
+			{% for latestproduct in latestproducts%}
+		  	<li>
+				<div class="name"><a href="#">{{latestproduct.ProductDescription}}</a></div>
+					<div class="price">	<span class="price-old"></span> <span class="price-new">Rs. {{latestproduct.ProductPrice}}</span></div>
+					<div class="image"><a href="/product/{{latestproduct.ProductId}}"><img src="/media/{{latestproduct.ProductImage}}" alt="" /></a>
+				</div>
+			</li>
+			{% endfor %} 
+		
+		</ul>
+		<a id="prev_latest1" class="prev" href="#" title="prev">&lt;</a>
+		<a id="next_latest1" class="next" href="#" title="next">&gt;</a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_latest1').carouFredSel({
+		//auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_latest1',
+		next: '#next_latest1',
+		mousewheel: true,
+		swipe: {
+			//onMouse: true,
+			onTouch : true
+		},
+		items: {
+			//width: 200,
+			height: 224,
+			visible: {
+			min: 1,
+			max: 1
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+});
+</script>  </div>
+ 
+	</div>
+	<div class="clear"></div>
+</div>
+<div id="notification"></div>
+<div class="twenty-four columns">
+ 
+<div id="content"><div class="banner-hotdeal five columns alpha"><div class="fb-like-box" data-href="https://www.facebook.com/pages/Lokhandwala-High-Street/401102830001779" data-width="231" data-height="245" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div></div>
+<div class="box boss_featured nineteen columns omega">
+  <div class="box-heading"><span>Featured Products</span></div>
+  <div class="box-content ">
+	<div class="list_carousel responsive product-grid">
+	<ul id="boss_featured0">
+		{% for featuredproduct in featuredproducts%}
+				<li>
+						<div style="width: 160px">
+							<div class="image"><a href="/product/{{featuredproduct.ProductId}}"><img src="/media/{{featuredproduct.ProductImage}}" height="125" width="125" alt="" /></a></div>
+							<div class="name"><a href="#">{{featuredproduct.ProductDescription}}</a></div>
+							<div class="price">Rs. {{featuredproduct.ProductPrice}}</div>
+			  			</div>
+				</li>
+		{% endfor %}			
+	</ul>
+	<a id="prevfeatured" class="prev" href="#" title="prev">&lt;</a>
+	<a id="nextfeatured" class="next" href="#" title="next">&gt;</a>
+    </div>
+  </div>
+  
+  
+
+</div>
+  
+  <!--google mAp-->
+  
+  <div class="box boss_latest five columns omega">
+  <div class="box-heading"><span>Google Places</span></div>
+  <div class="box-content">
+	
+    
+    <iframe width="100%" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
+    
+  </div>
+</div>
+  
+  <!--/google map-->
+  
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_featured0').carouFredSel({
+		//auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prevfeatured',
+		next: '#nextfeatured',
+		swipe: {
+			//onMouse: true,
+			onTouch : true
+		},
+		items: {
+			width: 170,
+			height: 202,
+			visible: {
+			min: 1,
+			max: 6
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 900   //  The duration of the transition.
+		}
+	});
+});
+</script><div class="clear"></div>
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('#banner0 div:first-child').css('display', 'block');
+});
+
+var banner = function() {
+	$('#banner0').cycle({
+		before: function(current, next) {
+			$(next).parent().height($(next).outerHeight());
+		}
+	});
+}
+
+setTimeout(banner, 2000);
+//--></script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	$('#banner1 div:first-child').css('display', 'block');
+});
+
+var banner = function() {
+	$('#banner1').cycle({
+		before: function(current, next) {
+			$(next).parent().height($(next).outerHeight());
+		}
+	});
+}
+
+setTimeout(banner, 2000);
+//--></script><div class="clear"></div>
+<h1 style="display: none;">Furniture</h1>
+</div>
+</div>
+<div id="footer" class="twenty-four columns">
+  <div id="static-footer-top">
+  <div class="slider-heading"><span>Featured Stores</span></div>
+    <div class="list_carousel responsive">
+	<ul id="boss_carousel0">
+			{% for store in featuredstores %}
+			<li><a href="/store/{{store.StoreId}}/"><img src="/media/{{store.StoreLogo}}" height="82px" alt="157px" title="{{store.StoreName}}" /></a></li>
+			{% endfor %}
+			<!-- 
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/02-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/03-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/04-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/05-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/07-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/08-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/09-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/10-icon.jpg" alt="" title="" /></a></li>
+			<li><a href="#"><img src="/static/home&storefront/image/cache/data/lhs/11-icon.jpg" alt="" title="" /></a></li>
+			 -->
+		</ul>
+	<a id="prev_carousel0" class="prev" href="#" title="prev">&lt;</a>
+	<a id="next_carousel0" class="next" href="#" title="next">&gt;</a>
+</div>
+
+<script type="text/javascript" src="/static/home&storefront/catalog/view/javascript/bossthemes/jquery.touchSwipe.min.js"></script>
+<script type="text/javascript" language="javascript">
+$(window).load(function(){
+	$('#boss_carousel0').carouFredSel({
+		auto: false,
+		responsive: true,
+		width: '100%',
+		prev: '#prev_carousel0',
+		next: '#next_carousel0',
+		swipe: {
+		onTouch : true
+		},
+		items: {
+			//width: 'auto',
+			height: 82,
+			visible: {
+			min: 1,
+			max: 7
+			}
+		},
+		scroll: {
+			direction : 'left',    //  The direction of the transition.
+			duration  : 500   //  The duration of the transition.
+		}
+	});
+});
+</script>
+  </div>
+  <div id="static-footer-bottom">
+    <div class="static-footer-follow">
+<div>
+
+<a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/data/lhs/follow_1.png" title="facebook" /></a> <a href="javascript:coming_soon()" title="twitter"><img alt="" src="/static/home&storefront/image/data/lhs/follow_2.png" title="mastercard" /></a><a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/android.png" title="App for Customer" /></a><a href="javascript:coming_soon()" title="facebook"><img alt="" src="/static/home&storefront/image/android.png" title="App for Store Owners" /></a></div>
+</div>
+    <div class="static-footer-payment">
+<h3>Payment method</h3>
+
+<div><a href="javascript:coming_soon()" title="visa"><img alt="visa" src="/static/home&storefront/image/data/lhs/payment_1.png" title="visa" /></a> <a href="javascript:coming_soon()" title="mastercard"><img alt="" src="/static/home&storefront/image/data/lhs/payment_2.png" title="mastercard" /></a> <a href="javascript:coming_soon()" title="express"><img alt="" src="/static/home&storefront/image/data/lhs/payment_3.png" title="express" /></a> <a href="javascript:coming_soon()" title="paypal"><img alt="" src="/static/home&storefront/image/data/lhs/payment_4.png" title="paypal" /></a></div>
+</div>
+    <div class="static-footer-link"><a href="javascript:coming_soon()">About Shopping Street</a><a href="javascript:coming_soon()">Directory</a><a href="javascript:coming_soon()">Sales</a><a href="javascript:coming_soon()">Events</a>
+    </div>
+    <div id="powered">
+      <div id="bottom">
+        <div>
+          <div>
+            <div> © 2015                Shopping Street. All Rights Reserved.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+</div>
+</div>
+
+</body>
+
+</html>

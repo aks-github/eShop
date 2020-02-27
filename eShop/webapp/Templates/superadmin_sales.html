@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Sales Representative Creation</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/component.css" />
+		<script src="/static/js/modernizr.custom.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+		
+				<style type="text/css">
+			.ButtonLink {
+			    font-family: Arial, Helvetica, sans-serif;
+			    font-size: 12px;
+			    color: #FFF;
+			    background-color: #333;
+			    height: 28px;
+			    margin-left: 5px;
+			    margin-right: 5px;
+			    border-radius: 6px;
+			    padding: 5px;
+			    cursor: pointer;
+			    border: 0px;
+			    width: 80px
+			}
+			
+				.ButtonLink:hover {
+	        color: #000;
+	        background-color: #e5e5e5;
+	        cursor: pointer;
+	    }
+
+		.onClick {
+		    text-align: center;
+		    margin: 10px;
+		}
+		
+/* MAIN NAVIGATION */
+.nav-bar {
+    height: 51px;
+    background-color: #666;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* gradient */
+    background-image: url(../images/nav-bar-bg.png);
+    background-repeat: repeat-x;
+    box-shadow: 2px 3px 7px 0.2px;
+}
+
+.nav-menu {
+    width: 554px;
+    margin: auto;
+}
+
+#main-nav {
+    width: 120%;
+    background: #ccc;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+    #main-nav li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        float: left;
+        position: relative;
+    }
+
+        #main-nav li:first-child {
+            margin-left: 10px;
+        }
+
+    #main-nav a {
+        line-height: 100%;
+        font-weight: bold;
+        color: #fff;
+        display: block;
+        padding: 19px 20px;
+        text-decoration: none;
+        text-shadow: 0 -1px 0 rgba(0,0,0,.5);
+    }
+
+        #main-nav a:hover {
+            color: #fff;
+            background: #474747;
+            /* gradient */
+            background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+            background: -moz-linear-gradient(top, #282828, #4f4f4f);
+            background: linear-gradient(-90deg, #282828, #4f4f4f);
+        }
+
+    #main-nav .active > a, #main-nav .active > a:hover {
+        color: #fff;
+        background: #474747;
+        /* gradient */
+        background: -webkit-gradient(linear, left top, left bottom, from(#282828), to(#4f4f4f));
+        background: -moz-linear-gradient(top, #282828, #4f4f4f);
+        background: linear-gradient(-90deg, #282828, #4f4f4f);
+    }
+			
+		</style>
+		
+	</head>
+	<body>
+		<div class="container">
+				<header class="gem-mainHeader">
+					<div class="gem-top-bar">
+						<div class="gem-site-logo">
+							<a href="#"> <img src="/static/images/eShoplogo.png" /></a>
+						</div>
+					</div>
+					
+					<p>&nbsp;</p>
+					<div align="right"><strong>Welcome Admin</strong></div><br>
+					<div id="logout" align="right">
+					<a href="/showchangepassword" class="ButtonLink">Change Password</a> &nbsp;&nbsp;
+					<a href="/logout" class="ButtonLink">Log out</a>
+					</div><br>
+					
+					<div class="nav-bar" id="topnav">
+						<nav class="nav-menu">
+							<ul id="main-nav">
+								<li ><a href="/listmarket/">Market</a></li> <!-- /createmarket -->
+								<li class="active"><a href="/salesref">Sales Representative</a></li>
+								<li><a href="/services">Services</a></li>
+								<li><a href="/servicepacks">Service Pack</a></li>
+								<li><a href="/showallotment">Pack Allotment</a></li>
+							</ul>
+						</nav>
+					</div>
+				</header>
+
+			
+ <div class="mainContent" >	
+	{% if message %}
+		<div align="center">
+			<strong>{{message}}</strong>
+			<p>&nbsp;</p>
+			<a href="/salesref" class="ButtonLink">Go Back to SalesRep</a>
+		</div>
+	{% endif %}
+	
+	
+{% if showsalesref %}
+
+<script type="text/javascript">
+	function DeleteSalesrepid(salesrepitem){
+		var r=confirm("Are you sure to delete this sales representative information?");
+		if (r==true){
+			$.ajax({
+				url:"/deletesalesrepid",
+				//type:'POST',
+				data:"salesrepid="+salesrepitem.id,
+				success:function(data){
+					if(data=="ok"){
+						alert("SalesRepId Deleted Successfully");
+						window.location.href = '/salesref';
+					}
+					else{
+						alert(data);	
+							}
+						}
+					});	  
+		  }
+		}
+</script>
+	
+	<div id="addsalesref" align="center">
+		<div id="addsalesref">
+		<!-- 
+		<form action="/formsalesref">
+			<input type="submit" value="Add Sales Representative" class="ButtonLink">
+		</form>
+		 -->
+		 <a href="/formsalesref" class="ButtonLink">Add Sales Representative</a>
+		</div>
+		<p>&nbsp;</p>
+		<div id="contents">
+			<h3>Sales Representative ID's</h3>	
+			<table width="70%" border="0">
+	            <tbody style="background-color: #e4e4e4; text-align: center;">
+	               <tr>
+		       			  <td width="30%" style="padding-top: 10px; padding-bottom: 10px;">
+		                  <strong>Sales Representative ID</strong>
+		                  </td>
+		                  <td width="40%">
+		                  <strong>Sales Representative Name</strong>
+		                  </td>
+		                  <td width="20%">
+		                  <strong>Action</strong>
+		                  </td>
+	               </tr>
+	        		{% for representative in showsalesref.object_list %}
+	                  <tr>
+		                  <td >{{representative.SalesRepresentativeId}}</td>
+		                  <td>{{representative.SalesRepresentativeName}}</td>
+		                   <td>
+		                  <a href="/editsalesrepid?salesrepid={{representative.SalesRepresentativeId}}"><strong>Edit</strong></a>
+		                  &nbsp;&nbsp;&nbsp;&nbsp;
+		                  <a href="#" id={{representative.SalesRepresentativeId}} onclick="return DeleteSalesrepid(this);"><strong>Delete</strong></a>
+		                  </td>
+	                  </tr>
+	                  {% endfor %}
+				</tbody>
+			</table>
+			<p>&nbsp;</p>
+				<div class="pagination">
+					<span class="step-links">
+						{% if showsalesref.has_previous %}
+							<a href="?page={{ showsalesref.previous_page_number }}" class="ButtonLink"><strong>Previous</strong></a>
+						{% endif %}
+						
+						<span class="current">
+							<strong>Page {{ showsalesref.number }} of {{ showsalesref.paginator.num_pages }}</strong>
+						</span>
+							
+						{% if showsalesref.has_next %}
+							   <a href="?page={{ showsalesref.next_page_number }}" class="ButtonLink"><strong>Next</strong></a>
+						{% endif %}
+					</span>
+				</div>
+		</div>
+	{% endif  %}
+	
+	
+	
+	
+	
+	
+	
+	
+	{% if editsalesrepid %}
+	
+	<script type="text/javascript">
+	
+		function setResult(ref){
+			//var letters = /^[0-9a-zA-Z]+$/;
+			var salesnamefilter = /^[0-9a-zA-Z ]+$/;
+			/* if(ref.salesrepid.value.length < 3 || ref.salesrepid.value.length > 16 || !(ref.salesrepid.value.match(letters)))
+			{
+				alert("Service Representitive Id should be minimum of 3 and maximum of 16 Alphanumeric characters only.");
+				return false;
+			} */
+			
+			if (/^\s/.test(salesrepname.value[0])){
+				alert("Sales Representative Name should start with alphabets");
+				return false;	
+			}	
+			
+			if(ref.salesrepname.value.length < 3 || ref.salesrepname.value.length > 32 || !(ref.salesrepname.value.match(salesnamefilter)))
+			{
+				alert("Sales Representitive name should be minimum of 3 and maximum of 32 and should not contain any special characters and should not start with space");
+				return false;
+			}	
+			return true;
+		}
+	
+	</script>
+
+	<div id="editsalesrepid" align="center">
+	<form method="post" action="/updatesalesrepid" onsubmit="return setResult(this);">
+			<h3>Update Sales Representative information</h3>
+			<p>&nbsp;</p>
+			<table cellspacing="10">
+				<tr>
+				<td> <strong>Sales Representative ID: </strong></td>
+				<td><input type="text" name="salesrepid" id="salesrepid" value="{{salesrepidinfo.SalesRepresentativeId}}" class="inputtext" readonly="readonly"></td>
+				</tr>
+				<tr>
+				<td> <strong>Sales Representative Name: </strong></td>
+				<td><input type="text" name="salesrepname" id="salesrepname" value="{{salesrepidinfo.SalesRepresentativeName}}" class="inputtext"></td>
+				</tr>
+				<tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" value="Save" class="ButtonLink" >
+				<a href="/salesref" class="ButtonLink">Cancel</a></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	{% endif %}
+	
+	
+	
+	
+	
+	
+  {% if salesrefreg%}
+	<div id="salesrefreg" align="center">
+		<h3>Create Sales Representative ID</h3>	
+		<form method="post" id="register">
+			<table cellspacing="10">
+				<tr><td> <strong>Sales Representative ID: </strong></td><td><input type="text" name="salesrepid" id="salesrepid" required="required" class="inputtext"></td></tr>
+				<tr><td>&nbsp;</td><td><div id="salesrepiderror"></div></td></tr>
+				<tr><td> <strong>Sales Representative Name: </strong></td><td><input type="text" name="salesrepname" id="salesrepname" required="required" class="inputtext"></td></tr>
+				<tr><td></td><td><input type="submit" value="Register" id="registerbtn" class="ButtonLink"> 
+				&nbsp; &nbsp;
+				<a href="/salesref" class="ButtonLink">Cancel</a></td>
+				</td>
+				</tr>
+				</table>
+		</form>
+	</div>
+
+
+	
+<script type="text/javascript">
+$("#salesrepid").blur(function(){
+	var letters = /^[0-9a-zA-Z]+$/;
+ 	
+	salesrepid=document.getElementById("salesrepid").value;
+	if(salesrepid!=null && letters.test(salesrepid)){
+		$.ajax({
+				url:"/checksalesref",
+				//type:'post',
+				data:"salesrepid="+salesrepid,
+				success:function(data){
+					if(data!="ok"){
+						document.getElementById("salesrepiderror").innerHTML="<strong><font color='red'>ID already Exist</font></strong>";
+						document.getElementById("registerbtn").disabled=true;
+						}
+					else {
+						document.getElementById("salesrepiderror").innerHTML="<strong><font color='green'>ID Available</font></strong>";
+						document.getElementById("registerbtn").disabled=false;
+					}
+				}
+				});
+		}
+		else{
+			document.getElementById("salesrepiderror").innerHTML="<strong><font color='red'>field value invalid</font></strong>";
+			document.getElementById("registerbtn").disabled=true;
+		}
+	
+	
+	});
+
+
+
+function checkSalesRepId(salesrepid) {
+	var letters = /^([0-9a-zA-Z]){3,16}$/;
+ 	if (!letters.test(salesrepid)) {
+		return false;    
+ 	}
+    return true;  
+}
+
+
+
+function checkSalesRepName(salesrepname) {
+    var filter = /^([a-zA-Z ]){3,32}$/;
+    if (!filter.test(salesrepname)) {
+		return false;    
+ 	}
+    return true;  
+}
+
+
+function validatesalesrep(){
+	
+	var salesrepid=document.getElementById('salesrepid').value;
+	var salesrepname=document.getElementById('salesrepname').value;
+	
+	if (checkSalesRepId(salesrepid)==false){
+		alert("Sales Representative Id should be alpha numeric and must not be less than 3 and greater than 16");
+		return false;	
+	}
+	
+	if (/^\s/.test(salesrepname[0])){
+		alert("Sales Representative Name should start with alphabets");
+		return false;	
+	}	
+	
+	if (checkSalesRepName(salesrepname)==false){
+		alert("Sales Representative Name should be alphabets and must not be less than 3 and greater than 32 and should not start with space");
+		return false;	
+	}
+	return true;
+}
+
+
+
+
+
+$("#register").submit(function(){
+	//salesrepname=document.getElementById("salesrepname").value;
+	
+	if(validatesalesrep()){
+		var formData = new FormData($(this)[0]);
+	    $.ajax({
+	        url: '/registersalesref',
+	        type: 'POST',
+	        data: formData,
+	        async: false,
+	        success: function (data) {
+	    		alert(data);
+	    		window.location.href = '/salesref';
+	        },
+	        cache: false,
+	        contentType: false,
+	        processData: false
+	    });
+	}
+    return false;
+});
+
+{% endif %}
+</script>
+</div><!-- End of main content -->		
+</div><!-- End of container -->		
+</body>	
+</html>
+
+			
+
