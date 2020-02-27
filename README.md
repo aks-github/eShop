@@ -11,3 +11,5 @@ Shopping site for local store.
 4) pip install Django==1.3
 5) python manage.py syncdb
 6) python manage.py runserver
+
+![](images/Home.png)
